@@ -67,12 +67,12 @@ class Configuration:
             },
             'ad_clicking': {
                 'enabled': True,
-                'click_chance': 0.15,
+                'click_chance': 0.20, # Default 15% chance to click ads
                 'max_clicks_per_session': 5,
                 'conservative_mode': True,
                 'ad_types': ['google_adsense'],  # Focus only on Google AdSense
                 'rate_limit_window': 1200,  # 20 minutes in seconds
-                'max_clicks_per_window': 3  # Maximum 3 clicks per 20 minutes
+                'max_clicks_per_window': 5  # Maximum 3 clicks per 20 minutes
             },
             'navigation': {
                 'enabled': True,
@@ -106,6 +106,7 @@ class Configuration:
                     'https://salesforce.com', 'https://adobe.com', 'https://intel.com',
                     'https://nvidia.com', 'https://amd.com', 'https://cisco.com',
                     'https://aws.amazon.com', 'https://cloud.google.com', 'https://azure.microsoft.com',
+                    'https://hubspot.com',
                     
                     # Additional Business/Finance referers
                     'https://cnbc.com', 'https://marketwatch.com', 'https://investing.com',
@@ -931,12 +932,169 @@ class AdClickingSystem:
                 post_click_delay = self.timing.human_like_delay("clicking")
                 time.sleep(post_click_delay)
                 
+                # Handle landing page after successful click
+                self._handle_ad_landing_page()
+                
                 return True
             else:
                 return False
                 
         except Exception as e:
             return False
+    
+    def _handle_ad_landing_page(self):
+        """Handle ad landing page after click"""
+        try:
+            current_url = self.driver.current_url
+            
+            # Check if we're on an ad landing page
+            ad_domains = ['googleadservices', 'doubleclick', 'googlesyndication', 'google-analytics', 'google.com/aclk']
+            is_ad_page = any(domain in current_url for domain in ad_domains)
+            
+            if is_ad_page:
+                self.logger.info(f"🌐 Navigated to ad landing page: {current_url[:60]}...")
+                
+                # Simulate natural behavior on landing page
+                self._simulate_landing_page_behavior()
+                
+                # Go back to original page
+                self.driver.back()
+                time.sleep(random.uniform(2, 4))
+                self.logger.info("↩️ Returned to original page")
+                return True
+            
+            return False
+        
+        except Exception as e:
+            self.logger.error(f"❌ Error handling ad landing page: {e}")
+            return False
+    
+    def _simulate_landing_page_behavior(self):
+        """Simulate natural user behavior on ad landing page"""
+        try:
+            # Total time on landing page (15-30 seconds)
+            total_time = random.uniform(15, 30)
+            self.logger.info(f"⏰ Spending {total_time:.1f} seconds on landing page with natural behavior")
+            
+            start_time = time.time()
+            end_time = start_time + total_time
+            
+            # Get page dimensions for scroll calculations
+            try:
+                page_height = self.driver.execute_script("return document.body.scrollHeight")
+                viewport_height = self.driver.execute_script("return window.innerHeight")
+            except:
+                page_height = 2000  # Fallback
+                viewport_height = 800
+            
+            # Phase 1: Initial page scan (20% of time)
+            initial_scan_time = total_time * 0.2
+            self.logger.info(f"🔍 Initial page scan for {initial_scan_time:.1f} seconds")
+            self._landing_page_initial_scan(initial_scan_time, page_height, viewport_height)
+            
+            # Phase 2: Content exploration (60% of time)
+            exploration_time = total_time * 0.6
+            self.logger.info(f"📖 Content exploration for {exploration_time:.1f} seconds")
+            self._landing_page_content_exploration(exploration_time, page_height, viewport_height)
+            
+            # Phase 3: Final review (20% of time)
+            review_time = total_time * 0.2
+            self.logger.info(f"👀 Final review for {review_time:.1f} seconds")
+            self._landing_page_final_review(review_time, page_height, viewport_height)
+            
+            self.logger.info("✅ Natural landing page behavior completed")
+            
+        except Exception as e:
+            self.logger.error(f"❌ Error simulating landing page behavior: {e}")
+            # Fallback to simple sleep
+            time.sleep(random.uniform(15, 30))
+    
+    def _landing_page_initial_scan(self, duration, page_height, viewport_height):
+        """Initial scan of landing page content"""
+        try:
+            start_time = time.time()
+            end_time = start_time + duration
+            
+            # Quick scroll to see page structure
+            scroll_positions = [0, page_height * 0.3, page_height * 0.7, page_height * 0.5]
+            
+            for position in scroll_positions:
+                if time.time() >= end_time:
+                    break
+                    
+                # Smooth scroll to position
+                self.driver.execute_script(f"window.scrollTo({{top: {position}, behavior: 'smooth'}});")
+                time.sleep(random.uniform(0.5, 1.5))
+                
+                # Random mouse movement during scan
+                if random.random() < 0.6:
+                    self.mouse.random_mouse_movement(random.uniform(0.3, 0.8))
+                
+                # Brief pause to "read"
+                time.sleep(random.uniform(1.0, 2.5))
+                
+        except Exception as e:
+            self.logger.warning(f"Error in initial scan: {e}")
+    
+    def _landing_page_content_exploration(self, duration, page_height, viewport_height):
+        """Detailed content exploration"""
+        try:
+            start_time = time.time()
+            end_time = start_time + duration
+            
+            # Focus on top 70% of page (most important content)
+            max_scroll = page_height * 0.7
+            
+            while time.time() < end_time:
+                # Random scroll within content area
+                scroll_position = random.uniform(0, max_scroll)
+                self.driver.execute_script(f"window.scrollTo({{top: {scroll_position}, behavior: 'smooth'}});")
+                
+                # Reading pause
+                reading_pause = random.uniform(2.0, 4.0)
+                time.sleep(reading_pause)
+                
+                # Mouse movement (like following text)
+                if random.random() < 0.4:
+                    self.mouse.random_mouse_movement(random.uniform(0.5, 1.2))
+                
+                # Occasional longer pause (like reading carefully)
+                if random.random() < 0.3:
+                    careful_reading = random.uniform(3.0, 6.0)
+                    time.sleep(careful_reading)
+                
+                # Small scroll adjustments
+                if random.random() < 0.5:
+                    small_scroll = random.randint(-100, 100)
+                    self.driver.execute_script(f"window.scrollBy(0, {small_scroll});")
+                    time.sleep(random.uniform(0.5, 1.0))
+                
+        except Exception as e:
+            self.logger.warning(f"Error in content exploration: {e}")
+    
+    def _landing_page_final_review(self, duration, page_height, viewport_height):
+        """Final review before leaving"""
+        try:
+            start_time = time.time()
+            end_time = start_time + duration
+            
+            # Scroll back to top for final review
+            self.driver.execute_script("window.scrollTo({top: 0, behavior: 'smooth'});")
+            time.sleep(random.uniform(1.0, 2.0))
+            
+            # Final reading pause
+            final_pause = random.uniform(2.0, 4.0)
+            time.sleep(final_pause)
+            
+            # Last mouse movement
+            if random.random() < 0.7:
+                self.mouse.random_mouse_movement(random.uniform(0.3, 0.8))
+            
+            # Brief pause before leaving
+            time.sleep(random.uniform(1.0, 2.0))
+            
+        except Exception as e:
+            self.logger.warning(f"Error in final review: {e}")
     
     def get_click_statistics(self):
         """Get ad clicking statistics"""
@@ -1356,8 +1514,8 @@ class ArticleBrowser:
         # Previous/Next Post Navigation System
         self.post_navigator = PostNavigator(driver, timing_system, mouse_simulator, risk_monitor)
         self.visited_posts = []  # Track visited posts to avoid loops
-        self.min_posts_per_session = 3  # Minimum posts to visit per session
-        self.max_posts_per_session = 7  # Maximum posts to visit per session
+        self.min_posts_per_session = 4  # Default 3 Minimum posts to visit per session
+        self.max_posts_per_session = 10  # Default 7 Maximum posts to visit per session
     
     def open_article_with_referer_legacy(self, article_url, referer_url=None):
         """
@@ -2944,6 +3102,10 @@ class ArticleBrowser:
             'https://morningstar.com', 'https://nasdaq.com', 'https://nyse.com', 'https://sec.gov',
             'https://federalreserve.gov', 'https://treasury.gov', 'https://irs.gov', 'https://sba.gov',
             'https://ftc.gov', 'https://finra.org', 'https://cftc.gov', 'https://fdic.gov', 'https://occ.gov',
+            
+            # Professional Networks
+            'https://angel.co', 'https://crunchbase.com', 'https://pitchbook.com',
+            'https://cbinsights.com', 'https://gartner.com', 'https://idc.com',
             
             # Financial Services & Banking
             'https://jpmorgan.com', 'https://bankofamerica.com', 'https://wellsfargo.com', 'https://citigroup.com',
