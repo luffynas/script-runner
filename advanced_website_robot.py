@@ -70,13 +70,148 @@ class Configuration:
                 'click_chance': 0.15,
                 'max_clicks_per_session': 5,
                 'conservative_mode': True,
-                'ad_types': ['google_adsense']  # Focus only on Google AdSense
+                'ad_types': ['google_adsense'],  # Focus only on Google AdSense
+                'rate_limit_window': 1200,  # 20 minutes in seconds
+                'max_clicks_per_window': 3  # Maximum 3 clicks per 20 minutes
             },
             'navigation': {
                 'enabled': True,
                 'max_navigation_depth': 3,
                 'same_domain_preference': 0.8,
                 'random_link_clicking': True
+            },
+            'article': {
+                'default_urls': [
+                    # 'https://rexdl.biz.id/cloud-computing-cost-optimization-how-us-companies-cut-expenses/',
+                    # 'https://rexdl.biz.id/why-cloud-computing-is-the-backbone-of-us-healthcare-industry/',
+                    # 'https://rexdl.biz.id/best-cloud-hosting-providers-for-small-businesses-in-america/',
+                    # 'https://rexdl.biz.id/top-10-cloud-computing-services-for-businesses-in-the-united-states/',
+                    # 'https://rexdl.biz.id/personal-loans-vs-private-student-loans-comparing-cost-interest-and-repayment-options/',
+                    # 'https://rexdl.biz.id/quick-cash-loans-explained-how-they-work-what-they-really-cost-safer-alternatives/'
+                    'https://maxgaming.biz.id/how-to-open-a-bank-account-with-crypto-funds-in-the-united-states-2025-guide/',
+                    'https://maxgaming.biz.id/online-mortgage-banking-with-bitcoin-the-future-of-real-estate-in-the-united-states/',
+                    'https://maxgaming.biz.id/artificial-intelligence-in-healthcare-transforming-us-medicine/',
+                    'https://maxgaming.biz.id/how-ai-automation-saves-time-and-money-for-us-businesses/'
+                ],
+                'default_referers': [
+                    # High CPC referers (Business/Finance/Tech)
+                    'https://google.com', 'https://bing.com',
+                    'https://linkedin.com', 'https://github.com', 'https://stackoverflow.com',
+                    'https://medium.com', 'https://quora.com', 'https://forbes.com',
+                    'https://bloomberg.com', 'https://reuters.com', 'https://wsj.com',
+                    'https://techcrunch.com', 'https://wired.com', 'https://arstechnica.com',
+                    'https://hbr.org', 'https://mckinsey.com', 'https://pwc.com',
+                    'https://deloitte.com', 'https://kpmg.com', 'https://ey.com',
+                    'https://ibm.com', 'https://microsoft.com', 'https://oracle.com',
+                    'https://salesforce.com', 'https://adobe.com', 'https://intel.com',
+                    'https://nvidia.com', 'https://amd.com', 'https://cisco.com',
+                    'https://aws.amazon.com', 'https://cloud.google.com', 'https://azure.microsoft.com',
+                    
+                    # Additional Business/Finance referers
+                    'https://cnbc.com', 'https://marketwatch.com', 'https://investing.com',
+                    'https://yahoo.com/finance', 'https://finance.yahoo.com', 'https://seekingalpha.com',
+                    'https://benzinga.com', 'https://fool.com', 'https://morningstar.com',
+                    'https://nasdaq.com', 'https://nyse.com', 'https://sec.gov',
+                    'https://federalreserve.gov', 'https://treasury.gov', 'https://irs.gov',
+                    'https://sba.gov', 'https://ftc.gov', 'https://sec.gov',
+                    'https://finra.org', 'https://cftc.gov', 'https://fdic.gov',
+                    'https://occ.gov', 'https://federalreserve.gov', 'https://treasury.gov',
+                    
+                    # Financial Services & Banking
+                    'https://jpmorgan.com', 'https://bankofamerica.com', 'https://wellsfargo.com',
+                    'https://citigroup.com', 'https://goldmansachs.com', 'https://morganstanley.com',
+                    'https://blackrock.com', 'https://vanguard.com', 'https://fidelity.com',
+                    'https://schwab.com', 'https://etrade.com', 'https://tdameritrade.com',
+                    'https://interactivebrokers.com', 'https://robinhood.com', 'https://webull.com',
+                    'https://sofi.com', 'https://chase.com', 'https://capitalone.com',
+                    'https://americanexpress.com', 'https://visa.com', 'https://mastercard.com',
+                    'https://paypal.com', 'https://square.com', 'https://stripe.com',
+                    
+                    # Investment & Trading Platforms
+                    'https://etrade.com', 'https://schwab.com', 'https://fidelity.com',
+                    'https://vanguard.com', 'https://blackrock.com', 'https://goldmansachs.com',
+                    'https://morganstanley.com', 'https://jpmorgan.com', 'https://citigroup.com',
+                    'https://wellsfargo.com', 'https://bankofamerica.com', 'https://chase.com',
+                    'https://robinhood.com', 'https://webull.com', 'https://sofi.com',
+                    'https://interactivebrokers.com', 'https://tdameritrade.com', 'https://etrade.com',
+                    'https://trading212.com', 'https://plus500.com', 'https://ig.com',
+                    'https://oanda.com', 'https://forex.com', 'https://fxcm.com',
+                    
+                    # Business News & Media
+                    'https://businesswire.com', 'https://prnewswire.com', 'https://globenewswire.com',
+                    'https://marketwatch.com', 'https://investing.com', 'https://benzinga.com',
+                    'https://seekingalpha.com', 'https://fool.com', 'https://morningstar.com',
+                    'https://nasdaq.com', 'https://nyse.com', 'https://otcmarkets.com',
+                    'https://sec.gov', 'https://federalreserve.gov', 'https://treasury.gov',
+                    'https://irs.gov', 'https://sba.gov', 'https://ftc.gov',
+                    'https://finra.org', 'https://cftc.gov', 'https://fdic.gov',
+                    
+                    # Technology & Innovation
+                    'https://apple.com', 'https://google.com', 'https://microsoft.com',
+                    'https://amazon.com', 'https://meta.com', 'https://netflix.com',
+                    'https://tesla.com', 'https://spacex.com', 'https://openai.com',
+                    'https://anthropic.com', 'https://deepmind.com', 'https://nvidia.com',
+                    'https://amd.com', 'https://intel.com', 'https://qualcomm.com',
+                    'https://broadcom.com', 'https://cisco.com', 'https://juniper.net',
+                    'https://vmware.com', 'https://redhat.com', 'https://canonical.com',
+                    'https://docker.com', 'https://kubernetes.io', 'https://terraform.io',
+                    
+                    # Cloud & Enterprise Software
+                    'https://aws.amazon.com', 'https://cloud.google.com', 'https://azure.microsoft.com',
+                    'https://salesforce.com', 'https://oracle.com', 'https://sap.com',
+                    'https://workday.com', 'https://servicenow.com', 'https://atlassian.com',
+                    'https://slack.com', 'https://zoom.us', 'https://teams.microsoft.com',
+                    'https://dropbox.com', 'https://box.com', 'https://onedrive.com',
+                    'https://sharepoint.com', 'https://office.com', 'https://adobe.com',
+                    'https://autodesk.com', 'https://ansys.com', 'https://solidworks.com',
+                    'https://tableau.com', 'https://powerbi.com', 'https://qlik.com',
+                    
+                    # Cybersecurity & Data
+                    'https://crowdstrike.com', 'https://paloaltonetworks.com', 'https://fortinet.com',
+                    'https://checkpoint.com', 'https://symantec.com', 'https://mcafee.com',
+                    'https://trendmicro.com', 'https://kaspersky.com', 'https://bitdefender.com',
+                    'https://splunk.com', 'https://elastic.co', 'https://databricks.com',
+                    'https://snowflake.com', 'https://mongodb.com', 'https://redis.com',
+                    'https://postgresql.org', 'https://mysql.com', 'https://oracle.com',
+                    'https://ibm.com', 'https://hpe.com', 'https://dell.com',
+                    
+                    # Consulting & Professional Services
+                    'https://mckinsey.com', 'https://bain.com', 'https://bcg.com',
+                    'https://pwc.com', 'https://deloitte.com', 'https://kpmg.com',
+                    'https://ey.com', 'https://accenture.com', 'https://cognizant.com',
+                    'https://infosys.com', 'https://tcs.com', 'https://wipro.com',
+                    'https://capgemini.com', 'https://atos.net', 'https://dxc.com',
+                    'https://hcl.com', 'https://techmahindra.com', 'https://mindtree.com',
+                    'https://ltts.com', 'https://mphasis.com', 'https://hexaware.com',
+                    
+                    # Venture Capital & Startups
+                    'https://a16z.com', 'https://sequoiacap.com', 'https://accel.com',
+                    'https://greylock.com', 'https://benchmark.com', 'https://kleinerperkins.com',
+                    'https://firstround.com', 'https://foundersfund.com', 'https://union.vc',
+                    'https://insightpartners.com', 'https://generalcatalyst.com', 'https://bessemer.com',
+                    'https://lightspeed.com', 'https://matrixpartners.com', 'https://redpoint.com',
+                    'https://nea.com', 'https://battery.com', 'https://ivp.com',
+                    'https://ggv.com', 'https://dcm.com', 'https://sapphire.com',
+                    
+                    # Medium CPC referers (General/Social)
+                    'https://reddit.com', 'https://twitter.com', 'https://facebook.com',
+                    'https://instagram.com', 'https://youtube.com', 'https://tiktok.com',
+                    'https://pinterest.com', 'https://snapchat.com', 'https://discord.com',
+                    'https://slack.com', 'https://zoom.us', 'https://teams.microsoft.com',
+                    
+                    # Educational/Research referers
+                    'https://wikipedia.org', 'https://scholar.google.com', 'https://researchgate.net',
+                    'https://academia.edu', 'https://coursera.org', 'https://edx.org',
+                    'https://udemy.com', 'https://khanacademy.org', 'https://mit.edu',
+                    'https://stanford.edu', 'https://harvard.edu', 'https://berkeley.edu',
+                    
+                    # News/Media referers
+                    'https://cnn.com', 'https://bbc.com', 'https://nytimes.com',
+                    'https://washingtonpost.com', 'https://usatoday.com', 'https://npr.org',
+                    'https://ap.org', 'https://aljazeera.com', 'https://theguardian.com',
+                    'https://independent.co.uk', 'https://telegraph.co.uk', 'https://ft.com',
+                ],
+                'high_cpc_weight': 0.7  # 70% chance to select high CPC referers
             }
         }
     
@@ -739,10 +874,13 @@ class AdClickingSystem:
             # Conservative checks for Google AdSense
             if conservative:
                 # Don't click if we've clicked too many ads recently
-                recent_clicks = [click for click in self.click_history 
-                               if time.time() - click['timestamp'] < 1200]  # 20 minutes
+                rate_limit_window = self.config.get('ad_clicking.rate_limit_window', 1200)  # Default 20 minutes
+                max_clicks_per_window = self.config.get('ad_clicking.max_clicks_per_window', 3)  # Default 3 clicks
                 
-                if len(recent_clicks) >= 3:  # Max 3 clicks per 20 minutes
+                recent_clicks = [click for click in self.click_history 
+                               if time.time() - click['timestamp'] < rate_limit_window]
+                
+                if len(recent_clicks) >= max_clicks_per_window:
                     return False
                 
                 # Don't click if ad is too small (higher threshold for AdSense)
@@ -808,15 +946,16 @@ class AdClickingSystem:
         recent_clicks = [click for click in self.click_history 
                         if current_time - click['timestamp'] < 3600]  # Last hour
         
-        # Calculate clicks in last 20 minutes (rate limiting window)
+        # Calculate clicks in rate limiting window
+        rate_limit_window = self.config.get('ad_clicking.rate_limit_window', 1200)  # Default 20 minutes
         rate_limit_clicks = [click for click in self.click_history 
-                            if current_time - click['timestamp'] < 1200]  # Last 20 minutes
+                            if current_time - click['timestamp'] < rate_limit_window]
         
         return {
             'total_clicks': len(self.click_history),
             'recent_clicks': len(recent_clicks),
             'rate_limit_clicks': len(rate_limit_clicks),
-            'rate_limit_remaining': max(0, 3 - len(rate_limit_clicks)),
+            'rate_limit_remaining': max(0, self.config.get('ad_clicking.max_clicks_per_window', 3) - len(rate_limit_clicks)),
             'click_rate': len(recent_clicks) / 60,  # Clicks per minute
             'average_click_interval': self._calculate_average_interval(),
             'ad_types_clicked': self._get_clicked_ad_types()
@@ -1220,84 +1359,12 @@ class ArticleBrowser:
         self.min_posts_per_session = 3  # Minimum posts to visit per session
         self.max_posts_per_session = 7  # Maximum posts to visit per session
     
-    def open_article_with_referer(self, article_url, referer_url=None):
-        try:
-            self.logger.info(f"Opening article: {article_url}")
-            
-            if referer_url:
-                self.logger.info(f"Using referer: {referer_url}")
-                
-                # Navigate to referer first
-                try:
-                    self.driver.get(referer_url)
-                    self.timing.wait_between_actions(2, 4)
-                    
-                    # Simulate some browsing on referer
-                    self._simulate_referer_browsing()
-                    
-                    # Use improved navigation to maintain referer
-                    navigation_success = self._navigate_with_referer(article_url, referer_url)
-                    
-                    if not navigation_success:
-                        self.logger.warning("Navigation with referer failed, trying direct navigation")
-                        self.driver.get(article_url)
-                        
-                except Exception as e:
-                    self.logger.warning(f"Referer navigation failed: {e}, trying direct navigation")
-                    self.driver.get(article_url)
-            else:
-                # Direct navigation without referer
-                self.driver.get(article_url)
-            
-            self.risk_monitor.record_request()
-            
-            # Wait for page load with better error handling
-            try:
-                WebDriverWait(self.driver, 30).until(
-                    lambda driver: driver.execute_script("return document.readyState") == "complete"
-                )
-                
-                # Additional wait for dynamic content
-                time.sleep(2)
-                
-            except TimeoutException:
-                self.logger.warning("Page load timeout, but continuing...")
-            except Exception as e:
-                self.logger.warning(f"Page load check failed: {e}")
-            
-            # Check if we're actually on the target page
-            current_url = self.driver.current_url
-            if article_url in current_url or 'rexdl.biz.id' in current_url:
-                self.logger.info("✅ Article loaded successfully")
-                
-                # Verify referer was sent (optional)
-                if referer_url:
-                    self._verify_referer_sent(referer_url)
-                
-                return True
-            else:
-                self.logger.error(f"❌ Failed to load article. Current URL: {current_url}")
-                return False
-            
-        except Exception as e:
-            self.logger.error(f"Error opening article: {e}")
-            # Try direct navigation as last resort
-            try:
-                self.logger.info("Attempting direct navigation as fallback")
-                self.driver.get(article_url)
-                time.sleep(3)
-                
-                current_url = self.driver.current_url
-                if article_url in current_url or 'rexdl.biz.id' in current_url:
-                    self.logger.info("✅ Direct navigation successful")
-                    return True
-                else:
-                    self.logger.error(f"❌ Even direct navigation failed. Current URL: {current_url}")
-                    return False
-                    
-            except Exception as e2:
-                self.logger.error(f"Direct navigation also failed: {e2}")
-                return False
+    def open_article_with_referer_legacy(self, article_url, referer_url=None):
+        """
+        Legacy method for backward compatibility - use open_article_with_referer() instead
+        """
+        self.logger.warning("⚠️ Using legacy method open_article_with_referer_legacy(). Please use open_article_with_referer() instead.")
+        return self.open_article_with_referer(article_url, referer_url)
     
     def _simulate_referer_browsing(self):
         """Simulate natural referer browsing (bandwidth optimized)"""
@@ -2005,7 +2072,7 @@ class ArticleBrowser:
                 
                 # Check if navigation was successful
                 current_url = self.driver.current_url
-                if target_url in current_url or 'rexdl.biz.id' in current_url:
+                if target_url in current_url:
                     self.logger.info("✅ Navigation successful using link click method")
                     return True
                     
@@ -2041,7 +2108,7 @@ class ArticleBrowser:
                 
                 # Check if navigation was successful
                 current_url = self.driver.current_url
-                if target_url in current_url or 'rexdl.biz.id' in current_url:
+                if target_url in current_url:
                     self.logger.info("✅ Navigation successful using form method")
                     return True
                     
@@ -2063,7 +2130,7 @@ class ArticleBrowser:
                 
                 # Check if navigation was successful
                 current_url = self.driver.current_url
-                if target_url in current_url or 'rexdl.biz.id' in current_url:
+                if target_url in current_url:
                     self.logger.info("✅ Navigation successful using window.location method")
                     return True
                     
@@ -2077,7 +2144,7 @@ class ArticleBrowser:
             
             # Check if direct navigation was successful
             current_url = self.driver.current_url
-            if target_url in current_url or 'rexdl.biz.id' in current_url:
+            if target_url in current_url:
                 self.logger.info("✅ Direct navigation successful")
                 return True
             else:
@@ -2747,17 +2814,26 @@ class ArticleBrowser:
             return False
     
     
-    def open_rexdl_cloud_article(self):
-        article_url = "https://rexdl.biz.id/cloud-migration-challenges-in-the-us-and-how-to-overcome-them/"
-        referer_options = [
-            "https://google.com", "https://bing.com",
-            "https://reddit.com", "https://twitter.com", "https://linkedin.com",
-            "https://github.com", "https://stackoverflow.com", "https://medium.com"
-        ]
+    def open_article_with_referer(self, article_url=None, referer_url=None):
+        """
+        Open any article with referer - domain agnostic
         
-        referer_url = random.choice(referer_options)
+        Args:
+            article_url (str): URL of the article to open (if None, uses default)
+            referer_url (str): Referer URL to use (if None, randomly selects)
+        """
+        # Default article URL if not provided - support array and random selection
+        if article_url is None:
+            article_url = self.get_random_article_url()
+            self.logger.info(f"🎲 Randomly selected article URL: {article_url}")
         
-        self.logger.info(f"Opening RexDL Cloud Migration article with referer: {referer_url}")
+        # Default referer options if not provided - favor high CPC sources
+        if referer_url is None:
+            high_cpc_weight = self.get_high_cpc_weight()
+            referer_url = self.get_weighted_referer_url()
+            self.logger.info(f"🎲 Weighted selected referer URL ({high_cpc_weight*100:.0f}% high CPC): {referer_url}")
+        
+        self.logger.info(f"Opening article: {article_url} with referer: {referer_url}")
         
         # SIMPLE FLOW: Referer → Inject Link → Click Article
         success = False
@@ -2781,7 +2857,7 @@ class ArticleBrowser:
                 time.sleep(10)
                 
                 current_url = self.driver.current_url
-                if article_url in current_url or 'rexdl.biz.id' in current_url:
+                if article_url in current_url:
                     success = True
                     self.logger.info("✅ Direct navigation successful")
                     
@@ -2797,15 +2873,157 @@ class ArticleBrowser:
             # Enable post navigation for AdSense RPM optimization with dynamic reading duration
             browse_success = self.browse_article_content(duration_minutes=None, enable_post_navigation=True)
             if browse_success:
-                self.logger.info("RexDL article browsing with post navigation completed successfully")
+                self.logger.info("Article browsing with post navigation completed successfully")
                 self.logger.info(f"📊 Total posts visited: {len(self.visited_posts)}")
                 return True
             else:
-                self.logger.error("RexDL article browsing failed")
+                self.logger.error("Article browsing failed")
                 return False
         else:
-            self.logger.error("Failed to open RexDL article")
+            self.logger.error("Failed to open article")
             return False
+    
+    def set_article_urls(self, article_urls):
+        """Set the article URLs array to be used for browsing (random selection)"""
+        if isinstance(article_urls, str):
+            # Convert single URL to array
+            article_urls = [article_urls]
+        self.config.config['article']['default_urls'] = article_urls
+        self.logger.info(f"Article URLs set to: {article_urls}")
+    
+    def set_article_url(self, article_url):
+        """Set a single article URL (converts to array for compatibility)"""
+        self.set_article_urls([article_url])
+    
+    def set_referer_options(self, referer_options):
+        """Set the referer options to be used for browsing"""
+        self.config.config['article']['default_referers'] = referer_options
+        self.logger.info(f"Referer options set to: {referer_options}")
+    
+    def set_high_cpc_weight(self, weight):
+        """Set the weight for high CPC referer selection (0.0-1.0)"""
+        if not 0.0 <= weight <= 1.0:
+            raise ValueError("Weight must be between 0.0 and 1.0")
+        self.config.config['article']['high_cpc_weight'] = weight
+        self.logger.info(f"High CPC weight set to: {weight}")
+    
+    def get_high_cpc_weight(self):
+        """Get the current high CPC weight"""
+        return self.config.get('article.high_cpc_weight', 0.7)
+    
+    def get_random_article_url(self):
+        """Get a random article URL from the configured list"""
+        article_urls = self.config.get('article.default_urls', ['https://gengsego.com/'])
+        return random.choice(article_urls)
+    
+    def get_random_referer_url(self):
+        """Get a random referer URL from the configured list"""
+        referer_options = self.config.get('article.default_referers', [
+            "https://google.com", "https://bing.com",
+            "https://reddit.com", "https://twitter.com", "https://linkedin.com",
+            "https://github.com", "https://stackoverflow.com", "https://medium.com"
+        ])
+        return random.choice(referer_options)
+    
+    def get_high_cpc_referer_url(self):
+        """Get a random referer URL from high CPC sources (Business/Finance/Tech)"""
+        high_cpc_referers = [
+            # Core Business/Finance/Tech
+            'https://google.com', 'https://bing.com', 'https://linkedin.com', 'https://github.com', 
+            'https://stackoverflow.com', 'https://medium.com', 'https://quora.com', 'https://forbes.com',
+            'https://bloomberg.com', 'https://reuters.com', 'https://wsj.com', 'https://techcrunch.com',
+            'https://wired.com', 'https://arstechnica.com', 'https://hbr.org', 'https://mckinsey.com',
+            'https://pwc.com', 'https://deloitte.com', 'https://kpmg.com', 'https://ey.com',
+            'https://ibm.com', 'https://microsoft.com', 'https://oracle.com', 'https://salesforce.com',
+            'https://adobe.com', 'https://intel.com', 'https://nvidia.com', 'https://amd.com',
+            'https://cisco.com', 'https://aws.amazon.com', 'https://cloud.google.com', 'https://azure.microsoft.com',
+            
+            # Business/Finance News & Data
+            'https://cnbc.com', 'https://marketwatch.com', 'https://investing.com', 'https://yahoo.com/finance',
+            'https://finance.yahoo.com', 'https://seekingalpha.com', 'https://benzinga.com', 'https://fool.com',
+            'https://morningstar.com', 'https://nasdaq.com', 'https://nyse.com', 'https://sec.gov',
+            'https://federalreserve.gov', 'https://treasury.gov', 'https://irs.gov', 'https://sba.gov',
+            'https://ftc.gov', 'https://finra.org', 'https://cftc.gov', 'https://fdic.gov', 'https://occ.gov',
+            
+            # Financial Services & Banking
+            'https://jpmorgan.com', 'https://bankofamerica.com', 'https://wellsfargo.com', 'https://citigroup.com',
+            'https://goldmansachs.com', 'https://morganstanley.com', 'https://blackrock.com', 'https://vanguard.com',
+            'https://fidelity.com', 'https://schwab.com', 'https://etrade.com', 'https://tdameritrade.com',
+            'https://interactivebrokers.com', 'https://robinhood.com', 'https://webull.com', 'https://sofi.com',
+            'https://chase.com', 'https://capitalone.com', 'https://americanexpress.com', 'https://visa.com',
+            'https://mastercard.com', 'https://paypal.com', 'https://square.com', 'https://stripe.com',
+            
+            # Investment & Trading
+            'https://trading212.com', 'https://plus500.com', 'https://ig.com', 'https://oanda.com',
+            'https://forex.com', 'https://fxcm.com', 'https://businesswire.com', 'https://prnewswire.com',
+            'https://globenewswire.com', 'https://otcmarkets.com',
+            
+            # Technology & Innovation
+            'https://apple.com', 'https://amazon.com', 'https://meta.com', 'https://netflix.com',
+            'https://tesla.com', 'https://spacex.com', 'https://openai.com', 'https://anthropic.com',
+            'https://deepmind.com', 'https://qualcomm.com', 'https://broadcom.com', 'https://juniper.net',
+            'https://vmware.com', 'https://redhat.com', 'https://canonical.com', 'https://docker.com',
+            'https://kubernetes.io', 'https://terraform.io',
+            
+            # Cloud & Enterprise Software
+            'https://sap.com', 'https://workday.com', 'https://servicenow.com', 'https://atlassian.com',
+            'https://slack.com', 'https://zoom.us', 'https://teams.microsoft.com', 'https://dropbox.com',
+            'https://box.com', 'https://onedrive.com', 'https://sharepoint.com', 'https://office.com',
+            'https://autodesk.com', 'https://ansys.com', 'https://solidworks.com', 'https://tableau.com',
+            'https://powerbi.com', 'https://qlik.com',
+            
+            # Cybersecurity & Data
+            'https://crowdstrike.com', 'https://paloaltonetworks.com', 'https://fortinet.com', 'https://checkpoint.com',
+            'https://symantec.com', 'https://mcafee.com', 'https://trendmicro.com', 'https://kaspersky.com',
+            'https://bitdefender.com', 'https://splunk.com', 'https://elastic.co', 'https://databricks.com',
+            'https://snowflake.com', 'https://mongodb.com', 'https://redis.com', 'https://postgresql.org',
+            'https://mysql.com', 'https://hpe.com', 'https://dell.com',
+            
+            # Consulting & Professional Services
+            'https://bain.com', 'https://bcg.com', 'https://accenture.com', 'https://cognizant.com',
+            'https://infosys.com', 'https://tcs.com', 'https://wipro.com', 'https://capgemini.com',
+            'https://atos.net', 'https://dxc.com', 'https://hcl.com', 'https://techmahindra.com',
+            'https://mindtree.com', 'https://ltts.com', 'https://mphasis.com', 'https://hexaware.com',
+            
+            # Venture Capital & Startups
+            'https://a16z.com', 'https://sequoiacap.com', 'https://accel.com', 'https://greylock.com',
+            'https://benchmark.com', 'https://kleinerperkins.com', 'https://firstround.com', 'https://foundersfund.com',
+            'https://union.vc', 'https://insightpartners.com', 'https://generalcatalyst.com', 'https://bessemer.com',
+            'https://lightspeed.com', 'https://matrixpartners.com', 'https://redpoint.com', 'https://nea.com',
+            'https://battery.com', 'https://ivp.com', 'https://ggv.com', 'https://dcm.com', 'https://sapphire.com'
+        ]
+        return random.choice(high_cpc_referers)
+    
+    def get_medium_cpc_referer_url(self):
+        """Get a random referer URL from medium CPC sources (General/Social)"""
+        medium_cpc_referers = [
+            'https://reddit.com', 'https://twitter.com', 'https://facebook.com',
+            'https://instagram.com', 'https://youtube.com', 'https://tiktok.com',
+            'https://pinterest.com', 'https://snapchat.com', 'https://discord.com',
+            'https://slack.com', 'https://zoom.us', 'https://teams.microsoft.com'
+        ]
+        return random.choice(medium_cpc_referers)
+    
+    def get_weighted_referer_url(self, high_cpc_weight=None):
+        """
+        Get a weighted random referer URL favoring high CPC sources
+        
+        Args:
+            high_cpc_weight (float): Probability of selecting high CPC referer (0.0-1.0)
+                                   If None, uses configured weight
+        """
+        if high_cpc_weight is None:
+            high_cpc_weight = self.get_high_cpc_weight()
+        
+        if random.random() < high_cpc_weight:
+            return self.get_high_cpc_referer_url()
+        else:
+            return self.get_medium_cpc_referer_url()
+    
+    # def open_rexdl_cloud_article(self):
+    #     """Legacy method for backward compatibility - now uses generic method"""
+    #     article_url = "https://rexdl.biz.id/cloud-migration-challenges-in-the-us-and-how-to-overcome-them/"
+    #     return self.open_article_with_referer(article_url)
     
     def _simple_referer_flow(self, article_url, referer_url):
         """Simple referer flow: 1. Buka referer 2. Inject link artikel 3. Klik dan buka article"""
@@ -2836,7 +3054,7 @@ class ArticleBrowser:
                     time.sleep(8)  # Longer pause for article loading
                     
                     current_url = self.driver.current_url
-                    if article_url in current_url or 'rexdl.biz.id' in current_url:
+                    if article_url in current_url:
                         self.logger.info("✅ Simple referer flow completed successfully")
                         
                         # Additional pause after successful navigation
@@ -3015,8 +3233,25 @@ class AdvancedWebsiteRobot:
             self.timing.wait_between_actions(2, 4)
             
             if self.process_advanced_features:
-                # Run advanced article browsing
-                success = self.article_browser.open_rexdl_cloud_article()
+                # Set article URLs array secara dinamis (random selection)
+                # article_browser.set_article_urls([
+                #     "https://domain1.com/article1/",
+                #     "https://domain2.com/article2/",
+                #     "https://domain3.com/article3/"
+                # ])
+
+                # Set referer options secara dinamis
+                # article_browser.set_referer_options([
+                #     "https://custom1.com", "https://custom2.com"
+                # ])
+                
+                # Set high CPC weight (0.0-1.0, default: 0.7)
+                # article_browser.set_high_cpc_weight(0.8)  # 80% chance for high CPC referers
+
+                
+                # Run advanced article browsing - now domain agnostic with random selection
+                # You can specify custom article_url and referer_url here
+                success = self.article_browser.open_article_with_referer()
                 
                 if success:
                     logging.info("✅ Advanced automation completed successfully!")
@@ -3035,7 +3270,9 @@ class AdvancedWebsiteRobot:
                         logging.info(f"📊 Ad Clicking Statistics:")
                         logging.info(f"   Total Clicks: {ad_stats['total_clicks']}")
                         logging.info(f"   Recent Clicks: {ad_stats['recent_clicks']}")
-                        logging.info(f"   Rate Limit Clicks (20min): {ad_stats['rate_limit_clicks']}/3")
+                        rate_limit_window_minutes = self.config.get('ad_clicking.rate_limit_window', 1200) // 60
+                        max_clicks_per_window = self.config.get('ad_clicking.max_clicks_per_window', 3)
+                        logging.info(f"   Rate Limit Clicks ({rate_limit_window_minutes}min): {ad_stats['rate_limit_clicks']}/{max_clicks_per_window}")
                         logging.info(f"   Rate Limit Remaining: {ad_stats['rate_limit_remaining']}")
                         logging.info(f"   Click Rate: {ad_stats['click_rate']:.2f} clicks/min")
                         logging.info(f"   Average Interval: {ad_stats['average_click_interval']:.2f}s")
