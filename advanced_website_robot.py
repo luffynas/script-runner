@@ -3360,6 +3360,9 @@ class AdvancedWebsiteRobot:
         self.process_advanced_features = process_advanced_features
         self.random_behavior = random_behavior
         
+        # Apply stealth scripts if enabled
+        self._apply_stealth_scripts()
+        
         # Initialize components
         self.timing = TimingSystem()
         self.mouse = MouseMovementSimulator(driver)
@@ -3369,6 +3372,51 @@ class AdvancedWebsiteRobot:
         logging.info(f'AdvancedWebsiteRobot initialized')
         logging.info(f'Advanced features processing: {self.process_advanced_features}')
         logging.info(f'Random behavior: {self.random_behavior}')
+    
+    def _apply_stealth_scripts(self):
+        """Apply stealth scripts to hide automation indicators"""
+        try:
+            config = Configuration()
+            if config.get('stealth.enable_stealth_scripts', True):
+                logging.info("🛡️ Applying stealth scripts...")
+                
+                # Hide webdriver property
+                self.driver.execute_script("""
+                    Object.defineProperty(navigator, 'webdriver', {
+                        get: () => undefined,
+                    });
+                """)
+                
+                # Hide automation indicators
+                self.driver.execute_script("""
+                    // Remove webdriver property
+                    delete navigator.__proto__.webdriver;
+                    
+                    // Override plugins
+                    Object.defineProperty(navigator, 'plugins', {
+                        get: () => [1, 2, 3, 4, 5],
+                    });
+                    
+                    // Override languages
+                    Object.defineProperty(navigator, 'languages', {
+                        get: () => ['en-US', 'en'],
+                    });
+                    
+                    // Override permissions
+                    const originalQuery = window.navigator.permissions.query;
+                    window.navigator.permissions.query = (parameters) => (
+                        parameters.name === 'notifications' ?
+                            Promise.resolve({ state: Notification.permission }) :
+                            originalQuery(parameters)
+                    );
+                """)
+                
+                logging.info("✅ Stealth scripts applied successfully")
+            else:
+                logging.info("ℹ️ Stealth scripts disabled in configuration")
+                
+        except Exception as e:
+            logging.warning(f"⚠️ Failed to apply stealth scripts: {e}")
     
     def run_advanced_automation(self):
         """
