@@ -88,10 +88,34 @@ class Configuration:
                     # 'https://rexdl.biz.id/top-10-cloud-computing-services-for-businesses-in-the-united-states/',
                     # 'https://rexdl.biz.id/personal-loans-vs-private-student-loans-comparing-cost-interest-and-repayment-options/',
                     # 'https://rexdl.biz.id/quick-cash-loans-explained-how-they-work-what-they-really-cost-safer-alternatives/'
-                    'https://maxgaming.biz.id/how-to-open-a-bank-account-with-crypto-funds-in-the-united-states-2025-guide/',
-                    'https://maxgaming.biz.id/online-mortgage-banking-with-bitcoin-the-future-of-real-estate-in-the-united-states/',
-                    'https://maxgaming.biz.id/artificial-intelligence-in-healthcare-transforming-us-medicine/',
-                    'https://maxgaming.biz.id/how-ai-automation-saves-time-and-money-for-us-businesses/'
+
+                    # 'https://maxgaming.biz.id/how-to-open-a-bank-account-with-crypto-funds-in-the-united-states-2025-guide/',
+                    # 'https://maxgaming.biz.id/online-mortgage-banking-with-bitcoin-the-future-of-real-estate-in-the-united-states/',
+                    # 'https://maxgaming.biz.id/artificial-intelligence-in-healthcare-transforming-us-medicine/',
+                    # 'https://maxgaming.biz.id/how-ai-automation-saves-time-and-money-for-us-businesses/',
+
+                    'https://tokenomics.web.id/tokenomics-bitcoin-btc-apakah-fixed-supply-selalu-aman/',
+                    'https://tokenomics.web.id/bagaimana-tokenomics-solana-sol-mendorong-skalabilitas/',
+                    'https://tokenomics.web.id/tokenomics-polygon-matic-layer-2-yang-menjanjikan/',
+                    'https://tokenomics.web.id/7-langkah-analisis-token-yang-wajib-kamu-lakukan-sebelum-membeli-panduan-2025/',
+                    'https://tokenomics.web.id/cara-menilai-proyek-kripto-dari-distribusi-token-nya-panduan-2025/',
+
+                    'https://gradua.web.id/bunga-0-3-bulan-pertama-untuk-pendaftar-baru',
+                    'https://gradua.web.id/pinjaman-darurat-ojk-cair-5-menit-ke-rekening-tanpa-jaminan',
+                    'https://gradua.web.id/cara-meminjam-uang-di-bank-untuk-modal-usaha-panduan-lengkap-dan-praktis',
+                    'https://gradua.web.id/syarat-pinjaman-kur-2025-terbaru-panduan-lengkap-dan-lengkap-untuk-pengusaha',
+                    'https://gradua.web.id/prediksi-pakar-ai-coin-ini-bisa-tembus-rp754-juta-per-koin-di-2030-simulasi-portofolio-2025',
+                    'https://gradua.web.id/gila-roi-7-598-5-ai-coin-terbaik-2025-bittensor-render-network-paling-moncer',
+                    'https://gradua.web.id/dari-rp500-ribu-jadi-milyaran-blueprint-investasi-ai-coin-untuk-pemula-2025',
+
+                    'https://primecapitalaid.web.id/cara-mendapatkan-bantuan-modal-usaha-umkm-tahun-2025-ulasan-teknis-uji-lapangan-dan-tips-lolos-seleksi',
+                    'https://primecapitalaid.web.id/program-bantuan-modal-untuk-usaha-mikro-kecil-syarat-cara-pengajuan/',
+                    'https://primecapitalaid.web.id/bantuan-modal-umkm-khusus-perempuan-program-dan-syaratnya/',
+                    'https://primecapitalaid.web.id/apa-itu-pinjaman-legal-ini-ciri-cirinya-yang-harus-anda-ketahui/',
+                    'https://primecapitalaid.web.id/pinjaman-untuk-umkm-usaha-kecil-rekomendasi-pinjaman-legal-terdaftar-ojk-2025/',
+                    'https://primecapitalaid.web.id/program-pinjaman-legal-dari-pemerintah-untuk-umkm-2025/',
+                    'https://primecapitalaid.web.id/apa-itu-investasi-panduan-lengkap-untuk-pemula-yang-ingin-merdeka-finansial-di-2025/',
+                    'https://primecapitalaid.web.id/apa-itu-literasi-keuangan-dan-mengapa-penting-panduan-komprehensif-melek-finansial-di-era-digital/',
                 ],
                 'default_referers': [
                     # High CPC referers (Business/Finance/Tech)
