@@ -70,7 +70,7 @@ class Configuration:
                 'click_chance': 0.20, # Default 15% chance to click ads
                 'max_clicks_per_session': 5,
                 'conservative_mode': True,
-                'ad_types': ['google_adsense'],  # Focus only on Google AdSense
+                'ad_types': ['google_adsense', 'google_vignette', 'google_afs'],  # Support multiple AdSense formats
                 'rate_limit_window': 1200,  # 20 minutes in seconds
                 'max_clicks_per_window': 5  # Maximum 3 clicks per 20 minutes
             },
@@ -399,6 +399,83 @@ class DetectionPatterns:
                 'ins[data-ad-personalized]',
                 'ins[data-ad-customized]',
                 'ins[data-ad-tailored]'
+            ],
+            'google_vignette': [
+                'ins[data-ad-format="vignette"]',
+                'ins[data-ad-format*="vignette"]',
+                '.adsbygoogle[data-ad-format="vignette"]',
+                '[data-ad-format="vignette"]',
+                'ins[data-ad-type="vignette"]',
+                '.vignette-ad',
+                '.fullscreen-ad',
+                '.popup-ad',
+                'ins[data-ad-layout="vignette"]',
+                'ins[data-ad-placement="vignette"]',
+                'ins[data-ad-targeting*="vignette"]',
+                'ins[data-ad-custom*="vignette"]',
+                'ins[data-ad-responsive="vignette"]',
+                'ins[data-ad-auto="vignette"]',
+                'ins[data-ad-manual="vignette"]',
+                'ins[data-ad-optimized="vignette"]',
+                'ins[data-ad-enhanced="vignette"]',
+                'ins[data-ad-advanced="vignette"]',
+                'ins[data-ad-premium="vignette"]',
+                'ins[data-ad-pro="vignette"]',
+                'ins[data-ad-enterprise="vignette"]',
+                'ins[data-ad-business="vignette"]',
+                'ins[data-ad-commercial="vignette"]',
+                'ins[data-ad-sponsored="vignette"]',
+                'ins[data-ad-promoted="vignette"]',
+                'ins[data-ad-featured="vignette"]',
+                'ins[data-ad-highlighted="vignette"]',
+                'ins[data-ad-recommended="vignette"]',
+                'ins[data-ad-suggested="vignette"]',
+                'ins[data-ad-related="vignette"]',
+                'ins[data-ad-similar="vignette"]',
+                'ins[data-ad-matching="vignette"]',
+                'ins[data-ad-relevant="vignette"]',
+                'ins[data-ad-targeted="vignette"]',
+                'ins[data-ad-personalized="vignette"]',
+                'ins[data-ad-customized="vignette"]',
+                'ins[data-ad-tailored="vignette"]'
+            ],
+            'google_afs': [
+                'ins[data-ad-format="search"]',
+                'ins[data-ad-format*="search"]',
+                '.adsbygoogle[data-ad-format="search"]',
+                '[data-ad-format="search"]',
+                'ins[data-ad-type="search"]',
+                '.search-ad',
+                '.afs-ad',
+                'ins[data-ad-layout="search"]',
+                'ins[data-ad-placement="search"]',
+                'ins[data-ad-targeting*="search"]',
+                'ins[data-ad-custom*="search"]',
+                'ins[data-ad-responsive="search"]',
+                'ins[data-ad-auto="search"]',
+                'ins[data-ad-manual="search"]',
+                'ins[data-ad-optimized="search"]',
+                'ins[data-ad-enhanced="search"]',
+                'ins[data-ad-advanced="search"]',
+                'ins[data-ad-premium="search"]',
+                'ins[data-ad-pro="search"]',
+                'ins[data-ad-enterprise="search"]',
+                'ins[data-ad-business="search"]',
+                'ins[data-ad-commercial="search"]',
+                'ins[data-ad-sponsored="search"]',
+                'ins[data-ad-promoted="search"]',
+                'ins[data-ad-featured="search"]',
+                'ins[data-ad-highlighted="search"]',
+                'ins[data-ad-recommended="search"]',
+                'ins[data-ad-suggested="search"]',
+                'ins[data-ad-related="search"]',
+                'ins[data-ad-similar="search"]',
+                'ins[data-ad-matching="search"]',
+                'ins[data-ad-relevant="search"]',
+                'ins[data-ad-targeted="search"]',
+                'ins[data-ad-personalized="search"]',
+                'ins[data-ad-customized="search"]',
+                'ins[data-ad-tailored="search"]'
             ]
         }
         
@@ -803,16 +880,22 @@ class AdClickingSystem:
             return False
     
     def _calculate_click_probability(self, element, ad_type):
-        """Calculate click probability - Focus only on Google AdSense"""
-        # Only calculate for Google AdSense
-        if ad_type != 'google_adsense':
+        """Calculate click probability - Support multiple Google AdSense formats"""
+        # Only calculate for supported Google AdSense formats
+        supported_types = ['google_adsense', 'google_vignette', 'google_afs']
+        if ad_type not in supported_types:
             return 0.0
         
         base_probability = self.config.get('ad_clicking.click_chance', 0.15)
         
         try:
-            # Higher base probability for Google AdSense
-            base_probability *= 1.5  # 50% higher for AdSense
+            # Adjust base probability based on ad type
+            if ad_type == 'google_adsense':
+                base_probability *= 1.5  # 50% higher for standard AdSense
+            elif ad_type == 'google_vignette':
+                base_probability *= 1.8  # 80% higher for vignette (full-screen, high value)
+            elif ad_type == 'google_afs':
+                base_probability *= 1.3  # 30% higher for AFS (search-based, targeted)
             
             # Adjust based on element size
             size = element.size
@@ -886,10 +969,11 @@ class AdClickingSystem:
             return clicked_ads
     
     def _should_click_ad(self, ad_info, conservative):
-        """Determine if ad should be clicked - Focus only on Google AdSense"""
+        """Determine if ad should be clicked - Support multiple Google AdSense formats"""
         try:
-            # Only click Google AdSense ads
-            if ad_info['type'] != 'google_adsense':
+            # Only click supported Google AdSense ad types
+            supported_types = ['google_adsense', 'google_vignette', 'google_afs']
+            if ad_info['type'] not in supported_types:
                 return False
             
             # Check click probability
@@ -958,6 +1042,10 @@ class AdClickingSystem:
                 
                 # Handle landing page after successful click
                 self._handle_ad_landing_page()
+                
+                # Special handling for vignette ads (popup behavior)
+                if ad_info['type'] == 'google_vignette':
+                    self._handle_vignette_ad_behavior()
                 
                 return True
             else:
@@ -1119,6 +1207,65 @@ class AdClickingSystem:
             
         except Exception as e:
             self.logger.warning(f"Error in final review: {e}")
+    
+    def _handle_vignette_ad_behavior(self):
+        """Handle special behavior for vignette ads (popup/full-screen)"""
+        try:
+            self.logger.info("🎭 Handling vignette ad behavior (popup/full-screen)")
+            
+            # Wait for vignette ad to fully load
+            time.sleep(random.uniform(2.0, 4.0))
+            
+            # Check if vignette ad is still visible
+            try:
+                # Look for vignette-specific elements
+                vignette_elements = self.driver.find_elements(By.CSS_SELECTOR, 
+                    'ins[data-ad-format="vignette"], .vignette-ad, .fullscreen-ad, .popup-ad')
+                
+                if vignette_elements:
+                    self.logger.info("🎭 Vignette ad detected, simulating full-screen interaction")
+                    
+                    # Simulate viewing the full-screen ad
+                    viewing_time = random.uniform(8.0, 15.0)
+                    self.logger.info(f"🎭 Viewing vignette ad for {viewing_time:.1f} seconds")
+                    
+                    # Simulate natural viewing behavior
+                    start_time = time.time()
+                    end_time = start_time + viewing_time
+                    
+                    while time.time() < end_time:
+                        # Random mouse movements within the ad
+                        if random.random() < 0.3:
+                            self.mouse.random_mouse_movement(random.uniform(0.5, 1.5))
+                        
+                        # Brief pauses
+                        time.sleep(random.uniform(1.0, 3.0))
+                    
+                    # Simulate closing or continuing from vignette
+                    if random.random() < 0.7:  # 70% chance to continue
+                        self.logger.info("🎭 Continuing from vignette ad")
+                        # Vignette ads typically auto-advance or have close buttons
+                        time.sleep(random.uniform(1.0, 2.0))
+                    else:
+                        self.logger.info("🎭 Simulating vignette ad close")
+                        # Look for close button or simulate close action
+                        try:
+                            close_buttons = self.driver.find_elements(By.CSS_SELECTOR, 
+                                '.vignette-close, .popup-close, .ad-close, [data-close], .close-button')
+                            if close_buttons:
+                                close_buttons[0].click()
+                                time.sleep(random.uniform(1.0, 2.0))
+                        except:
+                            # If no close button found, just wait
+                            time.sleep(random.uniform(2.0, 4.0))
+                else:
+                    self.logger.info("🎭 No vignette ad elements found, standard behavior")
+                    
+            except Exception as e:
+                self.logger.warning(f"🎭 Error handling vignette ad: {e}")
+                
+        except Exception as e:
+            self.logger.warning(f"🎭 Error in vignette ad behavior: {e}")
     
     def get_click_statistics(self):
         """Get ad clicking statistics"""
