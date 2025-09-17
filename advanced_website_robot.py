@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 import os
 import random
 import time
@@ -82,40 +83,47 @@ class Configuration:
             },
             'article': {
                 'default_urls': [
-                    # 'https://rexdl.biz.id/cloud-computing-cost-optimization-how-us-companies-cut-expenses/',
-                    # 'https://rexdl.biz.id/why-cloud-computing-is-the-backbone-of-us-healthcare-industry/',
-                    # 'https://rexdl.biz.id/best-cloud-hosting-providers-for-small-businesses-in-america/',
-                    # 'https://rexdl.biz.id/top-10-cloud-computing-services-for-businesses-in-the-united-states/',
-                    # 'https://rexdl.biz.id/personal-loans-vs-private-student-loans-comparing-cost-interest-and-repayment-options/',
-                    # 'https://rexdl.biz.id/quick-cash-loans-explained-how-they-work-what-they-really-cost-safer-alternatives/'
+                    'https://rexdl.biz.id/cloud-computing-cost-optimization-how-us-companies-cut-expenses/',
+                    'https://rexdl.biz.id/why-cloud-computing-is-the-backbone-of-us-healthcare-industry/',
+                    'https://rexdl.biz.id/best-cloud-hosting-providers-for-small-businesses-in-america/',
+                    'https://rexdl.biz.id/top-10-cloud-computing-services-for-businesses-in-the-united-states/',
+                    'https://rexdl.biz.id/personal-loans-vs-private-student-loans-comparing-cost-interest-and-repayment-options/',
+                    'https://rexdl.biz.id/quick-cash-loans-explained-how-they-work-what-they-really-cost-safer-alternatives/'
 
                     # 'https://maxgaming.biz.id/how-to-open-a-bank-account-with-crypto-funds-in-the-united-states-2025-guide/',
                     # 'https://maxgaming.biz.id/online-mortgage-banking-with-bitcoin-the-future-of-real-estate-in-the-united-states/',
                     # 'https://maxgaming.biz.id/artificial-intelligence-in-healthcare-transforming-us-medicine/',
                     # 'https://maxgaming.biz.id/how-ai-automation-saves-time-and-money-for-us-businesses/',
 
-                    'https://tokenomics.web.id/tokenomics-bitcoin-btc-apakah-fixed-supply-selalu-aman/',
-                    'https://tokenomics.web.id/bagaimana-tokenomics-solana-sol-mendorong-skalabilitas/',
-                    'https://tokenomics.web.id/tokenomics-polygon-matic-layer-2-yang-menjanjikan/',
-                    'https://tokenomics.web.id/7-langkah-analisis-token-yang-wajib-kamu-lakukan-sebelum-membeli-panduan-2025/',
-                    'https://tokenomics.web.id/cara-menilai-proyek-kripto-dari-distribusi-token-nya-panduan-2025/',
+                    # 'https://tokenomics.web.id/tokenomics-bitcoin-btc-apakah-fixed-supply-selalu-aman/',
+                    # 'https://tokenomics.web.id/bagaimana-tokenomics-solana-sol-mendorong-skalabilitas/',
+                    # 'https://tokenomics.web.id/tokenomics-polygon-matic-layer-2-yang-menjanjikan/',
+                    # 'https://tokenomics.web.id/7-langkah-analisis-token-yang-wajib-kamu-lakukan-sebelum-membeli-panduan-2025/',
+                    # 'https://tokenomics.web.id/cara-menilai-proyek-kripto-dari-distribusi-token-nya-panduan-2025/',
 
-                    'https://gradua.web.id/bunga-0-3-bulan-pertama-untuk-pendaftar-baru',
-                    'https://gradua.web.id/pinjaman-darurat-ojk-cair-5-menit-ke-rekening-tanpa-jaminan',
-                    'https://gradua.web.id/cara-meminjam-uang-di-bank-untuk-modal-usaha-panduan-lengkap-dan-praktis',
-                    'https://gradua.web.id/syarat-pinjaman-kur-2025-terbaru-panduan-lengkap-dan-lengkap-untuk-pengusaha',
-                    'https://gradua.web.id/prediksi-pakar-ai-coin-ini-bisa-tembus-rp754-juta-per-koin-di-2030-simulasi-portofolio-2025',
-                    'https://gradua.web.id/gila-roi-7-598-5-ai-coin-terbaik-2025-bittensor-render-network-paling-moncer',
-                    'https://gradua.web.id/dari-rp500-ribu-jadi-milyaran-blueprint-investasi-ai-coin-untuk-pemula-2025',
+                    # 'https://gradua.web.id/bunga-0-3-bulan-pertama-untuk-pendaftar-baru',
+                    # 'https://gradua.web.id/pinjaman-darurat-ojk-cair-5-menit-ke-rekening-tanpa-jaminan',
+                    # 'https://gradua.web.id/cara-meminjam-uang-di-bank-untuk-modal-usaha-panduan-lengkap-dan-praktis',
+                    # 'https://gradua.web.id/syarat-pinjaman-kur-2025-terbaru-panduan-lengkap-dan-lengkap-untuk-pengusaha',
+                    # 'https://gradua.web.id/prediksi-pakar-ai-coin-ini-bisa-tembus-rp754-juta-per-koin-di-2030-simulasi-portofolio-2025',
+                    # 'https://gradua.web.id/gila-roi-7-598-5-ai-coin-terbaik-2025-bittensor-render-network-paling-moncer',
+                    # 'https://gradua.web.id/dari-rp500-ribu-jadi-milyaran-blueprint-investasi-ai-coin-untuk-pemula-2025',
 
-                    'https://primecapitalaid.web.id/cara-mendapatkan-bantuan-modal-usaha-umkm-tahun-2025-ulasan-teknis-uji-lapangan-dan-tips-lolos-seleksi',
-                    'https://primecapitalaid.web.id/program-bantuan-modal-untuk-usaha-mikro-kecil-syarat-cara-pengajuan/',
-                    'https://primecapitalaid.web.id/bantuan-modal-umkm-khusus-perempuan-program-dan-syaratnya/',
-                    'https://primecapitalaid.web.id/apa-itu-pinjaman-legal-ini-ciri-cirinya-yang-harus-anda-ketahui/',
-                    'https://primecapitalaid.web.id/pinjaman-untuk-umkm-usaha-kecil-rekomendasi-pinjaman-legal-terdaftar-ojk-2025/',
-                    'https://primecapitalaid.web.id/program-pinjaman-legal-dari-pemerintah-untuk-umkm-2025/',
-                    'https://primecapitalaid.web.id/apa-itu-investasi-panduan-lengkap-untuk-pemula-yang-ingin-merdeka-finansial-di-2025/',
-                    'https://primecapitalaid.web.id/apa-itu-literasi-keuangan-dan-mengapa-penting-panduan-komprehensif-melek-finansial-di-era-digital/',
+                    # 'https://primecapitalaid.web.id/cara-mendapatkan-bantuan-modal-usaha-umkm-tahun-2025-ulasan-teknis-uji-lapangan-dan-tips-lolos-seleksi',
+                    # 'https://primecapitalaid.web.id/program-bantuan-modal-untuk-usaha-mikro-kecil-syarat-cara-pengajuan/',
+                    # 'https://primecapitalaid.web.id/bantuan-modal-umkm-khusus-perempuan-program-dan-syaratnya/',
+                    # 'https://primecapitalaid.web.id/apa-itu-pinjaman-legal-ini-ciri-cirinya-yang-harus-anda-ketahui/',
+                    # 'https://primecapitalaid.web.id/pinjaman-untuk-umkm-usaha-kecil-rekomendasi-pinjaman-legal-terdaftar-ojk-2025/',
+                    # 'https://primecapitalaid.web.id/program-pinjaman-legal-dari-pemerintah-untuk-umkm-2025/',
+                    # 'https://primecapitalaid.web.id/apa-itu-investasi-panduan-lengkap-untuk-pemula-yang-ingin-merdeka-finansial-di-2025/',
+                    # 'https://primecapitalaid.web.id/apa-itu-literasi-keuangan-dan-mengapa-penting-panduan-komprehensif-melek-finansial-di-era-digital/',
+                    
+                    # 'https://setiap.zonagamegratisan.com/11-aplikasi-penghasil-uang-100-ribu-perhari/',
+                    # 'https://setiap.zonagamegratisan.com/aplikasi-penghasil-uang-2025-yougov/',
+                    # 'https://setiap.zonagamegratisan.com/aplikasi-penghasil-uang-tahun-2025/',
+                    # 'https://setiap.zonagamegratisan.com/dana-mudah-cair-julo-kredit-digital/',
+                    # 'https://setiap.zonagamegratisan.com/aplikasi-yang-langsung-memberikan-saldo-dana-gratis/',
+                    # 'https://setiap.zonagamegratisan.com/dana-mudah-cair-online-aman-terdaftar-ojk/',
                 ],
                 'default_referers': [
                     # High CPC referers (Business/Finance/Tech)
@@ -1064,7 +1072,7 @@ class AdClickingSystem:
             is_ad_page = any(domain in current_url for domain in ad_domains)
             
             if is_ad_page:
-                self.logger.info(f"🌐 Navigated to ad landing page: {current_url[:60]}...")
+                self.logger.info(f"[LANDING] Navigated to ad landing page: {current_url[:60]}...")
                 
                 # Simulate natural behavior on landing page
                 self._simulate_landing_page_behavior()
@@ -1072,13 +1080,13 @@ class AdClickingSystem:
                 # Go back to original page
                 self.driver.back()
                 time.sleep(random.uniform(2, 4))
-                self.logger.info("↩️ Returned to original page")
+                self.logger.info("[RETURN] Returned to original page")
                 return True
             
             return False
         
         except Exception as e:
-            self.logger.error(f"❌ Error handling ad landing page: {e}")
+            self.logger.error(f"[ERROR] Error handling ad landing page: {e}")
             return False
     
     def _simulate_landing_page_behavior(self):
@@ -1086,7 +1094,7 @@ class AdClickingSystem:
         try:
             # Total time on landing page (15-30 seconds)
             total_time = random.uniform(15, 30)
-            self.logger.info(f"⏰ Spending {total_time:.1f} seconds on landing page with natural behavior")
+            self.logger.info(f"[TIMER] Spending {total_time:.1f} seconds on landing page with natural behavior")
             
             start_time = time.time()
             end_time = start_time + total_time
@@ -1101,23 +1109,23 @@ class AdClickingSystem:
             
             # Phase 1: Initial page scan (20% of time)
             initial_scan_time = total_time * 0.2
-            self.logger.info(f"🔍 Initial page scan for {initial_scan_time:.1f} seconds")
+            self.logger.info(f"[SCAN] Initial page scan for {initial_scan_time:.1f} seconds")
             self._landing_page_initial_scan(initial_scan_time, page_height, viewport_height)
             
             # Phase 2: Content exploration (60% of time)
             exploration_time = total_time * 0.6
-            self.logger.info(f"📖 Content exploration for {exploration_time:.1f} seconds")
+            self.logger.info(f"[EXPLORE] Content exploration for {exploration_time:.1f} seconds")
             self._landing_page_content_exploration(exploration_time, page_height, viewport_height)
             
             # Phase 3: Final review (20% of time)
             review_time = total_time * 0.2
-            self.logger.info(f"👀 Final review for {review_time:.1f} seconds")
+            self.logger.info(f"[REVIEW] Final review for {review_time:.1f} seconds")
             self._landing_page_final_review(review_time, page_height, viewport_height)
             
-            self.logger.info("✅ Natural landing page behavior completed")
+            self.logger.info("[SUCCESS] Natural landing page behavior completed")
             
         except Exception as e:
-            self.logger.error(f"❌ Error simulating landing page behavior: {e}")
+            self.logger.error(f"[ERROR] Error simulating landing page behavior: {e}")
             # Fallback to simple sleep
             time.sleep(random.uniform(15, 30))
     
@@ -1211,7 +1219,7 @@ class AdClickingSystem:
     def _handle_vignette_ad_behavior(self):
         """Handle special behavior for vignette ads (popup/full-screen)"""
         try:
-            self.logger.info("🎭 Handling vignette ad behavior (popup/full-screen)")
+            self.logger.info("[VIGNETTE] Handling vignette ad behavior (popup/full-screen)")
             
             # Wait for vignette ad to fully load
             time.sleep(random.uniform(2.0, 4.0))
@@ -1223,11 +1231,11 @@ class AdClickingSystem:
                     'ins[data-ad-format="vignette"], .vignette-ad, .fullscreen-ad, .popup-ad')
                 
                 if vignette_elements:
-                    self.logger.info("🎭 Vignette ad detected, simulating full-screen interaction")
+                    self.logger.info("[VIGNETTE] Vignette ad detected, simulating full-screen interaction")
                     
                     # Simulate viewing the full-screen ad
                     viewing_time = random.uniform(8.0, 15.0)
-                    self.logger.info(f"🎭 Viewing vignette ad for {viewing_time:.1f} seconds")
+                    self.logger.info(f"[VIGNETTE] Viewing vignette ad for {viewing_time:.1f} seconds")
                     
                     # Simulate natural viewing behavior
                     start_time = time.time()
@@ -1243,11 +1251,11 @@ class AdClickingSystem:
                     
                     # Simulate closing or continuing from vignette
                     if random.random() < 0.7:  # 70% chance to continue
-                        self.logger.info("🎭 Continuing from vignette ad")
+                        self.logger.info("[VIGNETTE] Continuing from vignette ad")
                         # Vignette ads typically auto-advance or have close buttons
                         time.sleep(random.uniform(1.0, 2.0))
                     else:
-                        self.logger.info("🎭 Simulating vignette ad close")
+                        self.logger.info("[VIGNETTE] Simulating vignette ad close")
                         # Look for close button or simulate close action
                         try:
                             close_buttons = self.driver.find_elements(By.CSS_SELECTOR, 
@@ -1259,13 +1267,13 @@ class AdClickingSystem:
                             # If no close button found, just wait
                             time.sleep(random.uniform(2.0, 4.0))
                 else:
-                    self.logger.info("🎭 No vignette ad elements found, standard behavior")
+                    self.logger.info("[VIGNETTE] No vignette ad elements found, standard behavior")
                     
             except Exception as e:
-                self.logger.warning(f"🎭 Error handling vignette ad: {e}")
+                self.logger.warning(f"[VIGNETTE] Error handling vignette ad: {e}")
                 
         except Exception as e:
-            self.logger.warning(f"🎭 Error in vignette ad behavior: {e}")
+            self.logger.warning(f"[VIGNETTE] Error in vignette ad behavior: {e}")
     
     def get_click_statistics(self):
         """Get ad clicking statistics"""
@@ -1497,14 +1505,14 @@ class PostNavigator:
         self.previous_selectors = [
             'a[rel="prev"]', 'a[rel="previous"]', '.prev', '.previous', 
             '.post-nav-prev', '.navigation-prev', '.pagination-prev',
-            'a:contains("Previous")', 'a:contains("Prev")', 'a:contains("←")',
+            'a:contains("Previous")', 'a:contains("Prev")', 'a:contains("[LEFT]")',
             '.nav-previous', '.entry-nav-prev', '.single-nav-prev'
         ]
         
         self.next_selectors = [
             'a[rel="next"]', 'a[rel="next"]', '.next', '.next-post',
             '.post-nav-next', '.navigation-next', '.pagination-next',
-            'a:contains("Next")', 'a:contains("→")', 'a:contains("Continue")',
+            'a:contains("Next")', 'a:contains("[RIGHT]")', 'a:contains("Continue")',
             '.nav-next', '.entry-nav-next', '.single-nav-next'
         ]
         
@@ -1518,7 +1526,7 @@ class PostNavigator:
     def find_navigation_links(self):
         """Find previous, next, and related post links"""
         try:
-            self.logger.info("🔍 Searching for post navigation links")
+            self.logger.info("[SCAN] Searching for post navigation links")
             
             navigation_links = {
                 'previous': None,
@@ -1535,13 +1543,13 @@ class PostNavigator:
                         elements = self.driver.find_elements("xpath", f"//a[contains(text(), '{text}')]")
                         if elements:
                             navigation_links['previous'] = elements[0]
-                            self.logger.info(f"✅ Found previous link: {text}")
+                            self.logger.info(f"[SUCCESS] Found previous link: {text}")
                             break
                     else:
                         elements = self.driver.find_elements("css selector", selector)
                         if elements:
                             navigation_links['previous'] = elements[0]
-                            self.logger.info(f"✅ Found previous link with selector: {selector}")
+                            self.logger.info(f"[SUCCESS] Found previous link with selector: {selector}")
                             break
                 except Exception as e:
                     continue
@@ -1555,13 +1563,13 @@ class PostNavigator:
                         elements = self.driver.find_elements("xpath", f"//a[contains(text(), '{text}')]")
                         if elements:
                             navigation_links['next'] = elements[0]
-                            self.logger.info(f"✅ Found next link: {text}")
+                            self.logger.info(f"[SUCCESS] Found next link: {text}")
                             break
                     else:
                         elements = self.driver.find_elements("css selector", selector)
                         if elements:
                             navigation_links['next'] = elements[0]
-                            self.logger.info(f"✅ Found next link with selector: {selector}")
+                            self.logger.info(f"[SUCCESS] Found next link with selector: {selector}")
                             break
                 except Exception as e:
                     continue
@@ -1578,7 +1586,7 @@ class PostNavigator:
                             if href and href not in [l.get_attribute('href') for l in navigation_links['related']]:
                                 navigation_links['related'].append(link)
                     if navigation_links['related']:
-                        self.logger.info(f"✅ Found {len(navigation_links['related'])} related posts")
+                        self.logger.info(f"[SUCCESS] Found {len(navigation_links['related'])} related posts")
                         break
                 except Exception as e:
                     continue
@@ -1595,12 +1603,12 @@ class PostNavigator:
             if not link_element:
                 return False
                 
-            self.logger.info(f"🔗 Navigating to {post_type} post")
+            self.logger.info(f"[LINK] Navigating to {post_type} post")
             
             # Get link URL for tracking
             href = link_element.get_attribute('href')
             if href:
-                self.logger.info(f"📍 Post URL: {href}")
+                self.logger.info(f"[LOCATION] Post URL: {href}")
             
             # Scroll to link
             self.driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", link_element)
@@ -1612,7 +1620,7 @@ class PostNavigator:
             
             # Click the link
             link_element.click()
-            self.logger.info(f"✅ Clicked {post_type} post link")
+            self.logger.info(f"[SUCCESS] Clicked {post_type} post link")
             
             # Wait for navigation
             time.sleep(3)
@@ -1620,10 +1628,10 @@ class PostNavigator:
             # Verify navigation success
             current_url = self.driver.current_url
             if href and href in current_url:
-                self.logger.info(f"✅ Successfully navigated to {post_type} post")
+                self.logger.info(f"[SUCCESS] Successfully navigated to {post_type} post")
                 return True
             else:
-                self.logger.info(f"✅ Navigated to {post_type} post (URL verification skipped)")
+                self.logger.info(f"[SUCCESS] Navigated to {post_type} post (URL verification skipped)")
                 return True
                 
         except Exception as e:
@@ -1633,7 +1641,7 @@ class PostNavigator:
     def simulate_post_reading(self, duration_minutes=2):
         """Simulate reading a post with natural behavior"""
         try:
-            self.logger.info(f"📖 Simulating post reading for {duration_minutes} minutes")
+            self.logger.info(f"[READ] Simulating post reading for {duration_minutes} minutes")
             
             # Use the existing natural article reading
             from advanced_website_robot import HumanLikeScroller
@@ -1651,7 +1659,7 @@ class PostNavigator:
                     scroller.reading_behavior_scroll()
                 elif behavior == 'pause':
                     pause_duration = random.uniform(2, 8)
-                    self.logger.info(f"📖 Reading pause: {pause_duration:.1f}s")
+                    self.logger.info(f"[READ] Reading pause: {pause_duration:.1f}s")
                     time.sleep(pause_duration)
                 elif behavior == 're_read':
                     scroller.quick_scan_scroll()
@@ -1661,7 +1669,7 @@ class PostNavigator:
                 # Random delay between behaviors
                 time.sleep(random.uniform(1, 3))
             
-            self.logger.info("✅ Post reading simulation completed")
+            self.logger.info("[SUCCESS] Post reading simulation completed")
             return True
             
         except Exception as e:
@@ -1692,7 +1700,7 @@ class ArticleBrowser:
         """
         Legacy method for backward compatibility - use open_article_with_referer() instead
         """
-        self.logger.warning("⚠️ Using legacy method open_article_with_referer_legacy(). Please use open_article_with_referer() instead.")
+        self.logger.warning("[WARNING] Using legacy method open_article_with_referer_legacy(). Please use open_article_with_referer() instead.")
         return self.open_article_with_referer(article_url, referer_url)
     
     def _simulate_referer_browsing(self):
@@ -1719,12 +1727,12 @@ class ArticleBrowser:
             
             # Check for ads on referer page (low chance)
             if random.random() < 0.1:  # 10% chance to check for ads on referer
-                self.logger.info("🔍 Checking for Google AdSense ads on referer page...")
+                self.logger.info("[SCAN] Checking for Google AdSense ads on referer page...")
                 clicked_ads = self.ad_clicker.click_ads(max_clicks=1, conservative=True)
                 if clicked_ads:
-                    self.logger.info(f"✅ Clicked {len(clicked_ads)} Google AdSense ads on referer page")
+                    self.logger.info(f"[SUCCESS] Clicked {len(clicked_ads)} Google AdSense ads on referer page")
                 else:
-                    self.logger.info("ℹ️ No suitable Google AdSense ads found on referer page")
+                    self.logger.info("[INFO] No suitable Google AdSense ads found on referer page")
             
             self.logger.info("Referer browsing completed (bandwidth optimized)")
             
@@ -1757,13 +1765,13 @@ class ArticleBrowser:
                 # Check for ads periodically
                 current_time = time.time()
                 if current_time - last_ad_check > ad_check_interval:
-                    self.logger.info("🔍 Checking for Google AdSense ads...")
+                    self.logger.info("[SCAN] Checking for Google AdSense ads...")
                     clicked_ads = self.ad_clicker.click_ads(max_clicks=1, conservative=True)
                     if clicked_ads:
-                        self.logger.info(f"✅ Clicked {len(clicked_ads)} Google AdSense ads")
+                        self.logger.info(f"[SUCCESS] Clicked {len(clicked_ads)} Google AdSense ads")
                         # Post-click behavior is handled automatically in _click_ad_safely
                     else:
-                        self.logger.info("ℹ️ No suitable Google AdSense ads found")
+                        self.logger.info("[INFO] No suitable Google AdSense ads found")
                     
                     last_ad_check = current_time
                     ad_check_interval = random.uniform(60, 180)  # Reset interval
@@ -1971,7 +1979,7 @@ class ArticleBrowser:
     def _finish_reading_behavior(self):
         """Final reading behavior when near the end - comprehensive reading"""
         try:
-            self.logger.info("📖 Starting comprehensive finish reading behavior")
+            self.logger.info("[READ] Starting comprehensive finish reading behavior")
             
             # Get page dimensions
             page_height = self.driver.execute_script("return document.body.scrollHeight")
@@ -2010,7 +2018,7 @@ class ArticleBrowser:
             # Verify we've read the entire article
             self._verify_complete_article_reading()
             
-            self.logger.info("✅ Comprehensive finish reading behavior completed")
+            self.logger.info("[SUCCESS] Comprehensive finish reading behavior completed")
             
         except Exception as e:
             self.logger.warning(f"Error during finish reading behavior: {e}")
@@ -2170,7 +2178,7 @@ class ArticleBrowser:
     def _ensure_complete_bottom_reading(self):
         """Ensure article is read completely to the bottom"""
         try:
-            self.logger.info("📖 Ensuring complete reading to the bottom of the article")
+            self.logger.info("[READ] Ensuring complete reading to the bottom of the article")
             
             # Get current position and page dimensions
             current_scroll = self.driver.execute_script("return window.pageYOffset")
@@ -2206,7 +2214,7 @@ class ArticleBrowser:
             self.logger.info(f"Final bottom reading pause: {final_bottom_pause:.1f}s")
             time.sleep(final_bottom_pause)
             
-            self.logger.info("✅ Complete bottom reading finished")
+            self.logger.info("[SUCCESS] Complete bottom reading finished")
             
         except Exception as e:
             self.logger.warning(f"Error in complete bottom reading: {e}")
@@ -2214,7 +2222,7 @@ class ArticleBrowser:
     def _verify_complete_article_reading(self):
         """Verify that the entire article has been read comprehensively"""
         try:
-            self.logger.info("🔍 Verifying complete article reading")
+            self.logger.info("[SCAN] Verifying complete article reading")
             
             # Get current position and page dimensions
             current_scroll = self.driver.execute_script("return window.pageYOffset")
@@ -2225,11 +2233,11 @@ class ArticleBrowser:
             max_scroll_position = page_height - viewport_height
             reading_coverage = (current_scroll / max_scroll_position) * 100 if max_scroll_position > 0 else 100
             
-            self.logger.info(f"📊 Reading coverage: {reading_coverage:.1f}%")
+            self.logger.info(f"[STATS] Reading coverage: {reading_coverage:.1f}%")
             
             # Ensure we've covered at least 95% of the article
             if reading_coverage < 95:
-                self.logger.info(f"⚠️ Reading coverage below 95% ({reading_coverage:.1f}%), ensuring complete coverage")
+                self.logger.info(f"[WARNING] Reading coverage below 95% ({reading_coverage:.1f}%), ensuring complete coverage")
                 
                 # Scroll to any missed sections
                 missed_sections = []
@@ -2252,12 +2260,12 @@ class ArticleBrowser:
                 time.sleep(final_verification_pause)
             
             # Final comprehensive reading verification
-            self.logger.info("📖 Performing final comprehensive reading verification")
+            self.logger.info("[READ] Performing final comprehensive reading verification")
             
             # Scroll through the entire article one more time (quick scan)
             self._comprehensive_article_scan()
             
-            self.logger.info("✅ Complete article reading verification finished")
+            self.logger.info("[SUCCESS] Complete article reading verification finished")
             
         except Exception as e:
             self.logger.warning(f"Error in complete article reading verification: {e}")
@@ -2265,7 +2273,7 @@ class ArticleBrowser:
     def _comprehensive_article_scan(self):
         """Perform a comprehensive scan of the entire article"""
         try:
-            self.logger.info("📖 Performing comprehensive article scan")
+            self.logger.info("[READ] Performing comprehensive article scan")
             
             page_height = self.driver.execute_script("return document.body.scrollHeight")
             viewport_height = self.driver.execute_script("return window.innerHeight")
@@ -2291,7 +2299,7 @@ class ArticleBrowser:
             final_scan_pause = random.uniform(5.0, 10.0)
             time.sleep(final_scan_pause)
             
-            self.logger.info("✅ Comprehensive article scan completed")
+            self.logger.info("[SUCCESS] Comprehensive article scan completed")
             
         except Exception as e:
             self.logger.warning(f"Error in comprehensive article scan: {e}")
@@ -2402,7 +2410,7 @@ class ArticleBrowser:
                 # Check if navigation was successful
                 current_url = self.driver.current_url
                 if target_url in current_url:
-                    self.logger.info("✅ Navigation successful using link click method")
+                    self.logger.info("[SUCCESS] Navigation successful using link click method")
                     return True
                     
             except Exception as e:
@@ -2438,7 +2446,7 @@ class ArticleBrowser:
                 # Check if navigation was successful
                 current_url = self.driver.current_url
                 if target_url in current_url:
-                    self.logger.info("✅ Navigation successful using form method")
+                    self.logger.info("[SUCCESS] Navigation successful using form method")
                     return True
                     
             except Exception as e:
@@ -2460,7 +2468,7 @@ class ArticleBrowser:
                 # Check if navigation was successful
                 current_url = self.driver.current_url
                 if target_url in current_url:
-                    self.logger.info("✅ Navigation successful using window.location method")
+                    self.logger.info("[SUCCESS] Navigation successful using window.location method")
                     return True
                     
             except Exception as e:
@@ -2474,10 +2482,10 @@ class ArticleBrowser:
             # Check if direct navigation was successful
             current_url = self.driver.current_url
             if target_url in current_url:
-                self.logger.info("✅ Direct navigation successful")
+                self.logger.info("[SUCCESS] Direct navigation successful")
                 return True
             else:
-                self.logger.error(f"❌ All navigation methods failed. Current URL: {current_url}")
+                self.logger.error(f"[ERROR] All navigation methods failed. Current URL: {current_url}")
                 return False
             
         except Exception as e:
@@ -2561,9 +2569,9 @@ class ArticleBrowser:
                 referer_source = "URL"
             
             if referer_found:
-                self.logger.info(f"✅ Referer successfully detected via {referer_source}: {expected_referer}")
+                self.logger.info(f"[SUCCESS] Referer successfully detected via {referer_source}: {expected_referer}")
             else:
-                self.logger.warning(f"⚠️ Referer not detected. Expected: {expected_referer}")
+                self.logger.warning(f"[WARNING] Referer not detected. Expected: {expected_referer}")
                 self.logger.warning(f"   document.referrer: {actual_referer}")
                 self.logger.warning(f"   history.state: {history_referer}")
                 self.logger.warning(f"   sessionStorage: {storage_referer}")
@@ -2584,8 +2592,8 @@ class ArticleBrowser:
             current_url = self.driver.current_url
             if current_url not in self.visited_posts:
                 self.visited_posts.append(current_url)
-                self.logger.info(f"📝 Added initial post to visited list: {current_url}")
-                self.logger.info(f"📊 Current visited posts count: {len(self.visited_posts)}")
+                self.logger.info(f"[NOTE] Added initial post to visited list: {current_url}")
+                self.logger.info(f"[STATS] Current visited posts count: {len(self.visited_posts)}")
             
             # Use natural article reading behavior instead of random actions
             success = self._natural_article_reading(duration_minutes)
@@ -2599,22 +2607,22 @@ class ArticleBrowser:
                 
                 # Enable post navigation for AdSense RPM optimization
                 if enable_post_navigation:
-                    self.logger.info("🔄 Starting post navigation for AdSense RPM optimization")
-                    self.logger.info(f"📊 Target: {self.min_posts_per_session}-{self.max_posts_per_session} posts per session")
+                    self.logger.info("[PROCESS] Starting post navigation for AdSense RPM optimization")
+                    self.logger.info(f"[STATS] Target: {self.min_posts_per_session}-{self.max_posts_per_session} posts per session")
                     
                     navigation_success = self._navigate_to_other_posts()
                     if navigation_success:
-                        self.logger.info("✅ Post navigation completed successfully")
+                        self.logger.info("[SUCCESS] Post navigation completed successfully")
                     else:
-                        self.logger.info("ℹ️ Post navigation completed (no more posts found)")
+                        self.logger.info("[INFO] Post navigation completed (no more posts found)")
                     
                     # Check if minimum posts requirement is met
                     if len(self.visited_posts) < self.min_posts_per_session:
-                        self.logger.warning(f"⚠️ Only visited {len(self.visited_posts)} posts (minimum required: {self.min_posts_per_session})")
-                        self.logger.info(f"📋 Visited posts URLs: {self.visited_posts}")
+                        self.logger.warning(f"[WARNING] Only visited {len(self.visited_posts)} posts (minimum required: {self.min_posts_per_session})")
+                        self.logger.info(f"[LIST] Visited posts URLs: {self.visited_posts}")
                     else:
-                        self.logger.info(f"✅ Successfully visited {len(self.visited_posts)} posts (minimum: {self.min_posts_per_session})")
-                        self.logger.info(f"📋 Visited posts URLs: {self.visited_posts}")
+                        self.logger.info(f"[SUCCESS] Successfully visited {len(self.visited_posts)} posts (minimum: {self.min_posts_per_session})")
+                        self.logger.info(f"[LIST] Visited posts URLs: {self.visited_posts}")
                 
                 return True
             else:
@@ -2628,15 +2636,15 @@ class ArticleBrowser:
     def _navigate_to_other_posts(self):
         """Navigate to other posts (previous, next, related) for AdSense RPM optimization"""
         try:
-            self.logger.info("🔍 Searching for other posts to navigate to")
-            self.logger.info(f"📊 Current visited posts count: {len(self.visited_posts)}")
-            self.logger.info(f"📋 Current visited posts: {self.visited_posts}")
+            self.logger.info("[SCAN] Searching for other posts to navigate to")
+            self.logger.info(f"[STATS] Current visited posts count: {len(self.visited_posts)}")
+            self.logger.info(f"[LIST] Current visited posts: {self.visited_posts}")
             
             # Find navigation links
             navigation_links = self.post_navigator.find_navigation_links()
             
             if not any([navigation_links['previous'], navigation_links['next'], navigation_links['related']]):
-                self.logger.info("ℹ️ No navigation links found")
+                self.logger.info("[INFO] No navigation links found")
                 return False
             
             # Decide which post to navigate to
@@ -2660,7 +2668,7 @@ class ArticleBrowser:
                         break  # Only take first related post
             
             if not available_options:
-                self.logger.info("ℹ️ No new posts available to navigate to")
+                self.logger.info("[INFO] No new posts available to navigate to")
                 return False
             
             # Choose a post to navigate to (prefer next > related > previous)
@@ -2679,7 +2687,7 @@ class ArticleBrowser:
             post_type, link_element = chosen_post
             
             # Navigate to the chosen post
-            self.logger.info(f"🔗 Navigating to {post_type} post for AdSense RPM optimization")
+            self.logger.info(f"[LINK] Navigating to {post_type} post for AdSense RPM optimization")
             navigation_success = self.post_navigator.navigate_to_post(link_element, post_type)
             
             if navigation_success:
@@ -2687,48 +2695,48 @@ class ArticleBrowser:
                 current_url = self.driver.current_url
                 if current_url not in self.visited_posts:
                     self.visited_posts.append(current_url)
-                    self.logger.info(f"📝 Added post to visited list: {current_url}")
-                    self.logger.info(f"📊 Current visited posts count: {len(self.visited_posts)}")
+                    self.logger.info(f"[NOTE] Added post to visited list: {current_url}")
+                    self.logger.info(f"[STATS] Current visited posts count: {len(self.visited_posts)}")
                 
                 # Calculate reading duration based on article length
                 reading_duration = self._calculate_reading_duration()
-                self.logger.info(f"📖 Reading {post_type} post for {reading_duration:.1f} minutes (based on article length)")
+                self.logger.info(f"[READ] Reading {post_type} post for {reading_duration:.1f} minutes (based on article length)")
                 
                 # Use natural article reading instead of simple simulation
                 reading_success = self._natural_article_reading(reading_duration)
                 
                 if reading_success:
-                    self.logger.info(f"✅ Successfully read {post_type} post")
+                    self.logger.info(f"[SUCCESS] Successfully read {post_type} post")
                     
                     # Check for ads after reading each post
                     if random.random() < 0.3:  # 30% chance to check for ads after each post
-                        self.logger.info("🔍 Checking for Google AdSense ads after post reading...")
+                        self.logger.info("[SCAN] Checking for Google AdSense ads after post reading...")
                         clicked_ads = self.ad_clicker.click_ads(max_clicks=1, conservative=True)
                         if clicked_ads:
-                            self.logger.info(f"✅ Clicked {len(clicked_ads)} Google AdSense ads after post reading")
+                            self.logger.info(f"[SUCCESS] Clicked {len(clicked_ads)} Google AdSense ads after post reading")
                         else:
-                            self.logger.info("ℹ️ No suitable Google AdSense ads found after post reading")
+                            self.logger.info("[INFO] No suitable Google AdSense ads found after post reading")
                     
                     # Check if we need to continue (minimum posts requirement)
                     if len(self.visited_posts) < self.min_posts_per_session:
-                        self.logger.info(f"🔄 Need to read more posts (minimum: {self.min_posts_per_session}, current: {len(self.visited_posts)})")
+                        self.logger.info(f"[PROCESS] Need to read more posts (minimum: {self.min_posts_per_session}, current: {len(self.visited_posts)})")
                         return self._navigate_to_other_posts()
                     elif len(self.visited_posts) < self.max_posts_per_session:
                         # Optional: continue if more posts available
                         if random.random() < 0.6:  # 60% chance to continue
-                            self.logger.info(f"🔄 Continuing to read more posts (current: {len(self.visited_posts)}/{self.max_posts_per_session})")
+                            self.logger.info(f"[PROCESS] Continuing to read more posts (current: {len(self.visited_posts)}/{self.max_posts_per_session})")
                             return self._navigate_to_other_posts()
                         else:
-                            self.logger.info(f"ℹ️ Stopping after {len(self.visited_posts)} posts (user choice)")
+                            self.logger.info(f"[INFO] Stopping after {len(self.visited_posts)} posts (user choice)")
                             return True
                     else:
-                        self.logger.info(f"ℹ️ Reached maximum posts per session ({self.max_posts_per_session})")
+                        self.logger.info(f"[INFO] Reached maximum posts per session ({self.max_posts_per_session})")
                         return True
                 else:
-                    self.logger.warning(f"⚠️ Failed to read {post_type} post")
+                    self.logger.warning(f"[WARNING] Failed to read {post_type} post")
                     return False
             else:
-                self.logger.warning(f"⚠️ Failed to navigate to {post_type} post")
+                self.logger.warning(f"[WARNING] Failed to navigate to {post_type} post")
                 return False
                 
         except Exception as e:
@@ -2738,7 +2746,7 @@ class ArticleBrowser:
     def _calculate_reading_duration(self):
         """Calculate reading duration based on article length (4-10 minutes)"""
         try:
-            self.logger.info("📏 Analyzing article length to determine reading duration")
+            self.logger.info("[ANALYZE] Analyzing article length to determine reading duration")
             
             # Get article text content
             article_text = self._get_article_text()
@@ -2746,7 +2754,7 @@ class ArticleBrowser:
             if not article_text:
                 # Fallback to default duration if no text found
                 default_duration = random.uniform(4.0, 6.0)
-                self.logger.info(f"📏 No article text found, using default duration: {default_duration:.1f} minutes")
+                self.logger.info(f"[ANALYZE] No article text found, using default duration: {default_duration:.1f} minutes")
                 return default_duration
             
             # Calculate reading metrics
@@ -2766,14 +2774,14 @@ class ArticleBrowser:
             # Clamp the reading time
             reading_time = max(min_reading_time, min(max_reading_time, base_reading_time))
             
-            # Add some natural variation (±10%)
+            # Add some natural variation (+/-10%)
             variation = random.uniform(0.9, 1.1)
             final_reading_time = reading_time * variation
             
             # Ensure it's within bounds after variation
             final_reading_time = max(min_reading_time, min(max_reading_time, final_reading_time))
             
-            self.logger.info(f"📏 Article Analysis:")
+            self.logger.info(f"[ANALYZE] Article Analysis:")
             self.logger.info(f"   Word Count: {word_count}")
             self.logger.info(f"   Character Count: {char_count}")
             self.logger.info(f"   Reading Speed: {avg_reading_speed:.0f} words/min")
@@ -2786,7 +2794,7 @@ class ArticleBrowser:
             self.logger.error(f"Error calculating reading duration: {e}")
             # Fallback to default duration
             default_duration = random.uniform(4.0, 6.0)
-            self.logger.info(f"📏 Using fallback duration: {default_duration:.1f} minutes")
+            self.logger.info(f"[ANALYZE] Using fallback duration: {default_duration:.1f} minutes")
             return default_duration
     
     def _get_article_text(self):
@@ -2830,10 +2838,10 @@ class ArticleBrowser:
                     article_text = article_text[:5000]
             
             if article_text and len(article_text) > 50:
-                self.logger.info(f"📏 Extracted article text: {len(article_text)} characters")
+                self.logger.info(f"[ANALYZE] Extracted article text: {len(article_text)} characters")
                 return article_text
             else:
-                self.logger.warning("📏 Could not extract sufficient article text")
+                self.logger.warning("[ANALYZE] Could not extract sufficient article text")
                 return None
                 
         except Exception as e:
@@ -2852,12 +2860,12 @@ class ArticleBrowser:
                 'visited_urls': self.visited_posts.copy()
             }
             
-            self.logger.info("📊 Post Navigation Statistics:")
+            self.logger.info("[STATS] Post Navigation Statistics:")
             self.logger.info(f"   Total Posts Visited: {stats['total_posts_visited']}")
             self.logger.info(f"   Min Posts Required: {stats['min_posts_per_session']}")
             self.logger.info(f"   Max Posts Per Session: {stats['max_posts_per_session']}")
             self.logger.info(f"   Posts Remaining: {stats['posts_remaining']}")
-            self.logger.info(f"   Minimum Requirement Met: {'✅ Yes' if stats['minimum_met'] else '❌ No'}")
+            self.logger.info(f"   Minimum Requirement Met: {'[SUCCESS] Yes' if stats['minimum_met'] else '[ERROR] No'}")
             
             return stats
             
@@ -2872,12 +2880,12 @@ class ArticleBrowser:
             
             # Check for ads after reading (higher chance)
             if random.random() < 0.4:  # 40% chance to check for ads after reading
-                self.logger.info("🔍 Checking for Google AdSense ads after reading...")
+                self.logger.info("[SCAN] Checking for Google AdSense ads after reading...")
                 clicked_ads = self.ad_clicker.click_ads(max_clicks=1, conservative=True)
                 if clicked_ads:
-                    self.logger.info(f"✅ Clicked {len(clicked_ads)} Google AdSense ads after reading")
+                    self.logger.info(f"[SUCCESS] Clicked {len(clicked_ads)} Google AdSense ads after reading")
                 else:
-                    self.logger.info("ℹ️ No suitable Google AdSense ads found after reading")
+                    self.logger.info("[INFO] No suitable Google AdSense ads found after reading")
             
             # Random post-reading actions
             actions = [
@@ -3154,24 +3162,24 @@ class ArticleBrowser:
         # Default article URL if not provided - support array and random selection
         if article_url is None:
             article_url = self.get_random_article_url()
-            self.logger.info(f"🎲 Randomly selected article URL: {article_url}")
+            self.logger.info(f"[RANDOM] Randomly selected article URL: {article_url}")
         
         # Default referer options if not provided - favor high CPC sources
         if referer_url is None:
             high_cpc_weight = self.get_high_cpc_weight()
             referer_url = self.get_weighted_referer_url()
-            self.logger.info(f"🎲 Weighted selected referer URL ({high_cpc_weight*100:.0f}% high CPC): {referer_url}")
+            self.logger.info(f"[RANDOM] Weighted selected referer URL ({high_cpc_weight*100:.0f}% high CPC): {referer_url}")
         
         self.logger.info(f"Opening article: {article_url} with referer: {referer_url}")
         
-        # SIMPLE FLOW: Referer → Inject Link → Click Article
+        # SIMPLE FLOW: Referer [RIGHT] Inject Link [RIGHT] Click Article
         success = False
         
         try:
-            self.logger.info("🔄 Starting simple referer flow: Referer → Inject Link → Click Article")
+            self.logger.info("[PROCESS] Starting simple referer flow: Referer [RIGHT] Inject Link [RIGHT] Click Article")
             success = self._simple_referer_flow(article_url, referer_url)
             if success:
-                self.logger.info("✅ Article opened successfully with simple referer flow")
+                self.logger.info("[SUCCESS] Article opened successfully with simple referer flow")
         except Exception as e:
             self.logger.warning(f"Simple referer flow failed: {e}")
         
@@ -3188,13 +3196,13 @@ class ArticleBrowser:
                 current_url = self.driver.current_url
                 if article_url in current_url:
                     success = True
-                    self.logger.info("✅ Direct navigation successful")
+                    self.logger.info("[SUCCESS] Direct navigation successful")
                     
                     # Additional pause after successful direct navigation
                     self.logger.info("Additional pause for article stabilization (direct navigation)")
                     time.sleep(5)
                 else:
-                    self.logger.error(f"❌ Direct navigation failed. Current URL: {current_url}")
+                    self.logger.error(f"[ERROR] Direct navigation failed. Current URL: {current_url}")
             except Exception as e:
                 self.logger.error(f"Direct navigation failed: {e}")
         
@@ -3203,7 +3211,7 @@ class ArticleBrowser:
             browse_success = self.browse_article_content(duration_minutes=None, enable_post_navigation=True)
             if browse_success:
                 self.logger.info("Article browsing with post navigation completed successfully")
-                self.logger.info(f"📊 Total posts visited: {len(self.visited_posts)}")
+                self.logger.info(f"[STATS] Total posts visited: {len(self.visited_posts)}")
                 return True
             else:
                 self.logger.error("Article browsing failed")
@@ -3361,48 +3369,48 @@ class ArticleBrowser:
     def _simple_referer_flow(self, article_url, referer_url):
         """Simple referer flow: 1. Buka referer 2. Inject link artikel 3. Klik dan buka article"""
         try:
-            self.logger.info(f"🔄 Starting simple referer flow: {referer_url} → {article_url}")
+            self.logger.info(f"[PROCESS] Starting simple referer flow: {referer_url} [RIGHT] {article_url}")
             
             # Step 1: Buka referer
-            self.logger.info(f"📍 Step 1: Buka referer: {referer_url}")
+            self.logger.info(f"[LOCATION] Step 1: Buka referer: {referer_url}")
             self.driver.get(referer_url)
             self.timing.wait_between_actions(1, 2)  # Reduced from 2-4 seconds
             
             # Step 2: Simulate browsing on referer (quick)
-            self.logger.info("📍 Step 2: Simulating referer browsing (bandwidth optimized)")
+            self.logger.info("[LOCATION] Step 2: Simulating referer browsing (bandwidth optimized)")
             self._simulate_referer_browsing()
             
             # Step 3: Inject link artikel di referer
-            self.logger.info(f"📍 Step 3: Inject link artikel di referer: {article_url}")
+            self.logger.info(f"[LOCATION] Step 3: Inject link artikel di referer: {article_url}")
             link_injected = self._inject_article_link(article_url)
             
             if link_injected:
                 # Step 4: Klik dan buka article URL dari referer
-                self.logger.info("📍 Step 4: Klik dan buka article URL dari referer")
+                self.logger.info("[LOCATION] Step 4: Klik dan buka article URL dari referer")
                 click_success = self._click_injected_link()
                 
                 if click_success:
                     # Step 5: Verify we're on the article page with longer pause
-                    self.logger.info("📍 Step 5: Waiting for article page to load completely")
+                    self.logger.info("[LOCATION] Step 5: Waiting for article page to load completely")
                     time.sleep(8)  # Longer pause for article loading
                     
                     current_url = self.driver.current_url
                     if article_url in current_url:
-                        self.logger.info("✅ Simple referer flow completed successfully")
+                        self.logger.info("[SUCCESS] Simple referer flow completed successfully")
                         
                         # Additional pause after successful navigation
-                        self.logger.info("📍 Additional pause for article stabilization")
+                        self.logger.info("[LOCATION] Additional pause for article stabilization")
                         time.sleep(5)
                         
                         return True
                     else:
-                        self.logger.warning(f"⚠️ Click completed but not on target page: {current_url}")
+                        self.logger.warning(f"[WARNING] Click completed but not on target page: {current_url}")
                         return False
                 else:
-                    self.logger.warning("⚠️ Failed to click injected link")
+                    self.logger.warning("[WARNING] Failed to click injected link")
                     return False
             else:
-                self.logger.warning("⚠️ Failed to inject article link")
+                self.logger.warning("[WARNING] Failed to inject article link")
                 return False
                 
         except Exception as e:
@@ -3474,13 +3482,13 @@ class ArticleBrowser:
             try:
                 link_element = self.driver.find_element("id", "injected-article-link")
                 if link_element:
-                    self.logger.info("✅ Article link injected successfully")
+                    self.logger.info("[SUCCESS] Article link injected successfully")
                     return True
                 else:
-                    self.logger.warning("⚠️ Link injection verification failed")
+                    self.logger.warning("[WARNING] Link injection verification failed")
                     return False
             except:
-                self.logger.warning("⚠️ Could not verify link injection")
+                self.logger.warning("[WARNING] Could not verify link injection")
                 return False
                 
         except Exception as e:
@@ -3506,14 +3514,14 @@ class ArticleBrowser:
                 
                 # Click the link
                 link_element.click()
-                self.logger.info("✅ Article link clicked successfully")
+                self.logger.info("[SUCCESS] Article link clicked successfully")
                 
                 # Wait for navigation to start
                 time.sleep(3)
                 
                 return True
             else:
-                self.logger.warning("⚠️ Injected link not found")
+                self.logger.warning("[WARNING] Injected link not found")
                 return False
                 
         except Exception as e:
@@ -3549,7 +3557,7 @@ class AdvancedWebsiteRobot:
         try:
             config = Configuration()
             if config.get('stealth.enable_stealth_scripts', True):
-                logging.info("🛡️ Applying stealth scripts...")
+                logging.info("[STEALTH] Applying stealth scripts...")
                 
                 # Hide webdriver property
                 self.driver.execute_script("""
@@ -3582,12 +3590,12 @@ class AdvancedWebsiteRobot:
                     );
                 """)
                 
-                logging.info("✅ Stealth scripts applied successfully")
+                logging.info("[SUCCESS] Stealth scripts applied successfully")
             else:
-                logging.info("ℹ️ Stealth scripts disabled in configuration")
+                logging.info("[INFO] Stealth scripts disabled in configuration")
                 
         except Exception as e:
-            logging.warning(f"⚠️ Failed to apply stealth scripts: {e}")
+            logging.warning(f"[WARNING] Failed to apply stealth scripts: {e}")
     
     def run_advanced_automation(self):
         """
@@ -3635,20 +3643,20 @@ class AdvancedWebsiteRobot:
                 success = self.article_browser.open_article_with_referer()
                 
                 if success:
-                    logging.info("✅ Advanced automation completed successfully!")
+                    logging.info("[SUCCESS] Advanced automation completed successfully!")
                     
                     # Get comprehensive statistics
                     try:
                         risk_stats = self.risk_monitor.get_risk_statistics()
                         ad_stats = self.article_browser.ad_clicker.get_click_statistics()
                         
-                        logging.info(f"📊 Risk Statistics:")
+                        logging.info(f"[STATS] Risk Statistics:")
                         logging.info(f"   Current Risk Level: {risk_stats['current_risk_level']}")
                         logging.info(f"   Total Requests: {risk_stats['total_requests']}")
                         logging.info(f"   Requests Last Minute: {risk_stats['requests_last_minute']}")
                         logging.info(f"   Detection Events: {risk_stats['detection_events']}")
                         
-                        logging.info(f"📊 Ad Clicking Statistics:")
+                        logging.info(f"[STATS] Ad Clicking Statistics:")
                         logging.info(f"   Total Clicks: {ad_stats['total_clicks']}")
                         logging.info(f"   Recent Clicks: {ad_stats['recent_clicks']}")
                         rate_limit_window_minutes = self.config.get('ad_clicking.rate_limit_window', 1200) // 60
@@ -3663,12 +3671,12 @@ class AdvancedWebsiteRobot:
                         try:
                             post_stats = self.article_browser.get_post_navigation_stats()
                             if post_stats:
-                                logging.info(f"📊 Post Navigation Statistics (AdSense RPM Optimization):")
+                                logging.info(f"[STATS] Post Navigation Statistics (AdSense RPM Optimization):")
                                 logging.info(f"   Total Posts Visited: {post_stats['total_posts_visited']}")
                                 logging.info(f"   Min Posts Required: {post_stats['min_posts_per_session']}")
                                 logging.info(f"   Max Posts Per Session: {post_stats['max_posts_per_session']}")
                                 logging.info(f"   Posts Remaining: {post_stats['posts_remaining']}")
-                                logging.info(f"   Minimum Requirement Met: {'✅ Yes' if post_stats['minimum_met'] else '❌ No'}")
+                                logging.info(f"   Minimum Requirement Met: {'[SUCCESS] Yes' if post_stats['minimum_met'] else '[ERROR] No'}")
                                 logging.info(f"   Estimated Page Views: {post_stats['total_posts_visited']}")
                         except Exception as e:
                             logging.warning(f"Could not get post navigation statistics: {e}")
@@ -3676,21 +3684,21 @@ class AdvancedWebsiteRobot:
                     except Exception as e:
                         logging.warning(f"Could not get comprehensive statistics: {e}")
                 else:
-                    logging.error("❌ Advanced automation failed")
+                    logging.error("[ERROR] Advanced automation failed")
             else:
                 logging.info("Skipping advanced features processing")
             
             # Keep browser open for inspection
-            logging.info("⏳ Keeping browser open for 30 seconds...")
+            logging.info("[WAIT] Keeping browser open for 30 seconds...")
             time.sleep(30)
             
-            logging.info("✅ Advanced automation completed!")
+            logging.info("[SUCCESS] Advanced automation completed!")
             
         except Exception as e:
             logging.error(f"Error in advanced automation: {e}", exc_info=True)
             
             # Keep browser open even on error
-            logging.info("⏳ Keeping browser open for 15 seconds after error...")
+            logging.info("[WAIT] Keeping browser open for 15 seconds after error...")
             time.sleep(15)
     
     def run(self):
