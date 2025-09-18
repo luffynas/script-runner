@@ -68,11 +68,11 @@ class Configuration:
             },
             'ad_clicking': {
                 'enabled': True,
-                'click_chance': 0.20, # Default 15% chance to click ads
+                'click_chance': 0.30, # Default 15% chance to click ads
                 'max_clicks_per_session': 5,
                 'conservative_mode': True,
                 'ad_types': ['google_adsense', 'google_vignette', 'google_afs'],  # Support multiple AdSense formats
-                'rate_limit_window': 1200,  # 20 minutes in seconds
+                'rate_limit_window': 1800,  # 20 minutes 1200 in seconds
                 'max_clicks_per_window': 5  # Maximum 3 clicks per 20 minutes
             },
             'navigation': {
@@ -88,7 +88,10 @@ class Configuration:
                     'https://rexdl.biz.id/best-cloud-hosting-providers-for-small-businesses-in-america/',
                     'https://rexdl.biz.id/top-10-cloud-computing-services-for-businesses-in-the-united-states/',
                     'https://rexdl.biz.id/personal-loans-vs-private-student-loans-comparing-cost-interest-and-repayment-options/',
-                    'https://rexdl.biz.id/quick-cash-loans-explained-how-they-work-what-they-really-cost-safer-alternatives/'
+                    'https://rexdl.biz.id/quick-cash-loans-explained-how-they-work-what-they-really-cost-safer-alternatives/',
+                    'https://rexdl.biz.id/life-insurance-rates-comparison-the-complete-guide-for-u-s-families-in-2025/',
+                    'https://rexdl.biz.id/how-to-find-cheap-auto-insurance-quotes-in-the-u-s-the-complete-practical-guide/',
+                    'https://rexdl.biz.id/ai-for-small-business-the-ultimate-guide-to-growth-efficiency-and-profit-in-2025/',
 
                     # 'https://maxgaming.biz.id/how-to-open-a-bank-account-with-crypto-funds-in-the-united-states-2025-guide/',
                     # 'https://maxgaming.biz.id/online-mortgage-banking-with-bitcoin-the-future-of-real-estate-in-the-united-states/',
@@ -127,122 +130,153 @@ class Configuration:
                 ],
                 'default_referers': [
                     # High CPC referers (Business/Finance/Tech)
-                    'https://google.com', 'https://bing.com',
-                    'https://linkedin.com', 'https://github.com', 'https://stackoverflow.com',
-                    'https://medium.com', 'https://quora.com', 'https://forbes.com',
-                    'https://bloomberg.com', 'https://reuters.com', 'https://wsj.com',
-                    'https://techcrunch.com', 'https://wired.com', 'https://arstechnica.com',
-                    'https://hbr.org', 'https://mckinsey.com', 'https://pwc.com',
-                    'https://deloitte.com', 'https://kpmg.com', 'https://ey.com',
-                    'https://ibm.com', 'https://microsoft.com', 'https://oracle.com',
-                    'https://salesforce.com', 'https://adobe.com', 'https://intel.com',
-                    'https://nvidia.com', 'https://amd.com', 'https://cisco.com',
-                    'https://aws.amazon.com', 'https://cloud.google.com', 'https://azure.microsoft.com',
-                    'https://hubspot.com',
+                    # 'https://google.com', 'https://bing.com',
+                    # 'https://linkedin.com', 'https://github.com', 'https://stackoverflow.com',
+                    # 'https://medium.com', 'https://quora.com', 'https://forbes.com',
+                    # 'https://bloomberg.com', 'https://reuters.com', 'https://wsj.com',
+                    # 'https://techcrunch.com', 'https://wired.com', 'https://arstechnica.com',
+                    # 'https://hbr.org', 'https://mckinsey.com', 'https://pwc.com',
+                    # 'https://deloitte.com', 'https://kpmg.com', 'https://ey.com',
+                    # 'https://ibm.com', 'https://microsoft.com', 'https://oracle.com',
+                    # 'https://salesforce.com', 'https://adobe.com', 'https://intel.com',
+                    # 'https://nvidia.com', 'https://amd.com', 'https://cisco.com',
+                    # 'https://aws.amazon.com', 'https://cloud.google.com', 'https://azure.microsoft.com',
+                    # 'https://hubspot.com',
                     
-                    # Additional Business/Finance referers
-                    'https://cnbc.com', 'https://marketwatch.com', 'https://investing.com',
-                    'https://yahoo.com/finance', 'https://finance.yahoo.com', 'https://seekingalpha.com',
-                    'https://benzinga.com', 'https://fool.com', 'https://morningstar.com',
-                    'https://nasdaq.com', 'https://nyse.com', 'https://sec.gov',
-                    'https://federalreserve.gov', 'https://treasury.gov', 'https://irs.gov',
-                    'https://sba.gov', 'https://ftc.gov', 'https://sec.gov',
-                    'https://finra.org', 'https://cftc.gov', 'https://fdic.gov',
-                    'https://occ.gov', 'https://federalreserve.gov', 'https://treasury.gov',
+                    # # Additional Business/Finance referers
+                    # 'https://cnbc.com', 'https://marketwatch.com', 'https://investing.com',
+                    # 'https://yahoo.com/finance', 'https://finance.yahoo.com', 'https://seekingalpha.com',
+                    # 'https://benzinga.com', 'https://fool.com', 'https://morningstar.com',
+                    # 'https://nasdaq.com', 'https://nyse.com', 'https://sec.gov',
+                    # 'https://federalreserve.gov', 'https://treasury.gov', 'https://irs.gov',
+                    # 'https://sba.gov', 'https://ftc.gov', 'https://sec.gov',
+                    # 'https://finra.org', 'https://cftc.gov', 'https://fdic.gov',
+                    # 'https://occ.gov', 'https://federalreserve.gov', 'https://treasury.gov',
                     
-                    # Financial Services & Banking
-                    'https://jpmorgan.com', 'https://bankofamerica.com', 'https://wellsfargo.com',
-                    'https://citigroup.com', 'https://goldmansachs.com', 'https://morganstanley.com',
-                    'https://blackrock.com', 'https://vanguard.com', 'https://fidelity.com',
-                    'https://schwab.com', 'https://etrade.com', 'https://tdameritrade.com',
-                    'https://interactivebrokers.com', 'https://robinhood.com', 'https://webull.com',
-                    'https://sofi.com', 'https://chase.com', 'https://capitalone.com',
-                    'https://americanexpress.com', 'https://visa.com', 'https://mastercard.com',
-                    'https://paypal.com', 'https://square.com', 'https://stripe.com',
+                    # # Financial Services & Banking
+                    # 'https://jpmorgan.com', 'https://bankofamerica.com', 'https://wellsfargo.com',
+                    # 'https://citigroup.com', 'https://goldmansachs.com', 'https://morganstanley.com',
+                    # 'https://blackrock.com', 'https://vanguard.com', 'https://fidelity.com',
+                    # 'https://schwab.com', 'https://etrade.com', 'https://tdameritrade.com',
+                    # 'https://interactivebrokers.com', 'https://robinhood.com', 'https://webull.com',
+                    # 'https://sofi.com', 'https://chase.com', 'https://capitalone.com',
+                    # 'https://americanexpress.com', 'https://visa.com', 'https://mastercard.com',
+                    # 'https://paypal.com', 'https://square.com', 'https://stripe.com',
                     
-                    # Investment & Trading Platforms
-                    'https://etrade.com', 'https://schwab.com', 'https://fidelity.com',
-                    'https://vanguard.com', 'https://blackrock.com', 'https://goldmansachs.com',
-                    'https://morganstanley.com', 'https://jpmorgan.com', 'https://citigroup.com',
-                    'https://wellsfargo.com', 'https://bankofamerica.com', 'https://chase.com',
-                    'https://robinhood.com', 'https://webull.com', 'https://sofi.com',
-                    'https://interactivebrokers.com', 'https://tdameritrade.com', 'https://etrade.com',
-                    'https://trading212.com', 'https://plus500.com', 'https://ig.com',
-                    'https://oanda.com', 'https://forex.com', 'https://fxcm.com',
+                    # # Investment & Trading Platforms
+                    # 'https://etrade.com', 'https://schwab.com', 'https://fidelity.com',
+                    # 'https://vanguard.com', 'https://blackrock.com', 'https://goldmansachs.com',
+                    # 'https://morganstanley.com', 'https://jpmorgan.com', 'https://citigroup.com',
+                    # 'https://wellsfargo.com', 'https://bankofamerica.com', 'https://chase.com',
+                    # 'https://robinhood.com', 'https://webull.com', 'https://sofi.com',
+                    # 'https://interactivebrokers.com', 'https://tdameritrade.com', 'https://etrade.com',
+                    # 'https://trading212.com', 'https://plus500.com', 'https://ig.com',
+                    # 'https://oanda.com', 'https://forex.com', 'https://fxcm.com',
                     
-                    # Business News & Media
-                    'https://businesswire.com', 'https://prnewswire.com', 'https://globenewswire.com',
-                    'https://marketwatch.com', 'https://investing.com', 'https://benzinga.com',
-                    'https://seekingalpha.com', 'https://fool.com', 'https://morningstar.com',
-                    'https://nasdaq.com', 'https://nyse.com', 'https://otcmarkets.com',
-                    'https://sec.gov', 'https://federalreserve.gov', 'https://treasury.gov',
-                    'https://irs.gov', 'https://sba.gov', 'https://ftc.gov',
-                    'https://finra.org', 'https://cftc.gov', 'https://fdic.gov',
+                    # # Business News & Media
+                    # 'https://businesswire.com', 'https://prnewswire.com', 'https://globenewswire.com',
+                    # 'https://marketwatch.com', 'https://investing.com', 'https://benzinga.com',
+                    # 'https://seekingalpha.com', 'https://fool.com', 'https://morningstar.com',
+                    # 'https://nasdaq.com', 'https://nyse.com', 'https://otcmarkets.com',
+                    # 'https://sec.gov', 'https://federalreserve.gov', 'https://treasury.gov',
+                    # 'https://irs.gov', 'https://sba.gov', 'https://ftc.gov',
+                    # 'https://finra.org', 'https://cftc.gov', 'https://fdic.gov',
                     
-                    # Technology & Innovation
-                    'https://apple.com', 'https://google.com', 'https://microsoft.com',
-                    'https://amazon.com', 'https://meta.com', 'https://netflix.com',
-                    'https://tesla.com', 'https://spacex.com', 'https://openai.com',
-                    'https://anthropic.com', 'https://deepmind.com', 'https://nvidia.com',
-                    'https://amd.com', 'https://intel.com', 'https://qualcomm.com',
-                    'https://broadcom.com', 'https://cisco.com', 'https://juniper.net',
-                    'https://vmware.com', 'https://redhat.com', 'https://canonical.com',
-                    'https://docker.com', 'https://kubernetes.io', 'https://terraform.io',
+                    # # Technology & Innovation
+                    # 'https://apple.com', 'https://google.com', 'https://microsoft.com',
+                    # 'https://amazon.com', 'https://meta.com', 'https://netflix.com',
+                    # 'https://tesla.com', 'https://spacex.com', 'https://openai.com',
+                    # 'https://anthropic.com', 'https://deepmind.com', 'https://nvidia.com',
+                    # 'https://amd.com', 'https://intel.com', 'https://qualcomm.com',
+                    # 'https://broadcom.com', 'https://cisco.com', 'https://juniper.net',
+                    # 'https://vmware.com', 'https://redhat.com', 'https://canonical.com',
+                    # 'https://docker.com', 'https://kubernetes.io', 'https://terraform.io',
                     
-                    # Cloud & Enterprise Software
-                    'https://aws.amazon.com', 'https://cloud.google.com', 'https://azure.microsoft.com',
-                    'https://salesforce.com', 'https://oracle.com', 'https://sap.com',
-                    'https://workday.com', 'https://servicenow.com', 'https://atlassian.com',
-                    'https://slack.com', 'https://zoom.us', 'https://teams.microsoft.com',
-                    'https://dropbox.com', 'https://box.com', 'https://onedrive.com',
-                    'https://sharepoint.com', 'https://office.com', 'https://adobe.com',
-                    'https://autodesk.com', 'https://ansys.com', 'https://solidworks.com',
-                    'https://tableau.com', 'https://powerbi.com', 'https://qlik.com',
+                    # # Cloud & Enterprise Software
+                    # 'https://aws.amazon.com', 'https://cloud.google.com', 'https://azure.microsoft.com',
+                    # 'https://salesforce.com', 'https://oracle.com', 'https://sap.com',
+                    # 'https://workday.com', 'https://servicenow.com', 'https://atlassian.com',
+                    # 'https://slack.com', 'https://zoom.us', 'https://teams.microsoft.com',
+                    # 'https://dropbox.com', 'https://box.com', 'https://onedrive.com',
+                    # 'https://sharepoint.com', 'https://office.com', 'https://adobe.com',
+                    # 'https://autodesk.com', 'https://ansys.com', 'https://solidworks.com',
+                    # 'https://tableau.com', 'https://powerbi.com', 'https://qlik.com',
                     
-                    # Cybersecurity & Data
-                    'https://crowdstrike.com', 'https://paloaltonetworks.com', 'https://fortinet.com',
-                    'https://checkpoint.com', 'https://symantec.com', 'https://mcafee.com',
-                    'https://trendmicro.com', 'https://kaspersky.com', 'https://bitdefender.com',
-                    'https://splunk.com', 'https://elastic.co', 'https://databricks.com',
-                    'https://snowflake.com', 'https://mongodb.com', 'https://redis.com',
-                    'https://postgresql.org', 'https://mysql.com', 'https://oracle.com',
-                    'https://ibm.com', 'https://hpe.com', 'https://dell.com',
+                    # # Cybersecurity & Data
+                    # 'https://crowdstrike.com', 'https://paloaltonetworks.com', 'https://fortinet.com',
+                    # 'https://checkpoint.com', 'https://symantec.com', 'https://mcafee.com',
+                    # 'https://trendmicro.com', 'https://kaspersky.com', 'https://bitdefender.com',
+                    # 'https://splunk.com', 'https://elastic.co', 'https://databricks.com',
+                    # 'https://snowflake.com', 'https://mongodb.com', 'https://redis.com',
+                    # 'https://postgresql.org', 'https://mysql.com', 'https://oracle.com',
+                    # 'https://ibm.com', 'https://hpe.com', 'https://dell.com',
                     
-                    # Consulting & Professional Services
-                    'https://mckinsey.com', 'https://bain.com', 'https://bcg.com',
-                    'https://pwc.com', 'https://deloitte.com', 'https://kpmg.com',
-                    'https://ey.com', 'https://accenture.com', 'https://cognizant.com',
-                    'https://infosys.com', 'https://tcs.com', 'https://wipro.com',
-                    'https://capgemini.com', 'https://atos.net', 'https://dxc.com',
-                    'https://hcl.com', 'https://techmahindra.com', 'https://mindtree.com',
-                    'https://ltts.com', 'https://mphasis.com', 'https://hexaware.com',
+                    # # Consulting & Professional Services
+                    # 'https://mckinsey.com', 'https://bain.com', 'https://bcg.com',
+                    # 'https://pwc.com', 'https://deloitte.com', 'https://kpmg.com',
+                    # 'https://ey.com', 'https://accenture.com', 'https://cognizant.com',
+                    # 'https://infosys.com', 'https://tcs.com', 'https://wipro.com',
+                    # 'https://capgemini.com', 'https://atos.net', 'https://dxc.com',
+                    # 'https://hcl.com', 'https://techmahindra.com', 'https://mindtree.com',
+                    # 'https://ltts.com', 'https://mphasis.com', 'https://hexaware.com',
                     
-                    # Venture Capital & Startups
-                    'https://a16z.com', 'https://sequoiacap.com', 'https://accel.com',
-                    'https://greylock.com', 'https://benchmark.com', 'https://kleinerperkins.com',
-                    'https://firstround.com', 'https://foundersfund.com', 'https://union.vc',
-                    'https://insightpartners.com', 'https://generalcatalyst.com', 'https://bessemer.com',
-                    'https://lightspeed.com', 'https://matrixpartners.com', 'https://redpoint.com',
-                    'https://nea.com', 'https://battery.com', 'https://ivp.com',
-                    'https://ggv.com', 'https://dcm.com', 'https://sapphire.com',
+                    # # Venture Capital & Startups
+                    # 'https://a16z.com', 'https://sequoiacap.com', 'https://accel.com',
+                    # 'https://greylock.com', 'https://benchmark.com', 'https://kleinerperkins.com',
+                    # 'https://firstround.com', 'https://foundersfund.com', 'https://union.vc',
+                    # 'https://insightpartners.com', 'https://generalcatalyst.com', 'https://bessemer.com',
+                    # 'https://lightspeed.com', 'https://matrixpartners.com', 'https://redpoint.com',
+                    # 'https://nea.com', 'https://battery.com', 'https://ivp.com',
+                    # 'https://ggv.com', 'https://dcm.com', 'https://sapphire.com',
                     
-                    # Medium CPC referers (General/Social)
-                    'https://reddit.com', 'https://twitter.com', 'https://facebook.com',
-                    'https://instagram.com', 'https://youtube.com', 'https://tiktok.com',
-                    'https://pinterest.com', 'https://snapchat.com', 'https://discord.com',
-                    'https://slack.com', 'https://zoom.us', 'https://teams.microsoft.com',
+                    # # Medium CPC referers (General/Social)
+                    # 'https://reddit.com', 'https://twitter.com', 'https://facebook.com',
+                    # 'https://instagram.com', 'https://youtube.com', 'https://tiktok.com',
+                    # 'https://pinterest.com', 'https://snapchat.com', 'https://discord.com',
+                    # 'https://slack.com', 'https://zoom.us', 'https://teams.microsoft.com',
                     
-                    # Educational/Research referers
-                    'https://wikipedia.org', 'https://scholar.google.com', 'https://researchgate.net',
-                    'https://academia.edu', 'https://coursera.org', 'https://edx.org',
-                    'https://udemy.com', 'https://khanacademy.org', 'https://mit.edu',
-                    'https://stanford.edu', 'https://harvard.edu', 'https://berkeley.edu',
+                    # # Educational/Research referers
+                    # 'https://wikipedia.org', 'https://scholar.google.com', 'https://researchgate.net',
+                    # 'https://academia.edu', 'https://coursera.org', 'https://edx.org',
+                    # 'https://udemy.com', 'https://khanacademy.org', 'https://mit.edu',
+                    # 'https://stanford.edu', 'https://harvard.edu', 'https://berkeley.edu',
                     
-                    # News/Media referers
-                    'https://cnn.com', 'https://bbc.com', 'https://nytimes.com',
-                    'https://washingtonpost.com', 'https://usatoday.com', 'https://npr.org',
-                    'https://ap.org', 'https://aljazeera.com', 'https://theguardian.com',
-                    'https://independent.co.uk', 'https://telegraph.co.uk', 'https://ft.com',
+                    # # News/Media referers
+                    # 'https://cnn.com', 'https://bbc.com', 'https://nytimes.com',
+                    # 'https://washingtonpost.com', 'https://usatoday.com', 'https://npr.org',
+                    # 'https://ap.org', 'https://aljazeera.com', 'https://theguardian.com',
+                    # 'https://independent.co.uk', 'https://telegraph.co.uk', 'https://ft.com',
+
+                    'https://www.coindesk.com/markets/2025/09/15/dogecoin-inches-closer-to-wall-street-with-first-meme-coin-etf',
+                    'https://www.coindesk.com/business/2025/09/18/ripple-franklin-templeton-and-dbs-to-offer-token-lending-and-trading',
+                    'https://coinledger.io/tools/best-crypto-wallet',
+                    'https://money.com/best-crypto-wallets/',
+                    'https://shop.ledger.com/products/ledger-flex/graphite',
+                    'https://hellopebl.com/resources/blog/best-crypto-wallets/',
+                    'https://www.forbes.com/advisor/investing/cryptocurrency/best-crypto-wallets/',
+                    'https://www.nerdwallet.com/p/best/investing/crypto-bitcoin-wallets',
+                    'https://www.ig.com/en-ch/trading-strategies/the-5-crypto-trading-strategies-that-every-trader-needs-to-know-221123',
+                    'https://www.gemini.com/cryptopedia/day-trading-crypto',
+                    'https://www.avatrade.com/education/online-trading-strategies/crypto-trading-strategies',
+                    'https://coindcx.com/blog/cryptocurrency/top-crypto-day-trading-strategies/',
+                    'https://bravenewcoin.com/insights/ethereum-eth-price-prediction-ethereum-eyes-5000-as-bullish-cross-meets-fed-rate-cut-speculation',
+                    'https://cointelegraph.com/news/price-predictions-917-btc-eth-xrp-bnb-sol-doge-ada-hype-link-sui',
+                    'https://coinledger.io/tools/best-crypto-portfolio-tracker',
+                    'https://www.litrg.org.uk/savings-property/cryptoassets-and-tax',
+
+                    #insurance
+                    'https://www.usnews.com/insurance/auto/geico-vs-progressive',
+                    'https://www.cnbc.com/select/geico-vs-progressive-car-insurance-which-is-better/',
+                    'https://www.bankrate.com/insurance/reviews/geico-vs-progressive/#is-geico-cheaper-than-progressive',
+                    'https://www.forbes.com/advisor/car-insurance/geico-vs-progressive-car-insurance/',
+                    'https://ca.trustpilot.com/review/www.statefarm.com',
+                    'https://www.usnews.com/insurance/auto/state-farm-car-insurance-review',
+                    'https://www.bankrate.com/insurance/reviews/state-farm/#car-insurance',
+                    'https://www.allstate.ca/car-insurance',
+                    'https://www.allstate.com/auto-insurance',
+                    'https://www.farmers.com/home/',
+                    'https://www.farmers.com/insurance/',
+                    'https://www.usaa.com/inet/wc/insurance-products?akredirect=true',
                 ],
                 'high_cpc_weight': 0.7  # 70% chance to select high CPC referers
             }
@@ -292,20 +326,85 @@ class TimingSystem:
         return delay
     
     def human_like_delay(self, delay_type="normal"):
-        """Generate human-like delays berdasarkan tipe perilaku"""
+        """Generate more human-like delays with imperfections"""
         if delay_type == "typing":
-            delay_range = self.config.get('timing.human_typing_delay_range', (0.1, 0.3))
+            # Add typing mistakes and corrections
+            if random.random() < 0.15:  # 15% chance of hesitation
+                return random.uniform(0.5, 2.0)  # Longer pause for thinking
+            if random.random() < 0.08:  # 8% chance of typing mistake
+                return random.uniform(0.8, 1.5)  # Time to correct mistake
+            delay_range = (0.08, 0.4)  # More variation in typing speed
             delay = random.uniform(*delay_range)
+            
         elif delay_type == "scrolling":
-            delay_range = self.config.get('timing.human_scroll_delay_range', (1, 5))
+            # Add reading pauses
+            if random.random() < 0.3:  # 30% chance of reading pause
+                return random.uniform(3, 8)  # Reading pause
+            if random.random() < 0.1:  # 10% chance of distraction
+                return random.uniform(5, 15)  # Distraction pause
+            delay_range = (0.8, 6.0)  # More variation in scroll timing
             delay = random.uniform(*delay_range)
+            
         elif delay_type == "clicking":
-            delay_range = self.config.get('timing.human_click_delay_range', (0.5, 2.0))
+            # Add hesitation before clicking
+            if random.random() < 0.2:  # 20% chance of hesitation
+                return random.uniform(1.5, 4.0)  # Hesitation pause
+            if random.random() < 0.05:  # 5% chance of double-click attempt
+                return random.uniform(0.1, 0.3)  # Quick double-click timing
+            delay_range = (0.3, 2.5)  # More variation in click timing
             delay = random.uniform(*delay_range)
+            
+        elif delay_type == "reading":
+            # Reading-specific delays
+            if random.random() < 0.4:  # 40% chance of reading pause
+                return random.uniform(2, 6)  # Reading content
+            if random.random() < 0.15:  # 15% chance of re-reading
+                return random.uniform(1, 3)  # Re-reading pause
+            delay_range = (0.5, 3.0)  # General reading timing
+            delay = random.uniform(*delay_range)
+            
         else:
-            delay = self.advanced_random_delay()
+            # Add random human imperfections
+            base_delay = random.uniform(0.5, 3.0)
+            if random.random() < 0.1:  # 10% chance of long pause
+                return random.uniform(5, 15)  # Distraction pause
+            if random.random() < 0.05:  # 5% chance of very short pause
+                return random.uniform(0.1, 0.3)  # Quick action
+            delay = base_delay
         
         return delay
+    
+    def add_human_hesitation(self):
+        """Add random human-like hesitation and pauses"""
+        try:
+            # Random hesitation patterns
+            hesitation_types = [
+                "scroll_pause",      # Pause while scrolling
+                "reading_pause",     # Pause like reading
+                "thinking_pause",    # Pause like thinking
+                "distraction_pause"  # Pause like getting distracted
+            ]
+            
+            hesitation_type = random.choice(hesitation_types)
+            
+            if hesitation_type == "scroll_pause":
+                # Pause in middle of scrolling (like human reading)
+                time.sleep(random.uniform(2, 5))
+                
+            elif hesitation_type == "reading_pause":
+                # Longer pause like human reading content
+                time.sleep(random.uniform(3, 8))
+                
+            elif hesitation_type == "thinking_pause":
+                # Pause like human thinking about next action
+                time.sleep(random.uniform(1, 4))
+                
+            elif hesitation_type == "distraction_pause":
+                # Longer pause like human got distracted
+                time.sleep(random.uniform(5, 12))
+                
+        except Exception as e:
+            logging.debug(f"Error in human hesitation: {e}")
     
     def smart_delay(self, context="general", intensity="medium"):
         """Generate smart delays berdasarkan konteks dan intensitas"""
@@ -529,22 +628,36 @@ class MouseMovementSimulator:
         self.movement_history = []
     
     def human_like_movement(self, start_pos, end_pos, steps=None):
+        """More human-like mouse movement with imperfections"""
         if steps is None:
             distance = ((end_pos[0] - start_pos[0])**2 + (end_pos[1] - start_pos[1])**2)**0.5
-            steps = max(5, min(20, int(distance / 50)))
+            steps = max(8, min(25, int(distance / 30)))  # More steps for smoother movement
         
         points = []
         for i in range(steps + 1):
             t = i / steps
             
-            # Bezier curve for natural movement
-            control1_x = start_pos[0] + (end_pos[0] - start_pos[0]) * 0.3 + random.randint(-50, 50)
-            control1_y = start_pos[1] + (end_pos[1] - start_pos[1]) * 0.3 + random.randint(-50, 50)
-            control2_x = start_pos[0] + (end_pos[0] - start_pos[0]) * 0.7 + random.randint(-50, 50)
-            control2_y = start_pos[1] + (end_pos[1] - start_pos[1]) * 0.7 + random.randint(-50, 50)
+            # Add human imperfections
+            imperfection_x = random.uniform(-3, 3)  # Micro-tremors
+            imperfection_y = random.uniform(-3, 3)
+            
+            # Less perfect bezier curve with more variation
+            control1_x = start_pos[0] + (end_pos[0] - start_pos[0]) * random.uniform(0.2, 0.4) + random.randint(-30, 30)
+            control1_y = start_pos[1] + (end_pos[1] - start_pos[1]) * random.uniform(0.2, 0.4) + random.randint(-30, 30)
+            control2_x = start_pos[0] + (end_pos[0] - start_pos[0]) * random.uniform(0.6, 0.8) + random.randint(-30, 30)
+            control2_y = start_pos[1] + (end_pos[1] - start_pos[1]) * random.uniform(0.6, 0.8) + random.randint(-30, 30)
             
             x = (1-t)**3 * start_pos[0] + 3*(1-t)**2*t * control1_x + 3*(1-t)*t**2 * control2_x + t**3 * end_pos[0]
             y = (1-t)**3 * start_pos[1] + 3*(1-t)**2*t * control1_y + 3*(1-t)*t**2 * control2_y + t**3 * end_pos[1]
+            
+            # Add imperfections
+            x += imperfection_x
+            y += imperfection_y
+            
+            # Add occasional micro-corrections (like human adjusting)
+            if random.random() < 0.1:  # 10% chance
+                x += random.uniform(-2, 2)
+                y += random.uniform(-2, 2)
             
             points.append((int(x), int(y)))
         
@@ -610,6 +723,7 @@ class MouseMovementSimulator:
             return False
     
     def random_mouse_movement(self, duration=1.0):
+        """Enhanced random mouse movement with human-like patterns"""
         try:
             # Get viewport size safely
             try:
@@ -619,13 +733,42 @@ class MouseMovementSimulator:
                 viewport_size = {'width': 1920, 'height': 1080}
             
             start_time = time.time()
-            current_pos = (random.randint(0, viewport_size['width']),
-                          random.randint(0, viewport_size['height']))
+            current_pos = (random.randint(50, viewport_size['width']-50),
+                          random.randint(50, viewport_size['height']-50))
+            
+            # Human-like movement patterns
+            movement_pattern = random.choice(["exploratory", "focused", "wandering", "hesitant"])
             
             while time.time() - start_time < duration:
                 try:
-                    target_pos = (random.randint(0, viewport_size['width']),
-                                 random.randint(0, viewport_size['height']))
+                    if movement_pattern == "exploratory":
+                        # Large movements exploring the page
+                        target_pos = (random.randint(100, viewport_size['width']-100),
+                                     random.randint(100, viewport_size['height']-100))
+                        movement_speed = random.uniform(0.02, 0.08)
+                        
+                    elif movement_pattern == "focused":
+                        # Small movements around current area
+                        target_pos = (current_pos[0] + random.randint(-100, 100),
+                                     current_pos[1] + random.randint(-100, 100))
+                        target_pos = (max(50, min(viewport_size['width']-50, target_pos[0])),
+                                     max(50, min(viewport_size['height']-50, target_pos[1])))
+                        movement_speed = random.uniform(0.01, 0.04)
+                        
+                    elif movement_pattern == "wandering":
+                        # Medium movements with pauses
+                        target_pos = (random.randint(200, viewport_size['width']-200),
+                                     random.randint(200, viewport_size['height']-200))
+                        movement_speed = random.uniform(0.03, 0.06)
+                        
+                    else:  # hesitant
+                        # Small movements with frequent pauses
+                        target_pos = (current_pos[0] + random.randint(-50, 50),
+                                     current_pos[1] + random.randint(-50, 50))
+                        target_pos = (max(50, min(viewport_size['width']-50, target_pos[0])),
+                                     max(50, min(viewport_size['height']-50, target_pos[1])))
+                        movement_speed = random.uniform(0.01, 0.03)
+                    
                     movement_points = self.human_like_movement(current_pos, target_pos)
                     
                     for point in movement_points:
@@ -650,10 +793,23 @@ class MouseMovementSimulator:
                             # Ignore individual mouse movement errors
                             pass
                         
-                        time.sleep(random.uniform(0.01, 0.05))
+                        time.sleep(movement_speed)
+                        
+                        # Add occasional pauses (like human hesitation)
+                        if random.random() < 0.1:  # 10% chance
+                            time.sleep(random.uniform(0.1, 0.3))
                     
                     current_pos = target_pos
-                    time.sleep(random.uniform(0.1, 0.5))
+                    
+                    # Human-like pause between movements
+                    if movement_pattern == "hesitant":
+                        time.sleep(random.uniform(0.3, 1.0))  # Longer pauses
+                    else:
+                        time.sleep(random.uniform(0.1, 0.5))
+                    
+                    # Occasionally change movement pattern
+                    if random.random() < 0.2:  # 20% chance
+                        movement_pattern = random.choice(["exploratory", "focused", "wandering", "hesitant"])
                     
                 except Exception as e:
                     # If there's an error in the movement loop, break out
@@ -1693,7 +1849,7 @@ class ArticleBrowser:
         # Previous/Next Post Navigation System
         self.post_navigator = PostNavigator(driver, timing_system, mouse_simulator, risk_monitor)
         self.visited_posts = []  # Track visited posts to avoid loops
-        self.min_posts_per_session = 4  # Default 3 Minimum posts to visit per session
+        self.min_posts_per_session = 5  # Default 3 Minimum posts to visit per session
         self.max_posts_per_session = 10  # Default 7 Maximum posts to visit per session
     
     def open_article_with_referer_legacy(self, article_url, referer_url=None):
@@ -1723,7 +1879,7 @@ class ArticleBrowser:
                 self.mouse.random_mouse_movement(random.uniform(0.5, 1.0))  # Reduced duration
             
             # Quick final pause
-            time.sleep(random.uniform(1.0, 2.0))  # Reduced from 2.0-5.0
+            time.sleep(random.uniform(5.0, 10.0))  # Reduced from 2.0-5.0
             
             # Check for ads on referer page (low chance)
             if random.random() < 0.1:  # 10% chance to check for ads on referer
@@ -1740,96 +1896,226 @@ class ArticleBrowser:
             self.logger.warning(f"Error simulating referer browsing: {e}")
     
     def _natural_article_reading(self, duration_minutes=3):
-        """Natural article reading behavior - seperti manusia benar-benar membaca"""
+        """More natural article reading behavior with human imperfections"""
         try:
             self.logger.info(f"Starting natural article reading for {duration_minutes} minutes")
             
             start_time = time.time()
             end_time = start_time + (duration_minutes * 60)
             
-            # Reading behavior states
-            reading_state = "initial_scan"  # initial_scan, reading, re_reading, scanning, finishing
-            last_scroll_position = 0
-            reading_rhythm = 0  # 0-100, affects reading speed and pauses
+            # Remove rigid state machine, use more fluid behavior
+            reading_mood = random.choice(["focused", "distracted", "careful", "quick"])
+            last_distraction = time.time()
+            reading_rhythm = random.randint(15, 35)  # Start with natural rhythm
             
             # Ad clicking integration
             last_ad_check = time.time()
             ad_check_interval = random.uniform(60, 180)  # Check for ads every 1-3 minutes
             
-            while time.time() < end_time:
-                current_scroll = self.driver.execute_script("return window.pageYOffset")
-                page_height = self.driver.execute_script("return document.body.scrollHeight")
-                viewport_height = self.driver.execute_script("return window.innerHeight")
-                remaining_height = page_height - current_scroll - viewport_height
-                
-                # Check for ads periodically
-                current_time = time.time()
-                if current_time - last_ad_check > ad_check_interval:
-                    self.logger.info("[SCAN] Checking for Google AdSense ads...")
-                    clicked_ads = self.ad_clicker.click_ads(max_clicks=1, conservative=True)
-                    if clicked_ads:
-                        self.logger.info(f"[SUCCESS] Clicked {len(clicked_ads)} Google AdSense ads")
-                        # Post-click behavior is handled automatically in _click_ad_safely
-                    else:
-                        self.logger.info("[INFO] No suitable Google AdSense ads found")
-                    
-                    last_ad_check = current_time
-                    ad_check_interval = random.uniform(60, 180)  # Reset interval
-                
-                # Determine reading behavior based on state and content
-                if reading_state == "initial_scan":
-                    # Quick initial scan of the article
-                    self._initial_article_scan()
-                    reading_state = "reading"
-                    reading_rhythm = random.randint(20, 35)  # Start slow, NO FAST READING
-                    
-                elif reading_state == "reading":
-                    # Main reading behavior
-                    scroll_result = self._natural_paragraph_reading(reading_rhythm)
-                    if scroll_result == "finished":
-                        reading_state = "finishing"
-                    elif scroll_result == "re_read_needed":
-                        reading_state = "re_reading"
-                    elif scroll_result == "scanning":
-                        reading_state = "scanning"
-                    
-                    # Adjust reading rhythm based on content complexity - NO FAST READING
-                    reading_rhythm += random.randint(-3, 5)  # Reduced max increase
-                    reading_rhythm = max(10, min(60, reading_rhythm))  # Reduced max rhythm
-                    
-                elif reading_state == "re_reading":
-                    # Re-read previous content
-                    self._re_read_previous_content()
-                    reading_state = "reading"
-                    
-                elif reading_state == "scanning":
-                    # Careful scanning behavior (NO FAST SCANNING)
-                    self._careful_content_scan()
-                    reading_state = "reading"
-                    
-                elif reading_state == "finishing":
-                    # Final reading behavior
-                    self._finish_reading_behavior()
-                    break
-                
-                # Natural pause between reading actions
-                pause_duration = self._calculate_natural_reading_pause(reading_rhythm)
-                time.sleep(pause_duration)
-                
-                # Occasional mouse movement (like following text)
-                if random.random() < 0.15:  # Reduced to 15% for more natural behavior
-                    self._natural_mouse_tracking()
-                
-                # Check if we need to change reading state - don't finish too early
-                if remaining_height < 50 and reading_state == "reading":  # Only finish when very close to bottom
-                    reading_state = "finishing"
+            # Safety counter to prevent infinite loops
+            iteration_count = 0
+            max_iterations = int(duration_minutes * 60 / 2)  # Max 2-second intervals
             
-            self.logger.info("Natural article reading completed")
+            while time.time() < end_time and iteration_count < max_iterations:
+                try:
+                    current_time = time.time()
+                    iteration_count += 1
+                    
+                    # Random distractions (like human getting distracted)
+                    if current_time - last_distraction > random.uniform(30, 120):
+                        if random.random() < 0.3:  # 30% chance of distraction
+                            self._simulate_distraction()
+                            last_distraction = current_time
+                    
+                    # Check for ads periodically
+                    if current_time - last_ad_check > ad_check_interval:
+                        self.logger.info("[SCAN] Checking for Google AdSense ads...")
+                        try:
+                            clicked_ads = self.ad_clicker.click_ads(max_clicks=1, conservative=True)
+                            if clicked_ads:
+                                self.logger.info(f"[SUCCESS] Clicked {len(clicked_ads)} Google AdSense ads")
+                                # Post-click behavior is handled automatically in _click_ad_safely
+                            else:
+                                self.logger.info("[INFO] No suitable Google AdSense ads found")
+                        except Exception as ad_error:
+                            self.logger.warning(f"[WARNING] Ad clicking failed: {ad_error}")
+                        
+                        last_ad_check = current_time
+                        ad_check_interval = random.uniform(60, 180)  # Reset interval
+                    
+                    # Reading behavior based on mood
+                    try:
+                        if reading_mood == "focused":
+                            self._focused_reading(reading_rhythm)
+                        elif reading_mood == "distracted":
+                            self._distracted_reading(reading_rhythm)
+                        elif reading_mood == "careful":
+                            self._careful_reading(reading_rhythm)
+                        else:  # quick
+                            self._quick_reading(reading_rhythm)
+                    except Exception as reading_error:
+                        self.logger.warning(f"[WARNING] Reading behavior failed: {reading_error}")
+                        # Fallback to simple scroll
+                        self.driver.execute_script("window.scrollBy(0, 100);")
+                        time.sleep(random.uniform(1, 3))
+                    
+                    # Change mood occasionally (like human mood changes)
+                    if random.random() < 0.1:  # 10% chance to change mood
+                        reading_mood = random.choice(["focused", "distracted", "careful", "quick"])
+                        self.logger.info(f"[MOOD] Reading mood changed to: {reading_mood}")
+                    
+                    # Adjust reading rhythm naturally
+                    if random.random() < 0.2:  # 20% chance to adjust rhythm
+                        if reading_rhythm < 20:
+                            reading_rhythm += random.randint(1, 3)  # Gradually increase speed
+                        elif reading_rhythm > 50:
+                            reading_rhythm -= random.randint(1, 3)  # Gradually decrease speed
+                    
+                    # Natural reading pause
+                    time.sleep(random.uniform(0.5, 2.0))
+                    
+                except Exception as iteration_error:
+                    self.logger.warning(f"[WARNING] Error in reading iteration: {iteration_error}")
+                    # Continue with next iteration
+                    time.sleep(random.uniform(1, 3))
+                    continue
+            
+            self.logger.info("Natural article reading completed successfully")
             return True
+                
+        except Exception as e:
+            self.logger.error(f"Error in natural article reading: {e}")
+            # Fallback to simple scrolling
+            try:
+                self._fallback_browsing_behavior(duration_minutes)
+                return True
+            except Exception as fallback_error:
+                self.logger.error(f"Fallback browsing also failed: {fallback_error}")
+                return False
+    
+    def _simulate_distraction(self):
+        """Simulate human distraction behavior"""
+        try:
+            distraction_type = random.choice([
+                "scroll_back",      # Scroll back to re-read
+                "mouse_wander",     # Mouse wanders around
+                "pause_long",       # Long pause
+                "scroll_random"     # Random scrolling
+            ])
+            
+            self.logger.info(f"[DISTRACTION] Simulating {distraction_type}")
+            
+            if distraction_type == "scroll_back":
+                # Scroll back to previous content
+                self.driver.execute_script("window.scrollBy(0, -200);")
+                time.sleep(random.uniform(2, 5))
+                
+            elif distraction_type == "mouse_wander":
+                # Mouse wanders around
+                self.mouse_simulator.random_mouse_movement(duration=2.0)
+                
+            elif distraction_type == "pause_long":
+                # Long pause like human got distracted
+                time.sleep(random.uniform(5, 12))
+                
+            elif distraction_type == "scroll_random":
+                # Random scrolling
+                for _ in range(random.randint(2, 5)):
+                    scroll_amount = random.randint(-300, 300)
+                    self.driver.execute_script(f"window.scrollBy(0, {scroll_amount});")
+                    time.sleep(random.uniform(0.5, 1.5))
+                    
+        except Exception as e:
+            self.logger.debug(f"Error in distraction simulation: {e}")
+    
+    def _focused_reading(self, rhythm):
+        """Focused reading behavior"""
+        try:
+            # Steady scrolling with occasional pauses
+            scroll_amount = random.randint(100, 250)
+            self.driver.execute_script(f"window.scrollBy(0, {scroll_amount});")
+            
+            # Reading pause based on rhythm
+            if rhythm < 25:
+                time.sleep(random.uniform(2, 4))  # Slower reading
+            else:
+                time.sleep(random.uniform(1, 2))  # Faster reading
+                
+        except Exception as e:
+            self.logger.debug(f"Error in focused reading: {e}")
+            # Fallback to simple scroll
+            try:
+                self.driver.execute_script("window.scrollBy(0, 100);")
+                time.sleep(random.uniform(1, 2))
+            except:
+                pass
+    
+    def _distracted_reading(self, rhythm):
+        """Distracted reading behavior"""
+        try:
+            # Irregular scrolling with frequent pauses
+            scroll_amount = random.randint(50, 150)
+            self.driver.execute_script(f"window.scrollBy(0, {scroll_amount});")
+            
+            # Longer pauses (like human getting distracted)
+            time.sleep(random.uniform(3, 8))
+            
+            # Sometimes scroll back
+            if random.random() < 0.3:
+                self.driver.execute_script("window.scrollBy(0, -100);")
+                time.sleep(random.uniform(1, 3))
+                
+        except Exception as e:
+            self.logger.debug(f"Error in distracted reading: {e}")
+            # Fallback to simple scroll
+            try:
+                self.driver.execute_script("window.scrollBy(0, 50);")
+                time.sleep(random.uniform(2, 4))
+            except:
+                pass
+    
+    def _careful_reading(self, rhythm):
+        """Careful reading behavior"""
+        try:
+            # Small, careful scrolls
+            scroll_amount = random.randint(50, 120)
+            self.driver.execute_script(f"window.scrollBy(0, {scroll_amount});")
+            
+            # Longer pauses for careful reading
+            time.sleep(random.uniform(2, 5))
+            
+            # Sometimes re-read by scrolling back
+            if random.random() < 0.4:
+                self.driver.execute_script("window.scrollBy(0, -50);")
+                time.sleep(random.uniform(1, 2))
+                
+        except Exception as e:
+            self.logger.debug(f"Error in careful reading: {e}")
+            # Fallback to simple scroll
+            try:
+                self.driver.execute_script("window.scrollBy(0, 75);")
+                time.sleep(random.uniform(2, 3))
+            except:
+                pass
+    
+    def _quick_reading(self, rhythm):
+        """Quick reading behavior"""
+        try:
+            # Larger scrolls for quick reading
+            scroll_amount = random.randint(200, 400)
+            self.driver.execute_script(f"window.scrollBy(0, {scroll_amount});")
+            
+            # Shorter pauses
+            time.sleep(random.uniform(0.5, 1.5))
             
         except Exception as e:
-            self.logger.warning(f"Error during natural article reading: {e}")
-            return False
+            self.logger.debug(f"Error in quick reading: {e}")
+            # Fallback to simple scroll
+            try:
+                self.driver.execute_script("window.scrollBy(0, 150);")
+                time.sleep(random.uniform(0.5, 1))
+            except:
+                pass
     
     def _initial_article_scan(self):
         """Initial scan of the article to understand structure"""
@@ -2762,7 +3048,7 @@ class ArticleBrowser:
             char_count = len(article_text)
             
             # Average reading speed: 200-300 words per minute
-            avg_reading_speed = random.uniform(200, 300)  # words per minute
+            avg_reading_speed = random.uniform(150, 300)  # words per minute
             
             # Calculate base reading time
             base_reading_time = word_count / avg_reading_speed
@@ -3256,15 +3542,56 @@ class ArticleBrowser:
     def get_random_referer_url(self):
         """Get a random referer URL from the configured list"""
         referer_options = self.config.get('article.default_referers', [
-            "https://google.com", "https://bing.com",
-            "https://reddit.com", "https://twitter.com", "https://linkedin.com",
-            "https://github.com", "https://stackoverflow.com", "https://medium.com"
+            'https://google.com', 'https://bing.com', 'https://linkedin.com', 'https://github.com', 
+            'https://stackoverflow.com', 'https://medium.com', 'https://quora.com', 'https://forbes.com',
+            'https://bloomberg.com', 'https://reuters.com', 'https://wsj.com', 'https://techcrunch.com',
+            'https://wired.com', 'https://arstechnica.com', 'https://hbr.org', 'https://mckinsey.com',
+            'https://pwc.com', 'https://deloitte.com', 'https://kpmg.com', 'https://ey.com',
+            'https://ibm.com', 'https://microsoft.com', 'https://oracle.com', 'https://salesforce.com',
+            'https://adobe.com', 'https://intel.com', 'https://nvidia.com', 'https://amd.com',
+            'https://cisco.com', 'https://aws.amazon.com', 'https://cloud.google.com', 'https://azure.microsoft.com',
         ])
         return random.choice(referer_options)
     
     def get_high_cpc_referer_url(self):
         """Get a random referer URL from high CPC sources (Business/Finance/Tech)"""
         high_cpc_referers = [
+            'https://www.coindesk.com/markets/2025/09/15/dogecoin-inches-closer-to-wall-street-with-first-meme-coin-etf',
+            'https://www.coindesk.com/business/2025/09/18/ripple-franklin-templeton-and-dbs-to-offer-token-lending-and-trading',
+            'https://coinledger.io/tools/best-crypto-wallet',
+            'https://money.com/best-crypto-wallets/',
+            'https://shop.ledger.com/products/ledger-flex/graphite',
+            'https://hellopebl.com/resources/blog/best-crypto-wallets/',
+            'https://www.forbes.com/advisor/investing/cryptocurrency/best-crypto-wallets/',
+            'https://www.nerdwallet.com/p/best/investing/crypto-bitcoin-wallets',
+            'https://www.ig.com/en-ch/trading-strategies/the-5-crypto-trading-strategies-that-every-trader-needs-to-know-221123',
+            'https://www.gemini.com/cryptopedia/day-trading-crypto',
+            'https://www.avatrade.com/education/online-trading-strategies/crypto-trading-strategies',
+            'https://coindcx.com/blog/cryptocurrency/top-crypto-day-trading-strategies/',
+            'https://bravenewcoin.com/insights/ethereum-eth-price-prediction-ethereum-eyes-5000-as-bullish-cross-meets-fed-rate-cut-speculation',
+            'https://cointelegraph.com/news/price-predictions-917-btc-eth-xrp-bnb-sol-doge-ada-hype-link-sui',
+            'https://coinledger.io/tools/best-crypto-portfolio-tracker',
+            'https://www.litrg.org.uk/savings-property/cryptoassets-and-tax',
+
+            #insurance
+            'https://www.usnews.com/insurance/auto/geico-vs-progressive',
+            'https://www.cnbc.com/select/geico-vs-progressive-car-insurance-which-is-better/',
+            'https://www.bankrate.com/insurance/reviews/geico-vs-progressive/#is-geico-cheaper-than-progressive',
+            'https://www.forbes.com/advisor/car-insurance/geico-vs-progressive-car-insurance/',
+            'https://ca.trustpilot.com/review/www.statefarm.com',
+            'https://www.usnews.com/insurance/auto/state-farm-car-insurance-review',
+            'https://www.bankrate.com/insurance/reviews/state-farm/#car-insurance',
+            'https://www.allstate.ca/car-insurance',
+            'https://www.allstate.com/auto-insurance',
+            'https://www.farmers.com/home/',
+            'https://www.farmers.com/insurance/',
+            'https://www.usaa.com/inet/wc/insurance-products?akredirect=true',
+        ]
+        return random.choice(high_cpc_referers)
+    
+    def get_medium_cpc_referer_url(self):
+        """Get a random referer URL from medium CPC sources (General/Social)"""
+        medium_cpc_referers = [
             # Core Business/Finance/Tech
             'https://google.com', 'https://bing.com', 'https://linkedin.com', 'https://github.com', 
             'https://stackoverflow.com', 'https://medium.com', 'https://quora.com', 'https://forbes.com',
@@ -3332,16 +3659,6 @@ class ArticleBrowser:
             'https://union.vc', 'https://insightpartners.com', 'https://generalcatalyst.com', 'https://bessemer.com',
             'https://lightspeed.com', 'https://matrixpartners.com', 'https://redpoint.com', 'https://nea.com',
             'https://battery.com', 'https://ivp.com', 'https://ggv.com', 'https://dcm.com', 'https://sapphire.com'
-        ]
-        return random.choice(high_cpc_referers)
-    
-    def get_medium_cpc_referer_url(self):
-        """Get a random referer URL from medium CPC sources (General/Social)"""
-        medium_cpc_referers = [
-            'https://reddit.com', 'https://twitter.com', 'https://facebook.com',
-            'https://instagram.com', 'https://youtube.com', 'https://tiktok.com',
-            'https://pinterest.com', 'https://snapchat.com', 'https://discord.com',
-            'https://slack.com', 'https://zoom.us', 'https://teams.microsoft.com'
         ]
         return random.choice(medium_cpc_referers)
     
@@ -3496,7 +3813,7 @@ class ArticleBrowser:
             return False
     
     def _click_injected_link(self):
-        """Click the injected article link"""
+        """Click the injected article link with improved error handling"""
         try:
             self.logger.info("Clicking injected article link")
             
@@ -3504,22 +3821,70 @@ class ArticleBrowser:
             link_element = self.driver.find_element("id", "injected-article-link")
             
             if link_element:
-                # Scroll to the link first
+                # Scroll to the link first with more space
                 self.driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", link_element)
-                time.sleep(1)
+                time.sleep(2)  # Longer wait for scroll to complete
                 
-                # Move mouse to link and click
-                self.mouse.move_to_element(link_element)
-                time.sleep(0.5)
+                # Check if element is visible and clickable
+                if not link_element.is_displayed():
+                    self.logger.warning("[WARNING] Link element is not visible")
+                    return False
                 
-                # Click the link
-                link_element.click()
-                self.logger.info("[SUCCESS] Article link clicked successfully")
+                # Try multiple click strategies
+                click_success = False
                 
-                # Wait for navigation to start
-                time.sleep(3)
+                # Strategy 1: Direct click
+                try:
+                    self.mouse.move_to_element(link_element)
+                    time.sleep(0.5)
+                    link_element.click()
+                    click_success = True
+                    self.logger.info("[SUCCESS] Direct click successful")
+                except Exception as e1:
+                    self.logger.warning(f"[WARNING] Direct click failed: {e1}")
+                    
+                    # Strategy 2: JavaScript click
+                    try:
+                        self.driver.execute_script("arguments[0].click();", link_element)
+                        click_success = True
+                        self.logger.info("[SUCCESS] JavaScript click successful")
+                    except Exception as e2:
+                        self.logger.warning(f"[WARNING] JavaScript click failed: {e2}")
+                        
+                        # Strategy 3: Scroll down more and try again
+                        try:
+                            self.driver.execute_script("window.scrollBy(0, 100);")  # Scroll down more
+                            time.sleep(1)
+                            self.driver.execute_script("arguments[0].click();", link_element)
+                            click_success = True
+                            self.logger.info("[SUCCESS] Scroll + JavaScript click successful")
+                        except Exception as e3:
+                            self.logger.warning(f"[WARNING] Scroll + JavaScript click failed: {e3}")
+                            
+                            # Strategy 4: Move element to different position
+                            try:
+                                # Move element to a safer position
+                                self.driver.execute_script("""
+                                    var element = arguments[0];
+                                    element.style.position = 'fixed';
+                                    element.style.top = '50%';
+                                    element.style.left = '50%';
+                                    element.style.zIndex = '9999';
+                                    element.style.transform = 'translate(-50%, -50%)';
+                                """, link_element)
+                                time.sleep(1)
+                                self.driver.execute_script("arguments[0].click();", link_element)
+                                click_success = True
+                                self.logger.info("[SUCCESS] Repositioned element click successful")
+                            except Exception as e4:
+                                self.logger.error(f"[ERROR] All click strategies failed: {e4}")
                 
-                return True
+                if click_success:
+                    # Wait for navigation to start
+                    time.sleep(3)
+                    return True
+                else:
+                    return False
             else:
                 self.logger.warning("[WARNING] Injected link not found")
                 return False
@@ -3539,6 +3904,9 @@ class AdvancedWebsiteRobot:
         self.process_advanced_features = process_advanced_features
         self.random_behavior = random_behavior
         
+        # Initialize configuration
+        self.config = Configuration()
+        
         # Apply stealth scripts if enabled
         self._apply_stealth_scripts()
         
@@ -3553,49 +3921,120 @@ class AdvancedWebsiteRobot:
         logging.info(f'Random behavior: {self.random_behavior}')
     
     def _apply_stealth_scripts(self):
-        """Apply stealth scripts to hide automation indicators"""
+        """Apply comprehensive stealth scripts with error handling"""
         try:
-            config = Configuration()
-            if config.get('stealth.enable_stealth_scripts', True):
-                logging.info("[STEALTH] Applying stealth scripts...")
+            if self.config.get('stealth.enable_stealth_scripts', True):
+                logging.info("[STEALTH] Applying enhanced stealth scripts...")
                 
-                # Hide webdriver property
-                self.driver.execute_script("""
-                    Object.defineProperty(navigator, 'webdriver', {
-                        get: () => undefined,
-                    });
-                """)
+                # Comprehensive stealth script with error handling
+                stealth_script = """
+                try {
+                    // Remove webdriver property (only if not already defined)
+                    if (!navigator.webdriver) {
+                        Object.defineProperty(navigator, 'webdriver', {
+                            get: () => undefined,
+                        });
+                    }
+                } catch(e) {
+                    // Ignore if already defined
+                }
                 
-                # Hide automation indicators
-                self.driver.execute_script("""
-                    // Remove webdriver property
-                    delete navigator.__proto__.webdriver;
-                    
-                    // Override plugins
-                    Object.defineProperty(navigator, 'plugins', {
-                        get: () => [1, 2, 3, 4, 5],
+                try {
+                    // Override plugins (only if not already defined)
+                    if (!navigator.plugins || navigator.plugins.length === 0) {
+                        Object.defineProperty(navigator, 'plugins', {
+                            get: () => [1, 2, 3, 4, 5],
+                        });
+                    }
+                } catch(e) {
+                    // Ignore if already defined
+                }
+                
+                try {
+                    // Override languages (only if not already defined)
+                    if (!navigator.languages || navigator.languages.length === 0) {
+                        Object.defineProperty(navigator, 'languages', {
+                            get: () => ['en-US', 'en'],
+                        });
+                    }
+                } catch(e) {
+                    // Ignore if already defined
+                }
+                
+                try {
+                    // Add random human-like properties
+                    Object.defineProperty(navigator, 'hardwareConcurrency', {
+                        get: () => Math.floor(Math.random() * 4) + 4,
                     });
-                    
-                    // Override languages
-                    Object.defineProperty(navigator, 'languages', {
-                        get: () => ['en-US', 'en'],
-                    });
-                    
-                    // Override permissions
+                } catch(e) {
+                    // Ignore if already defined
+                }
+                
+                try {
+                    // Override permissions with error handling
                     const originalQuery = window.navigator.permissions.query;
-                    window.navigator.permissions.query = (parameters) => (
-                        parameters.name === 'notifications' ?
-                            Promise.resolve({ state: Notification.permission }) :
-                            originalQuery(parameters)
-                    );
-                """)
+                    window.navigator.permissions.query = (parameters) => {
+                        try {
+                            return parameters.name === 'notifications' ?
+                                Promise.resolve({ state: Notification.permission }) :
+                                originalQuery(parameters);
+                        } catch(e) {
+                            return Promise.resolve({ state: 'denied' });
+                        }
+                    };
+                } catch(e) {
+                    // Ignore if already defined
+                }
                 
-                logging.info("[SUCCESS] Stealth scripts applied successfully")
+                try {
+                    // Remove automation indicators
+                    delete navigator.__proto__.webdriver;
+                } catch(e) {
+                    // Ignore if not present
+                }
+                
+                try {
+                    // Mock realistic screen properties
+                    Object.defineProperty(screen, 'availHeight', {
+                        get: () => Math.floor(Math.random() * 100) + 1000,
+                    });
+                    Object.defineProperty(screen, 'availWidth', {
+                        get: () => Math.floor(Math.random() * 200) + 1800,
+                    });
+                } catch(e) {
+                    // Ignore if already defined
+                }
+                """
+                
+                self.driver.execute_script(stealth_script)
+                logging.info("[SUCCESS] Enhanced stealth scripts applied successfully")
             else:
                 logging.info("[INFO] Stealth scripts disabled in configuration")
                 
         except Exception as e:
             logging.warning(f"[WARNING] Failed to apply stealth scripts: {e}")
+            # Try fallback stealth
+            try:
+                self._apply_fallback_stealth()
+            except Exception as fallback_error:
+                logging.error(f"[ERROR] Fallback stealth also failed: {fallback_error}")
+    
+    def _apply_fallback_stealth(self):
+        """Apply minimal stealth as fallback"""
+        try:
+            fallback_script = """
+            try {
+                if (!navigator.webdriver) {
+                    Object.defineProperty(navigator, 'webdriver', {
+                        get: () => undefined,
+                    });
+                }
+            } catch(e) {}
+            """
+            self.driver.execute_script(fallback_script)
+            logging.info("[FALLBACK] Minimal stealth applied")
+        except Exception as e:
+            logging.error(f"[ERROR] Fallback stealth failed: {e}")
     
     def run_advanced_automation(self):
         """
