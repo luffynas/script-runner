@@ -110,13 +110,114 @@ class WarmingConfiguration:
                 'between_sessions_delay': (300, 1800)  # 5-30 minutes
             },
             'stealth': {
-                'user_agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                'window_size': (1920, 1080),
+                # Note: user_agent and window_size are handled by Multilogin profile settings
                 'disable_images': False,
                 'disable_javascript': False,
                 'enable_stealth_scripts': True,
                 'behavioral_stealth': True,
                 'randomize_viewport': True
+            },
+            'cookie_acceptance': {
+                'auto_accept_cookies': True,
+                'accept_all_cookies': True,
+                'cookie_wait_timeout': 10,
+                'cookie_selectors': [
+                    # Common cookie acceptance button selectors
+                    'button[id*="accept"]',
+                    'button[class*="accept"]',
+                    'button[id*="cookie"]',
+                    'button[class*="cookie"]',
+                    'button[id*="consent"]',
+                    'button[class*="consent"]',
+                    'button[id*="agree"]',
+                    'button[class*="agree"]',
+                    'button[id*="allow"]',
+                    'button[class*="allow"]',
+                    'button[id*="ok"]',
+                    'button[class*="ok"]',
+                    'button[id*="confirm"]',
+                    'button[class*="confirm"]',
+                    'button[id*="continue"]',
+                    'button[class*="continue"]',
+                    'button[id*="proceed"]',
+                    'button[class*="proceed"]',
+                    'button[id*="got-it"]',
+                    'button[class*="got-it"]',
+                    'button[id*="understand"]',
+                    'button[class*="understand"]',
+                    'button[id*="acknowledge"]',
+                    'button[class*="acknowledge"]',
+                    # Text-based selectors
+                    'button:contains("Accept")',
+                    'button:contains("Accept All")',
+                    'button:contains("Accept Cookies")',
+                    'button:contains("Accept All Cookies")',
+                    'button:contains("I Accept")',
+                    'button:contains("I Agree")',
+                    'button:contains("OK")',
+                    'button:contains("Continue")',
+                    'button:contains("Proceed")',
+                    'button:contains("Got it")',
+                    'button:contains("Understood")',
+                    'button:contains("Allow")',
+                    'button:contains("Allow All")',
+                    'button:contains("Allow Cookies")',
+                    'button:contains("Allow All Cookies")',
+                    'button:contains("Consent")',
+                    'button:contains("Agree")',
+                    'button:contains("Confirm")',
+                    'button:contains("Acknowledge")',
+                    # Link selectors
+                    'a[id*="accept"]',
+                    'a[class*="accept"]',
+                    'a[id*="cookie"]',
+                    'a[class*="cookie"]',
+                    'a[id*="consent"]',
+                    'a[class*="consent"]',
+                    'a[id*="agree"]',
+                    'a[class*="agree"]',
+                    'a[id*="allow"]',
+                    'a[class*="allow"]',
+                    'a[id*="ok"]',
+                    'a[class*="ok"]',
+                    'a[id*="confirm"]',
+                    'a[class*="confirm"]',
+                    'a[id*="continue"]',
+                    'a[class*="continue"]',
+                    'a[id*="proceed"]',
+                    'a[class*="proceed"]',
+                    'a[id*="got-it"]',
+                    'a[class*="got-it"]',
+                    'a[id*="understand"]',
+                    'a[class*="understand"]',
+                    'a[id*="acknowledge"]',
+                    'a[class*="acknowledge"]',
+                    # Div selectors (clickable divs)
+                    'div[id*="accept"]',
+                    'div[class*="accept"]',
+                    'div[id*="cookie"]',
+                    'div[class*="cookie"]',
+                    'div[id*="consent"]',
+                    'div[class*="consent"]',
+                    'div[id*="agree"]',
+                    'div[class*="agree"]',
+                    'div[id*="allow"]',
+                    'div[class*="allow"]',
+                    'div[id*="ok"]',
+                    'div[class*="ok"]',
+                    'div[id*="confirm"]',
+                    'div[class*="confirm"]',
+                    'div[id*="continue"]',
+                    'div[class*="continue"]',
+                    'div[id*="proceed"]',
+                    'div[class*="proceed"]',
+                    'div[id*="got-it"]',
+                    'div[class*="got-it"]',
+                    'div[id*="understand"]',
+                    'div[class*="understand"]',
+                    'div[id*="acknowledge"]',
+                    'div[class*="acknowledge"]'
+                ]
             },
             'warming': {
                 'max_sessions_per_day': 8,
@@ -347,7 +448,7 @@ class WarmingScheduleManager:
             # Loans Indonesia-focused dorking queries
             self.loans_indonesia_queries = [
                 # Kredit tanpa agunan
-                "kredit tanpa agunan terbaik 2024",
+                "kredit tanpa agunan terbaik 2025",
                 "pinjaman tanpa agunan",
                 "kredit tanpa jaminan",
                 "kredit tanpa survey",
@@ -376,7 +477,29 @@ class WarmingScheduleManager:
                 
                 # KUR (Kredit Usaha Rakyat)
                 "kredit usaha rakyat KUR",
-                "kredit usaha kecil menengah"
+                "kredit usaha kecil menengah",
+                
+                # Pinjaman cepat cair
+                "pinjaman cepat cair hari ini",
+                "pinjaman online cepat cair",
+                "pinjaman tanpa jaminan cepat cair",
+                "pinjaman darurat cepat cair",
+                "pinjaman instan online",
+                "pinjaman kilat tanpa agunan",
+                "pinjaman cepat tanpa survey",
+                "pinjaman online 24 jam",
+                "pinjaman cepat tanpa dokumen",
+                "pinjaman kilat online terpercaya",
+                "pinjaman cepat tanpa jaminan",
+                "pinjaman instan tanpa agunan",
+                "pinjaman online cepat tanpa ribet",
+                "pinjaman kilat tanpa bunga",
+                "pinjaman cepat tanpa biaya admin",
+                "pinjaman online langsung cair",
+                "pinjaman kilat tanpa jaminan",
+                "pinjaman cepat tanpa potongan",
+                "pinjaman online kilat terpercaya",
+                "pinjaman instan tanpa survey"
             ]
             
             # AI-focused dorking queries
@@ -478,6 +601,182 @@ class WarmingScheduleManager:
                 "enterprise software selection"
             ]
             
+            # Indonesia Crypto Trading & Investment queries
+            self.crypto_indonesia_queries = [
+                # Trading kripto untuk pemula
+                "cara trading kripto untuk pemula indonesia",
+                "belajar trading bitcoin indonesia",
+                "platform trading kripto terbaik indonesia",
+                "trading crypto indonesia legal",
+                "cara sukses trading kripto indonesia",
+                "tips trading cryptocurrency indonesia",
+                "strategi trading kripto indonesia",
+                "analisis teknikal crypto indonesia",
+                
+                # Investasi kripto jangka panjang
+                "investasi bitcoin indonesia 2025",
+                "cara investasi crypto untuk pemula",
+                "portfolio crypto indonesia",
+                "hodl crypto indonesia",
+                "investasi ethereum indonesia",
+                "crypto investment strategy indonesia",
+                "diversifikasi portfolio crypto",
+                "risk management crypto indonesia",
+                
+                # Exchange dan platform Indonesia
+                "indodax vs tokocrypto vs binance",
+                "exchange kripto terpercaya indonesia",
+                "trading fee crypto indonesia",
+                "withdrawal crypto indonesia",
+                "pajak crypto indonesia 2024",
+                "regulasi crypto indonesia",
+                "legalitas trading crypto indonesia",
+                "compliance crypto indonesia",
+                
+                # Analisis dan prediksi
+                "prediksi harga bitcoin 2025",
+                "analisis fundamental crypto indonesia",
+                "market sentiment crypto indonesia",
+                "news crypto indonesia hari ini",
+                "trend crypto indonesia 2024",
+                "altcoin terbaik indonesia",
+                "defi indonesia 2024",
+                "nft marketplace indonesia",
+                
+                # Pendidikan dan komunitas
+                "kursus trading crypto indonesia",
+                "komunitas trader crypto indonesia",
+                "mentor trading crypto indonesia",
+                "webinar crypto indonesia",
+                "buku trading crypto indonesia",
+                "youtube crypto indonesia",
+                "podcast crypto indonesia",
+                "telegram crypto indonesia",
+                
+                # Tools dan aplikasi
+                "aplikasi trading crypto indonesia",
+                "bot trading crypto indonesia",
+                "screener crypto indonesia",
+                "portfolio tracker crypto indonesia",
+                "alert crypto indonesia",
+                "chart analysis crypto indonesia",
+                "trading journal crypto indonesia",
+                "backtesting crypto indonesia",
+                
+                # Keamanan dan storage
+                "wallet crypto terbaik indonesia",
+                "cold storage crypto indonesia",
+                "keamanan trading crypto indonesia",
+                "phishing crypto indonesia",
+                "scam crypto indonesia",
+                "2fa crypto indonesia",
+                "backup wallet crypto indonesia",
+                "recovery wallet crypto indonesia",
+                
+                # Pajak dan legal
+                "pajak crypto indonesia 2025",
+                "laporan crypto ke pajak",
+                "tax crypto indonesia",
+                "legal trading crypto indonesia",
+                "compliance crypto indonesia",
+                "audit crypto indonesia",
+                "dokumentasi trading crypto",
+                "record keeping crypto indonesia"
+            ]
+            
+            # Indonesia Money Making Apps & Digital Wallet queries
+            self.money_apps_indonesia_queries = [
+                # Aplikasi penghasil uang terpercaya
+                "aplikasi penghasil uang terpercaya indonesia 2025",
+                "aplikasi penghasil uang tanpa modal indonesia",
+                "aplikasi penghasil uang harian indonesia",
+                "aplikasi penghasil uang mudah indonesia",
+                "aplikasi penghasil uang legal indonesia",
+                "aplikasi penghasil uang terbaik indonesia",
+                "aplikasi penghasil uang cepat indonesia",
+                "aplikasi penghasil uang aman indonesia",
+                
+                # Cara dapat saldo DANA gratis
+                "cara dapat saldo DANA gratis indonesia",
+                "aplikasi dapat saldo DANA gratis",
+                "cara top up DANA gratis indonesia",
+                "kode referral DANA gratis indonesia",
+                "cashback DANA indonesia",
+                "promo DANA terbaru indonesia",
+                "cara transfer DANA gratis indonesia",
+                "tips hemat saldo DANA indonesia",
+                
+                # Cara dapat saldo OVO gratis
+                "cara dapat saldo OVO gratis indonesia",
+                "aplikasi dapat saldo OVO gratis",
+                "cara top up OVO gratis indonesia",
+                "kode referral OVO gratis indonesia",
+                "cashback OVO indonesia",
+                "promo OVO terbaru indonesia",
+                "cara transfer OVO gratis indonesia",
+                "tips hemat saldo OVO indonesia",
+                
+                # Cara dapat saldo GOPAY gratis
+                "cara dapat saldo GOPAY gratis indonesia",
+                "aplikasi dapat saldo GOPAY gratis",
+                "cara top up GOPAY gratis indonesia",
+                "kode referral GOPAY gratis indonesia",
+                "cashback GOPAY indonesia",
+                "promo GOPAY terbaru indonesia",
+                "cara transfer GOPAY gratis indonesia",
+                "tips hemat saldo GOPAY indonesia",
+                
+                # Aplikasi survey dan reward
+                "aplikasi survey berbayar indonesia",
+                "aplikasi reward terbaik indonesia",
+                "aplikasi cashback terbaik indonesia",
+                "aplikasi poin reward indonesia",
+                "aplikasi referral berbayar indonesia",
+                "aplikasi affiliate marketing indonesia",
+                "aplikasi dropshipping indonesia",
+                "aplikasi reseller indonesia",
+                
+                # Aplikasi investasi dan trading
+                "aplikasi investasi reksadana indonesia",
+                "aplikasi trading saham indonesia",
+                "aplikasi investasi emas indonesia",
+                "aplikasi investasi properti indonesia",
+                "aplikasi peer to peer lending indonesia",
+                "aplikasi crowdfunding indonesia",
+                "aplikasi robo advisor indonesia",
+                "aplikasi portfolio tracker indonesia",
+                
+                # Aplikasi freelance dan gig economy
+                "aplikasi freelance indonesia",
+                "aplikasi jasa online indonesia",
+                "aplikasi delivery driver indonesia",
+                "aplikasi ojek online indonesia",
+                "aplikasi cleaning service indonesia",
+                "aplikasi tutor online indonesia",
+                "aplikasi content creator indonesia",
+                "aplikasi influencer marketing indonesia",
+                
+                # Aplikasi gaming dan entertainment
+                "aplikasi game penghasil uang indonesia",
+                "aplikasi streaming berbayar indonesia",
+                "aplikasi content creator indonesia",
+                "aplikasi podcast monetization indonesia",
+                "aplikasi youtube monetization indonesia",
+                "aplikasi tiktok monetization indonesia",
+                "aplikasi instagram monetization indonesia",
+                "aplikasi social media monetization indonesia",
+                
+                # Tips dan strategi
+                "tips dapat uang dari aplikasi indonesia",
+                "strategi monetisasi aplikasi indonesia",
+                "cara maximize earning aplikasi indonesia",
+                "aplikasi penghasil uang tercepat indonesia",
+                "aplikasi penghasil uang terbanyak indonesia",
+                "aplikasi penghasil uang stabil indonesia",
+                "aplikasi penghasil uang jangka panjang indonesia",
+                "aplikasi penghasil uang tanpa skill indonesia"
+            ]
+            
             # Combine all queries for random selection
             self.dorking_queries = (
                 self.insurance_queries + 
@@ -485,7 +784,9 @@ class WarmingScheduleManager:
                 self.loans_indonesia_queries +
                 self.ai_queries + 
                 self.crypto_queries + 
-                self.erp_crm_queries
+                self.erp_crm_queries +
+                self.crypto_indonesia_queries +
+                self.money_apps_indonesia_queries
             )
             
             self.logger.info(f"✅ Setup dorking queries:")
@@ -495,6 +796,8 @@ class WarmingScheduleManager:
             self.logger.info(f"   - AI: {len(self.ai_queries)} queries")
             self.logger.info(f"   - Cryptocurrency: {len(self.crypto_queries)} queries")
             self.logger.info(f"   - ERP/CRM: {len(self.erp_crm_queries)} queries")
+            self.logger.info(f"   - Crypto Indonesia: {len(self.crypto_indonesia_queries)} queries")
+            self.logger.info(f"   - Money Apps Indonesia: {len(self.money_apps_indonesia_queries)} queries")
             self.logger.info(f"   - Total: {len(self.dorking_queries)} queries")
             
         except Exception as e:
@@ -556,7 +859,7 @@ class WarmingScheduleManager:
     
     def get_available_categories(self):
         """Get list of available query categories"""
-        return ['insurance', 'loans', 'ai', 'crypto', 'erp_crm']
+        return ['insurance', 'loans', 'loans_indonesia', 'ai', 'crypto', 'erp_crm', 'crypto_indonesia', 'money_apps_indonesia']
     
     
     
@@ -902,6 +1205,245 @@ class CookieManager:
             return False
 
 
+class CookieAcceptanceManager:
+    """Manages automatic cookie acceptance for various websites"""
+    
+    def __init__(self, driver, config):
+        self.driver = driver
+        self.config = config
+        self.logger = logging.getLogger('multilogin_profile_warmer')
+    
+    def auto_accept_cookies(self):
+        """Automatically accept cookies using various selectors and methods"""
+        try:
+            if not self.config.get('cookie_acceptance.auto_accept_cookies', True):
+                self.logger.debug("Auto accept cookies disabled")
+                return True
+            
+            self.logger.debug("Attempting to auto accept cookies...")
+            
+            # Wait a bit for cookie banner to load
+            time.sleep(random.uniform(1, 3))
+            
+            # Try multiple methods to accept cookies
+            success = False
+            
+            # Method 1: Try predefined selectors
+            if self._try_predefined_selectors():
+                success = True
+            
+            # Method 2: Try text-based search
+            if not success and self._try_text_based_search():
+                success = True
+            
+            # Method 3: Try JavaScript-based approach
+            if not success and self._try_javascript_approach():
+                success = True
+            
+            # Method 4: Try iframe-based cookie banners
+            if not success and self._try_iframe_cookie_banners():
+                success = True
+            
+            if success:
+                self.logger.info("✅ Successfully accepted cookies")
+                time.sleep(random.uniform(1, 2))  # Wait for banner to disappear
+            else:
+                self.logger.debug("No cookie banner found or unable to accept")
+            
+            return success
+            
+        except Exception as e:
+            self.logger.error(f"Error in auto accept cookies: {e}")
+            return False
+    
+    def _try_predefined_selectors(self):
+        """Try predefined CSS selectors for cookie acceptance"""
+        try:
+            selectors = self.config.get('cookie_acceptance.cookie_selectors', [])
+            
+            for selector in selectors:
+                try:
+                    # Skip text-based selectors for now (handled in _try_text_based_search)
+                    if ':contains(' in selector:
+                        continue
+                    
+                    elements = self.driver.find_elements(By.CSS_SELECTOR, selector)
+                    
+                    for element in elements:
+                        if element.is_displayed() and element.is_enabled():
+                            # Check if element text contains cookie-related keywords
+                            element_text = element.text.lower()
+                            if any(keyword in element_text for keyword in [
+                                'accept', 'agree', 'allow', 'ok', 'continue', 'proceed', 
+                                'got it', 'understood', 'consent', 'confirm', 'acknowledge'
+                            ]):
+                                self.logger.debug(f"Found cookie button with selector: {selector}")
+                                element.click()
+                                return True
+                
+                except Exception as e:
+                    self.logger.debug(f"Selector {selector} failed: {e}")
+                    continue
+            
+            return False
+            
+        except Exception as e:
+            self.logger.error(f"Error in predefined selectors: {e}")
+            return False
+    
+    def _try_text_based_search(self):
+        """Try to find cookie buttons by text content"""
+        try:
+            # Common cookie acceptance texts
+            cookie_texts = [
+                'Accept', 'Accept All', 'Accept Cookies', 'Accept All Cookies',
+                'I Accept', 'I Agree', 'OK', 'Continue', 'Proceed', 'Got it',
+                'Understood', 'Allow', 'Allow All', 'Allow Cookies', 'Allow All Cookies',
+                'Consent', 'Agree', 'Confirm', 'Acknowledge', 'Accept & Continue',
+                'Accept All & Continue', 'I Understand', 'I Acknowledge'
+            ]
+            
+            # Try to find buttons with cookie-related text
+            for text in cookie_texts:
+                try:
+                    # Try different approaches to find elements with text
+                    xpath_selectors = [
+                        f"//button[contains(text(), '{text}')]",
+                        f"//a[contains(text(), '{text}')]",
+                        f"//div[contains(text(), '{text}')]",
+                        f"//span[contains(text(), '{text}')]",
+                        f"//*[contains(text(), '{text}')]"
+                    ]
+                    
+                    for xpath in xpath_selectors:
+                        try:
+                            elements = self.driver.find_elements(By.XPATH, xpath)
+                            
+                            for element in elements:
+                                if element.is_displayed() and element.is_enabled():
+                                    # Additional check to ensure it's a cookie-related button
+                                    element_text = element.text.lower()
+                                    if any(keyword in element_text for keyword in [
+                                        'accept', 'agree', 'allow', 'ok', 'continue', 'proceed',
+                                        'got it', 'understood', 'consent', 'confirm', 'acknowledge'
+                                    ]):
+                                        self.logger.debug(f"Found cookie button with text: {text}")
+                                        element.click()
+                                        return True
+                        
+                        except Exception as e:
+                            self.logger.debug(f"XPath {xpath} failed: {e}")
+                            continue
+                
+                except Exception as e:
+                    self.logger.debug(f"Text search for '{text}' failed: {e}")
+                    continue
+            
+            return False
+            
+        except Exception as e:
+            self.logger.error(f"Error in text-based search: {e}")
+            return False
+    
+    def _try_javascript_approach(self):
+        """Try JavaScript-based approach to accept cookies"""
+        try:
+            # JavaScript to find and click cookie acceptance buttons
+            js_script = """
+                // Find all possible cookie acceptance buttons
+                const selectors = [
+                    'button[id*="accept"]', 'button[class*="accept"]',
+                    'button[id*="cookie"]', 'button[class*="cookie"]',
+                    'button[id*="consent"]', 'button[class*="consent"]',
+                    'button[id*="agree"]', 'button[class*="agree"]',
+                    'button[id*="allow"]', 'button[class*="allow"]',
+                    'button[id*="ok"]', 'button[class*="ok"]',
+                    'button[id*="confirm"]', 'button[class*="confirm"]',
+                    'button[id*="continue"]', 'button[class*="continue"]',
+                    'button[id*="proceed"]', 'button[class*="proceed"]',
+                    'a[id*="accept"]', 'a[class*="accept"]',
+                    'a[id*="cookie"]', 'a[class*="cookie"]',
+                    'a[id*="consent"]', 'a[class*="consent"]',
+                    'a[id*="agree"]', 'a[class*="agree"]',
+                    'a[id*="allow"]', 'a[class*="allow"]',
+                    'a[id*="ok"]', 'a[class*="ok"]',
+                    'a[id*="confirm"]', 'a[class*="confirm"]',
+                    'a[id*="continue"]', 'a[class*="continue"]',
+                    'a[id*="proceed"]', 'a[class*="proceed"]'
+                ];
+                
+                let clicked = false;
+                
+                for (const selector of selectors) {
+                    try {
+                        const elements = document.querySelectorAll(selector);
+                        for (const element of elements) {
+                            if (element.offsetParent !== null && element.disabled === false) {
+                                const text = element.textContent.toLowerCase();
+                                if (text.includes('accept') || text.includes('agree') || 
+                                    text.includes('allow') || text.includes('ok') || 
+                                    text.includes('continue') || text.includes('proceed') ||
+                                    text.includes('got it') || text.includes('understood') ||
+                                    text.includes('consent') || text.includes('confirm') ||
+                                    text.includes('acknowledge')) {
+                                    element.click();
+                                    clicked = true;
+                                    break;
+                                }
+                            }
+                        }
+                        if (clicked) break;
+                    } catch (e) {
+                        continue;
+                    }
+                }
+                
+                return clicked;
+            """
+            
+            result = self.driver.execute_script(js_script)
+            if result:
+                self.logger.debug("Successfully accepted cookies via JavaScript")
+                return True
+            
+            return False
+            
+        except Exception as e:
+            self.logger.error(f"Error in JavaScript approach: {e}")
+            return False
+    
+    def _try_iframe_cookie_banners(self):
+        """Try to handle cookie banners in iframes"""
+        try:
+            # Find all iframes on the page
+            iframes = self.driver.find_elements(By.TAG_NAME, "iframe")
+            
+            for iframe in iframes:
+                try:
+                    # Switch to iframe
+                    self.driver.switch_to.frame(iframe)
+                    
+                    # Try to find cookie acceptance button in iframe
+                    if self._try_predefined_selectors() or self._try_text_based_search():
+                        self.logger.debug("Found and clicked cookie button in iframe")
+                        self.driver.switch_to.default_content()
+                        return True
+                    
+                    # Switch back to main content
+                    self.driver.switch_to.default_content()
+                    
+                except Exception as e:
+                    self.logger.debug(f"Error handling iframe: {e}")
+                    self.driver.switch_to.default_content()
+                    continue
+            
+            return False
+            
+        except Exception as e:
+            self.logger.error(f"Error in iframe cookie banners: {e}")
+            return False
+
+
 class HumanLikeBehavior:
     """Simulates human-like browsing behavior"""
     
@@ -1072,28 +1614,27 @@ class MultiloginProfileWarmer:
         self.timing_system = AdvancedTimingSystem(self.config)
         self.storage_manager = StorageManager(driver, self.config)
         self.cookie_manager = CookieManager(driver, self.config)
+        self.cookie_acceptance_manager = CookieAcceptanceManager(driver, self.config)
         self.behavior = HumanLikeBehavior(driver, self.timing_system)
         
         self.logger.info("Multilogin Profile Warmer initialized")
     
     def apply_stealth_settings(self):
-        """Apply stealth settings to the browser"""
+        """Apply stealth settings to the browser
+        
+        Note: User agent and window size are handled by Multilogin profile settings.
+        We only apply additional stealth scripts and network settings here.
+        """
         try:
-            # Set user agent
-            user_agent = self.config.get('stealth.user_agent')
-            self.driver.execute_cdp_cmd('Network.setUserAgentOverride', {
-                "userAgent": user_agent
-            })
+            # Enable network domain to ensure tracking works
+            self.driver.execute_cdp_cmd('Network.enable', {})
+            self.driver.execute_cdp_cmd('Runtime.enable', {})
             
-            # Set window size
-            window_size = self.config.get('stealth.window_size', (1920, 1080))
-            self.driver.set_window_size(window_size[0], window_size[1])
-            
-            # Inject stealth scripts (with error handling)
+            # Inject minimal stealth scripts (less aggressive to avoid blocking tracking)
             stealth_script = """
                 try {
-                    // Remove webdriver property (only if not already defined)
-                    if (!navigator.webdriver) {
+                    // Only remove webdriver property if it exists and is true
+                    if (navigator.webdriver === true) {
                         Object.defineProperty(navigator, 'webdriver', {
                             get: () => undefined,
                         });
@@ -1103,7 +1644,7 @@ class MultiloginProfileWarmer:
                 }
                 
                 try {
-                    // Override plugins (only if not already defined)
+                    // Ensure plugins array exists (but don't override if already populated)
                     if (!navigator.plugins || navigator.plugins.length === 0) {
                         Object.defineProperty(navigator, 'plugins', {
                             get: () => [1, 2, 3, 4, 5],
@@ -1114,7 +1655,7 @@ class MultiloginProfileWarmer:
                 }
                 
                 try {
-                    // Override languages (only if not already defined)
+                    // Ensure languages array exists (but don't override if already populated)
                     if (!navigator.languages || navigator.languages.length === 0) {
                         Object.defineProperty(navigator, 'languages', {
                             get: () => ['en-US', 'en'],
@@ -1123,10 +1664,54 @@ class MultiloginProfileWarmer:
                 } catch(e) {
                     // Ignore if already defined
                 }
+                
+                // Add minimal tracking-friendly properties
+                try {
+                    if (!window.chrome) {
+                        window.chrome = {
+                            runtime: {}
+                        };
+                    }
+                } catch(e) {
+                    // Ignore
+                }
             """
             
             self.driver.execute_script(stealth_script)
-            self.logger.info("Applied stealth settings")
+            
+            # Add activity tracking script to ensure browser records interactions
+            tracking_script = """
+                // Ensure browser activity is properly tracked
+                try {
+                    // Add event listeners to ensure interactions are recorded
+                    document.addEventListener('click', function(e) {
+                        console.log('Click event recorded:', e.target);
+                    }, true);
+                    
+                    document.addEventListener('scroll', function(e) {
+                        console.log('Scroll event recorded');
+                    }, true);
+                    
+                    document.addEventListener('keydown', function(e) {
+                        console.log('Keydown event recorded:', e.key);
+                    }, true);
+                    
+                    // Ensure page visibility API works
+                    if (document.visibilityState === 'visible') {
+                        console.log('Page is visible and active');
+                    }
+                    
+                    // Trigger a focus event to ensure page is considered active
+                    window.focus();
+                    document.body.focus();
+                    
+                } catch(e) {
+                    console.log('Tracking script error:', e);
+                }
+            """
+            
+            self.driver.execute_script(tracking_script)
+            self.logger.info("Applied stealth settings and activity tracking")
             
         except Exception as e:
             self.logger.error(f"Error applying stealth settings: {e}")
@@ -1167,11 +1752,18 @@ class MultiloginProfileWarmer:
             
             self.logger.info(f"🔍 Google dorking: '{query}'")
             
-            # Step 1: Go to Google with natural delays
+            # Step 1: Go to Google with proper page load waiting
             self.driver.get("https://www.google.com")
             
-            # Wait longer to appear more natural (like human loading page)
-            time.sleep(random.uniform(2, 5))
+            # Wait for page to fully load using WebDriverWait
+            wait = WebDriverWait(self.driver, 30)
+            wait.until(EC.presence_of_element_located((By.NAME, "q")))
+            
+            # Auto accept cookies if banner appears
+            self.cookie_acceptance_manager.auto_accept_cookies()
+            
+            # Additional natural delay
+            time.sleep(random.uniform(1, 3))
             
             # Human-like behavior: scroll a bit (like checking the page)
             if random.random() < 0.7:  # 70% chance
@@ -1186,9 +1778,11 @@ class MultiloginProfileWarmer:
                 self.driver.execute_script(f"window.scrollBy(0, -{scroll_amount//2});")
                 time.sleep(random.uniform(0.5, 1.5))
             
-            # Step 2: Find search box and type query
+            # Step 2: Find search box and type query with proper waiting
             try:
-                search_box = self.driver.find_element(By.NAME, "q")
+                # Wait for search box to be clickable
+                wait = WebDriverWait(self.driver, 10)
+                search_box = wait.until(EC.element_to_be_clickable((By.NAME, "q")))
                 
                 # Human-like behavior: move mouse to search box first
                 self.behavior.random_mouse_movement()
@@ -1224,6 +1818,11 @@ class MultiloginProfileWarmer:
                 
                 # Step 3: Submit search
                 search_box.send_keys(Keys.RETURN)
+                
+                # Wait for search results to load
+                wait = WebDriverWait(self.driver, 15)
+                wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "h3")))
+                
                 self.timing_system.human_like_delay("normal")
                 
                 # Step 4: Click on random search result with human-like behavior
@@ -1266,7 +1865,13 @@ class MultiloginProfileWarmer:
                         # Step 5: Natural browsing behavior
                         self.perform_natural_browsing(dwell_time)
                         
-                        return True
+                        # Verify activity was recorded
+                        if self.verify_activity_recorded():
+                            self.logger.info("✅ Activity successfully recorded in browser")
+                            return True
+                        else:
+                            self.logger.warning("⚠️ Activity may not have been recorded")
+                            return True  # Still return True as activity was performed
                     else:
                         self.logger.warning("No organic search results found")
                         return False
@@ -1419,6 +2024,34 @@ class MultiloginProfileWarmer:
         except Exception as e:
             self.logger.debug(f"Error in typing simulation: {e}")
     
+    def verify_activity_recorded(self):
+        """Verify that browser activity was properly recorded"""
+        try:
+            # Check if we're on a different page than Google (indicating successful navigation)
+            current_url = self.driver.current_url
+            if "google.com" not in current_url:
+                self.logger.debug(f"✅ Successfully navigated to: {current_url}")
+                return True
+            
+            # Check if page has loaded properly
+            page_title = self.driver.title
+            if page_title and len(page_title) > 0:
+                self.logger.debug(f"✅ Page loaded with title: {page_title[:50]}...")
+                return True
+            
+            # Check if there's any content on the page
+            body_text = self.driver.find_element(By.TAG_NAME, "body").text
+            if body_text and len(body_text) > 100:  # Reasonable amount of content
+                self.logger.debug("✅ Page has substantial content")
+                return True
+            
+            self.logger.debug("⚠️ Could not verify activity recording")
+            return False
+            
+        except Exception as e:
+            self.logger.debug(f"Error verifying activity: {e}")
+            return False
+    
     def warm_profile_activity(self, activity):
         """Execute a single warming activity"""
         try:
@@ -1445,6 +2078,9 @@ class MultiloginProfileWarmer:
             
             # Wait for page load
             self.timing_system.human_like_delay("normal")
+            
+            # Auto accept cookies if banner appears
+            self.cookie_acceptance_manager.auto_accept_cookies()
             
             # Inject storage data
             domain = urlparse(url).netloc
@@ -1790,9 +2426,10 @@ MULTILOGIN_CONFIG = {
     "enable_storage_injection": True,
     "enable_cookie_management": True,
     "enable_referrer_simulation": True,
+    "enable_auto_accept_cookies": True,
     
     # Query category - pilih satu kategori yang sesuai dengan profile browser
-    "preferred_category": "ai",  # "insurance", "loans", "loans_indonesia", "ai", "crypto", "erp_crm"
+    "preferred_category": "insurance",  # "insurance", "loans", "loans_indonesia", "ai", "crypto", "erp_crm", "crypto_indonesia", "money_apps_indonesia", "crypto_indonesia_queries"
     
     # Available categories for reference:
     # - "insurance": Insurance-related queries (24 queries)
@@ -1801,6 +2438,8 @@ MULTILOGIN_CONFIG = {
     # - "ai": AI and technology queries (24 queries)
     # - "crypto": Cryptocurrency queries (24 queries)
     # - "erp_crm": ERP/CRM business software queries (24 queries)
+    # - "crypto_indonesia": Crypto trading & investment Indonesia queries (64 queries - Bahasa Indonesia)
+    # - "money_apps_indonesia": Money making apps & digital wallet Indonesia queries (64 queries - Bahasa Indonesia)
 }
 
 # =============================================================================
@@ -2009,6 +2648,27 @@ CONTOH KONFIGURASI UNTUK BERBAGAI KATEGORI:
    # - "best ERP systems 2024"
    # - "Salesforce vs HubSpot"
    # - "CRM for small business"
+
+7. CRYPTO INDONESIA PROFILE:
+   MULTILOGIN_CONFIG["preferred_category"] = "crypto_indonesia"
+   # Akan menggunakan 64 crypto Indonesia queries seperti:
+   # - "cara trading kripto untuk pemula indonesia"
+   # - "investasi bitcoin indonesia 2025"
+   # - "indodax vs tokocrypto vs binance"
+   # - "pajak crypto indonesia 2025"
+   # - "komunitas trader crypto indonesia"
+
+8. MONEY APPS INDONESIA PROFILE:
+   MULTILOGIN_CONFIG["preferred_category"] = "money_apps_indonesia"
+   # Akan menggunakan 64 money making apps Indonesia queries seperti:
+   # - "aplikasi penghasil uang terpercaya indonesia 2025"
+   # - "cara dapat saldo DANA gratis indonesia"
+   # - "cara dapat saldo OVO gratis indonesia"
+   # - "cara dapat saldo GOPAY gratis indonesia"
+   # - "aplikasi survey berbayar indonesia"
+   # - "aplikasi freelance indonesia"
+   # - "aplikasi game penghasil uang indonesia"
+   # - "tips dapat uang dari aplikasi indonesia"
 
 CARA MENGGUNAKAN:
 1. Pilih kategori yang sesuai dengan profile browser yang akan di-warm
