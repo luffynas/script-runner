@@ -43,8 +43,6 @@ class Configuration:
                 'human_click_delay_range': (0.5, 2.0)
             },
             'stealth': {
-                'user_agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
-                'window_size': (1920, 1080),
                 'disable_images': False,
                 'disable_javascript': False,
                 'enable_stealth_scripts': True,
@@ -68,12 +66,12 @@ class Configuration:
             },
             'ad_clicking': {
                 'enabled': True,
-                'click_chance': 0.30, # Default 15% chance to click ads
+                'click_chance': 0.15, # Default 15% chance to click ads
                 'max_clicks_per_session': 5,
                 'conservative_mode': True,
                 'ad_types': ['google_adsense', 'google_vignette', 'google_afs'],  # Support multiple AdSense formats
-                'rate_limit_window': 1800,  # 20 minutes 1200 in seconds
-                'max_clicks_per_window': 5  # Maximum 3 clicks per 20 minutes
+                'rate_limit_window': 1200,  # 20 minutes 1200 in seconds
+                'max_clicks_per_window': 1  # Maximum 3 clicks per 20 minutes
             },
             'navigation': {
                 'enabled': True,
@@ -290,7 +288,7 @@ class Configuration:
                     'https://www.farmers.com/insurance/',
                     'https://www.usaa.com/inet/wc/insurance-products?akredirect=true',
                 ],
-                'high_cpc_weight': 0.7  # 70% chance to select high CPC referers
+                'high_cpc_weight': 0.9  # 70% chance to select high CPC referers
             }
         }
     
@@ -1231,37 +1229,35 @@ class AdClickingSystem:
             return False
     
     def _handle_ad_landing_page(self):
-        """Handle ad landing page after click"""
+        """Handle ad landing page after click - ALWAYS go back"""
         try:
             current_url = self.driver.current_url
+            self.logger.info(f"[LANDING] Navigated to: {current_url[:60]}...")
             
-            # Check if we're on an ad landing page
-            ad_domains = ['googleadservices', 'doubleclick', 'googlesyndication', 'google-analytics', 'google.com/aclk']
-            is_ad_page = any(domain in current_url for domain in ad_domains)
+            # Simulate natural behavior on landing page
+            self._simulate_landing_page_behavior()
             
-            if is_ad_page:
-                self.logger.info(f"[LANDING] Navigated to ad landing page: {current_url[:60]}...")
-                
-                # Simulate natural behavior on landing page
-                self._simulate_landing_page_behavior()
-                
-                # Go back to original page
-                self.driver.back()
-                time.sleep(random.uniform(2, 4))
-                self.logger.info("[RETURN] Returned to original page")
-                return True
-            
-            return False
+            # ALWAYS go back to original page (no domain checking needed)
+            self.driver.back()
+            time.sleep(random.uniform(2, 4))
+            self.logger.info("[RETURN] Returned to original page")
+            return True
         
         except Exception as e:
             self.logger.error(f"[ERROR] Error handling ad landing page: {e}")
+            # Fallback: still try to go back
+            try:
+                self.driver.back()
+                self.logger.info("[FALLBACK] Attempted to return to original page")
+            except:
+                pass
             return False
     
     def _simulate_landing_page_behavior(self):
-        """Simulate natural user behavior on ad landing page"""
+        """Simulate natural user behavior on ad landing page with enhanced security"""
         try:
-            # Total time on landing page (15-30 seconds)
-            total_time = random.uniform(15, 30)
+            # Total time on landing page (30-60 seconds) with more variation
+            total_time = random.uniform(30, 60)  # 30 seconds to 1 minute
             self.logger.info(f"[TIMER] Spending {total_time:.1f} seconds on landing page with natural behavior")
             
             start_time = time.time()
@@ -1275,36 +1271,97 @@ class AdClickingSystem:
                 page_height = 2000  # Fallback
                 viewport_height = 800
             
-            # Phase 1: Initial page scan (20% of time)
-            initial_scan_time = total_time * 0.2
+            # Determine reading behavior type based on page characteristics
+            reading_behavior = self._determine_landing_page_reading_behavior(page_height, viewport_height)
+            self.logger.info(f"[BEHAVIOR] Using reading behavior: {reading_behavior}")
+            
+            # Variable phase timing (not fixed percentages)
+            phase_timings = self._calculate_variable_phase_timings(total_time)
+            
+            # Phase 1: Initial page scan (variable timing)
+            initial_scan_time = phase_timings['initial']
             self.logger.info(f"[SCAN] Initial page scan for {initial_scan_time:.1f} seconds")
-            self._landing_page_initial_scan(initial_scan_time, page_height, viewport_height)
+            self._landing_page_initial_scan(initial_scan_time, page_height, viewport_height, reading_behavior)
             
-            # Phase 2: Content exploration (60% of time)
-            exploration_time = total_time * 0.6
+            # Phase 2: Content exploration (variable timing)
+            exploration_time = phase_timings['exploration']
             self.logger.info(f"[EXPLORE] Content exploration for {exploration_time:.1f} seconds")
-            self._landing_page_content_exploration(exploration_time, page_height, viewport_height)
+            self._landing_page_content_exploration(exploration_time, page_height, viewport_height, reading_behavior)
             
-            # Phase 3: Final review (20% of time)
-            review_time = total_time * 0.2
+            # Phase 3: Final review (variable timing)
+            review_time = phase_timings['review']
             self.logger.info(f"[REVIEW] Final review for {review_time:.1f} seconds")
-            self._landing_page_final_review(review_time, page_height, viewport_height)
+            self._landing_page_final_review(review_time, page_height, viewport_height, reading_behavior)
             
             self.logger.info("[SUCCESS] Natural landing page behavior completed")
             
         except Exception as e:
             self.logger.error(f"[ERROR] Error simulating landing page behavior: {e}")
-            # Fallback to simple sleep
-            time.sleep(random.uniform(15, 30))
+            # Fallback to simple sleep with variation
+            time.sleep(random.uniform(30, 60))
     
-    def _landing_page_initial_scan(self, duration, page_height, viewport_height):
-        """Initial scan of landing page content"""
+    def _determine_landing_page_reading_behavior(self, page_height, viewport_height):
+        """Determine reading behavior based on page characteristics"""
+        try:
+            # Analyze page characteristics
+            page_ratio = page_height / viewport_height if viewport_height > 0 else 1
+            
+            # Determine behavior based on page characteristics
+            if page_ratio < 2:  # Short page
+                behaviors = ["quick_scan", "focused_scan"]
+            elif page_ratio < 4:  # Medium page
+                behaviors = ["focused_scan", "careful_scan", "exploratory_scan"]
+            else:  # Long page
+                behaviors = ["careful_scan", "exploratory_scan", "comprehensive_scan"]
+            
+            # Add some randomness
+            if random.random() < 0.2:  # 20% chance for different behavior
+                behaviors = ["quick_scan", "focused_scan", "careful_scan", "exploratory_scan", "comprehensive_scan"]
+            
+            return random.choice(behaviors)
+            
+        except Exception as e:
+            return "focused_scan"  # Default fallback
+    
+    def _calculate_variable_phase_timings(self, total_time):
+        """Calculate variable phase timings instead of fixed percentages"""
+        try:
+            # Base percentages with variation
+            initial_base = random.uniform(0.15, 0.25)  # 15-25% instead of fixed 20%
+            exploration_base = random.uniform(0.55, 0.70)  # 55-70% instead of fixed 60%
+            review_base = random.uniform(0.15, 0.25)  # 15-25% instead of fixed 20%
+            
+            # Normalize to ensure they sum to 1.0
+            total_base = initial_base + exploration_base + review_base
+            initial_base /= total_base
+            exploration_base /= total_base
+            review_base /= total_base
+            
+            return {
+                'initial': total_time * initial_base,
+                'exploration': total_time * exploration_base,
+                'review': total_time * review_base
+            }
+            
+        except Exception as e:
+            # Fallback to original fixed percentages
+            return {
+                'initial': total_time * 0.2,
+                'exploration': total_time * 0.6,
+                'review': total_time * 0.2
+            }
+    
+    def _landing_page_initial_scan(self, duration, page_height, viewport_height, reading_behavior="focused_scan"):
+        """Initial scan of landing page content with enhanced randomness"""
         try:
             start_time = time.time()
             end_time = start_time + duration
             
-            # Quick scroll to see page structure
-            scroll_positions = [0, page_height * 0.3, page_height * 0.7, page_height * 0.5]
+            # Generate random scroll positions based on reading behavior
+            scroll_positions = self._generate_random_scroll_positions(page_height, reading_behavior)
+            
+            # Randomize the order of scroll positions
+            random.shuffle(scroll_positions)
             
             for position in scroll_positions:
                 if time.time() >= end_time:
@@ -1312,74 +1369,305 @@ class AdClickingSystem:
                     
                 # Smooth scroll to position
                 self.driver.execute_script(f"window.scrollTo({{top: {position}, behavior: 'smooth'}});")
-                time.sleep(random.uniform(0.5, 1.5))
                 
-                # Random mouse movement during scan
-                if random.random() < 0.6:
-                    self.mouse.random_mouse_movement(random.uniform(0.3, 0.8))
+                # Variable scroll delay based on reading behavior
+                scroll_delay = self._get_reading_behavior_delay(reading_behavior, "scroll")
+                time.sleep(scroll_delay)
                 
-                # Brief pause to "read"
-                time.sleep(random.uniform(1.0, 2.5))
+                # Variable mouse movement probability and duration
+                mouse_chance = self._get_mouse_movement_probability(reading_behavior)
+                if random.random() < mouse_chance:
+                    mouse_duration = self._get_mouse_movement_duration(reading_behavior)
+                    self.mouse.random_mouse_movement(mouse_duration)
+                
+                # Variable reading pause based on behavior
+                reading_pause = self._get_reading_behavior_delay(reading_behavior, "reading")
+                time.sleep(reading_pause)
                 
         except Exception as e:
             self.logger.warning(f"Error in initial scan: {e}")
     
-    def _landing_page_content_exploration(self, duration, page_height, viewport_height):
-        """Detailed content exploration"""
+    def _generate_random_scroll_positions(self, page_height, reading_behavior):
+        """Generate random scroll positions based on reading behavior"""
+        try:
+            base_positions = [0, page_height * 0.3, page_height * 0.7, page_height * 0.5]
+            
+            # Add behavior-specific positions
+            if reading_behavior == "quick_scan":
+                # Fewer positions for quick scan
+                positions = [0, page_height * 0.5]
+            elif reading_behavior == "focused_scan":
+                # Standard positions
+                positions = base_positions
+            elif reading_behavior == "careful_scan":
+                # More positions for careful reading
+                positions = [0, page_height * 0.2, page_height * 0.4, page_height * 0.6, page_height * 0.8]
+            elif reading_behavior == "exploratory_scan":
+                # Random positions for exploration
+                positions = [0]
+                for _ in range(random.randint(2, 4)):
+                    positions.append(page_height * random.uniform(0.1, 0.9))
+            else:  # comprehensive_scan
+                # Many positions for comprehensive reading
+                positions = [0, page_height * 0.15, page_height * 0.3, page_height * 0.45, 
+                           page_height * 0.6, page_height * 0.75, page_height * 0.9]
+            
+            # Add some random variation to positions
+            varied_positions = []
+            for pos in positions:
+                variation = page_height * random.uniform(-0.05, 0.05)  # ±5% variation
+                varied_pos = max(0, min(page_height, pos + variation))
+                varied_positions.append(varied_pos)
+            
+            return varied_positions
+            
+        except Exception as e:
+            # Fallback to original positions
+            return [0, page_height * 0.3, page_height * 0.7, page_height * 0.5]
+    
+    def _get_reading_behavior_delay(self, reading_behavior, delay_type):
+        """Get delay based on reading behavior and delay type"""
+        try:
+            delays = {
+                "quick_scan": {
+                    "scroll": random.uniform(0.3, 0.8),
+                    "reading": random.uniform(0.8, 1.5)
+                },
+                "focused_scan": {
+                    "scroll": random.uniform(0.5, 1.2),
+                    "reading": random.uniform(1.0, 2.0)
+                },
+                "careful_scan": {
+                    "scroll": random.uniform(0.8, 1.5),
+                    "reading": random.uniform(2.0, 4.0)
+                },
+                "exploratory_scan": {
+                    "scroll": random.uniform(0.4, 1.0),
+                    "reading": random.uniform(1.5, 3.0)
+                },
+                "comprehensive_scan": {
+                    "scroll": random.uniform(0.6, 1.3),
+                    "reading": random.uniform(2.5, 5.0)
+                }
+            }
+            
+            return delays.get(reading_behavior, delays["focused_scan"])[delay_type]
+            
+        except Exception as e:
+            return random.uniform(0.5, 1.5)  # Default fallback
+    
+    def _get_mouse_movement_probability(self, reading_behavior):
+        """Get mouse movement probability based on reading behavior"""
+        try:
+            probabilities = {
+                "quick_scan": random.uniform(0.3, 0.5),
+                "focused_scan": random.uniform(0.5, 0.7),
+                "careful_scan": random.uniform(0.6, 0.8),
+                "exploratory_scan": random.uniform(0.4, 0.6),
+                "comprehensive_scan": random.uniform(0.7, 0.9)
+            }
+            
+            return probabilities.get(reading_behavior, 0.6)
+            
+        except Exception as e:
+            return 0.6  # Default fallback
+    
+    def _get_mouse_movement_duration(self, reading_behavior):
+        """Get mouse movement duration based on reading behavior"""
+        try:
+            durations = {
+                "quick_scan": random.uniform(0.2, 0.5),
+                "focused_scan": random.uniform(0.3, 0.7),
+                "careful_scan": random.uniform(0.5, 1.0),
+                "exploratory_scan": random.uniform(0.4, 0.8),
+                "comprehensive_scan": random.uniform(0.6, 1.2)
+            }
+            
+            return durations.get(reading_behavior, 0.5)
+            
+        except Exception as e:
+            return 0.5  # Default fallback
+    
+    def _landing_page_content_exploration(self, duration, page_height, viewport_height, reading_behavior="focused_scan"):
+        """Detailed content exploration with behavior-based patterns"""
         try:
             start_time = time.time()
             end_time = start_time + duration
             
-            # Focus on top 70% of page (most important content)
-            max_scroll = page_height * 0.7
+            # Determine exploration area based on reading behavior
+            exploration_area = self._get_exploration_area(page_height, reading_behavior)
+            max_scroll = exploration_area['max']
+            min_scroll = exploration_area['min']
             
+            # Get behavior-specific parameters
+            scroll_frequency = self._get_scroll_frequency(reading_behavior)
+            mouse_probability = self._get_mouse_movement_probability(reading_behavior)
+            careful_reading_chance = self._get_careful_reading_chance(reading_behavior)
+            
+            iteration_count = 0
             while time.time() < end_time:
-                # Random scroll within content area
-                scroll_position = random.uniform(0, max_scroll)
-                self.driver.execute_script(f"window.scrollTo({{top: {scroll_position}, behavior: 'smooth'}});")
+                iteration_count += 1
                 
-                # Reading pause
-                reading_pause = random.uniform(2.0, 4.0)
+                # Variable scroll behavior based on reading type
+                if reading_behavior == "quick_scan":
+                    # Larger jumps for quick scanning
+                    scroll_position = random.uniform(min_scroll, max_scroll)
+                    self.driver.execute_script(f"window.scrollTo({{top: {scroll_position}, behavior: 'smooth'}});")
+                elif reading_behavior == "careful_scan":
+                    # Smaller, more precise scrolls
+                    current_pos = self.driver.execute_script("return window.pageYOffset")
+                    scroll_amount = random.randint(50, 150)
+                    new_pos = min(max_scroll, max(min_scroll, current_pos + scroll_amount))
+                    self.driver.execute_script(f"window.scrollTo({{top: {new_pos}, behavior: 'smooth'}});")
+                else:
+                    # Standard random scroll
+                    scroll_position = random.uniform(min_scroll, max_scroll)
+                    self.driver.execute_script(f"window.scrollTo({{top: {scroll_position}, behavior: 'smooth'}});")
+                
+                # Variable reading pause based on behavior
+                reading_pause = self._get_reading_behavior_delay(reading_behavior, "reading")
                 time.sleep(reading_pause)
                 
-                # Mouse movement (like following text)
-                if random.random() < 0.4:
-                    self.mouse.random_mouse_movement(random.uniform(0.5, 1.2))
+                # Variable mouse movement
+                if random.random() < mouse_probability:
+                    mouse_duration = self._get_mouse_movement_duration(reading_behavior)
+                    self.mouse.random_mouse_movement(mouse_duration)
                 
                 # Occasional longer pause (like reading carefully)
-                if random.random() < 0.3:
-                    careful_reading = random.uniform(3.0, 6.0)
+                if random.random() < careful_reading_chance:
+                    careful_reading = self._get_reading_behavior_delay(reading_behavior, "reading") * 1.5
                     time.sleep(careful_reading)
                 
-                # Small scroll adjustments
-                if random.random() < 0.5:
-                    small_scroll = random.randint(-100, 100)
+                # Small scroll adjustments (behavior-dependent)
+                if random.random() < scroll_frequency:
+                    adjustment_range = self._get_scroll_adjustment_range(reading_behavior)
+                    small_scroll = random.randint(adjustment_range['min'], adjustment_range['max'])
                     self.driver.execute_script(f"window.scrollBy(0, {small_scroll});")
-                    time.sleep(random.uniform(0.5, 1.0))
+                    time.sleep(random.uniform(0.3, 0.8))
+                
+                # Add some natural variation in iteration timing
+                iteration_delay = random.uniform(0.1, 0.3)
+                time.sleep(iteration_delay)
                 
         except Exception as e:
             self.logger.warning(f"Error in content exploration: {e}")
     
-    def _landing_page_final_review(self, duration, page_height, viewport_height):
-        """Final review before leaving"""
+    def _get_exploration_area(self, page_height, reading_behavior):
+        """Get exploration area based on reading behavior"""
+        try:
+            areas = {
+                "quick_scan": {"min": 0, "max": page_height * 0.6},
+                "focused_scan": {"min": 0, "max": page_height * 0.7},
+                "careful_scan": {"min": 0, "max": page_height * 0.8},
+                "exploratory_scan": {"min": 0, "max": page_height * 0.9},
+                "comprehensive_scan": {"min": 0, "max": page_height * 0.95}
+            }
+            
+            return areas.get(reading_behavior, areas["focused_scan"])
+            
+        except Exception as e:
+            return {"min": 0, "max": page_height * 0.7}
+    
+    def _get_scroll_frequency(self, reading_behavior):
+        """Get scroll frequency based on reading behavior"""
+        try:
+            frequencies = {
+                "quick_scan": random.uniform(0.3, 0.5),
+                "focused_scan": random.uniform(0.4, 0.6),
+                "careful_scan": random.uniform(0.5, 0.7),
+                "exploratory_scan": random.uniform(0.6, 0.8),
+                "comprehensive_scan": random.uniform(0.7, 0.9)
+            }
+            
+            return frequencies.get(reading_behavior, 0.5)
+            
+        except Exception as e:
+            return 0.5
+    
+    def _get_careful_reading_chance(self, reading_behavior):
+        """Get careful reading chance based on reading behavior"""
+        try:
+            chances = {
+                "quick_scan": random.uniform(0.1, 0.2),
+                "focused_scan": random.uniform(0.2, 0.3),
+                "careful_scan": random.uniform(0.3, 0.5),
+                "exploratory_scan": random.uniform(0.25, 0.4),
+                "comprehensive_scan": random.uniform(0.4, 0.6)
+            }
+            
+            return chances.get(reading_behavior, 0.3)
+            
+        except Exception as e:
+            return 0.3
+    
+    def _get_scroll_adjustment_range(self, reading_behavior):
+        """Get scroll adjustment range based on reading behavior"""
+        try:
+            ranges = {
+                "quick_scan": {"min": -150, "max": 150},
+                "focused_scan": {"min": -100, "max": 100},
+                "careful_scan": {"min": -80, "max": 80},
+                "exploratory_scan": {"min": -120, "max": 120},
+                "comprehensive_scan": {"min": -60, "max": 60}
+            }
+            
+            return ranges.get(reading_behavior, {"min": -100, "max": 100})
+            
+        except Exception as e:
+            return {"min": -100, "max": 100}
+    
+    def _landing_page_final_review(self, duration, page_height, viewport_height, reading_behavior="focused_scan"):
+        """Final review before leaving with behavior-based patterns"""
         try:
             start_time = time.time()
             end_time = start_time + duration
             
-            # Scroll back to top for final review
-            self.driver.execute_script("window.scrollTo({top: 0, behavior: 'smooth'});")
-            time.sleep(random.uniform(1.0, 2.0))
+            # Determine final review behavior based on reading type
+            if reading_behavior == "quick_scan":
+                # Quick final check
+                self.driver.execute_script("window.scrollTo({top: 0, behavior: 'smooth'});")
+                time.sleep(random.uniform(0.5, 1.0))
+                
+                # Brief final pause
+                final_pause = random.uniform(1.0, 2.0)
+                time.sleep(final_pause)
+                
+            elif reading_behavior == "careful_scan" or reading_behavior == "comprehensive_scan":
+                # More thorough final review
+                # Scroll to key positions for final check
+                review_positions = [0, page_height * 0.3, page_height * 0.7]
+                for position in review_positions:
+                    if time.time() >= end_time:
+                        break
+                    self.driver.execute_script(f"window.scrollTo({{top: {position}, behavior: 'smooth'}});")
+                    time.sleep(random.uniform(0.8, 1.5))
+                
+                # Final pause at top
+                self.driver.execute_script("window.scrollTo({top: 0, behavior: 'smooth'});")
+                time.sleep(random.uniform(1.0, 2.0))
+                
+                # Longer final pause for careful reading
+                final_pause = random.uniform(2.5, 5.0)
+                time.sleep(final_pause)
+                
+            else:  # focused_scan, exploratory_scan
+                # Standard final review
+                self.driver.execute_script("window.scrollTo({top: 0, behavior: 'smooth'});")
+                time.sleep(random.uniform(1.0, 2.0))
+                
+                # Standard final pause
+                final_pause = random.uniform(2.0, 4.0)
+                time.sleep(final_pause)
             
-            # Final reading pause
-            final_pause = random.uniform(2.0, 4.0)
-            time.sleep(final_pause)
+            # Variable mouse movement based on behavior
+            mouse_probability = self._get_mouse_movement_probability(reading_behavior)
+            if random.random() < mouse_probability:
+                mouse_duration = self._get_mouse_movement_duration(reading_behavior)
+                self.mouse.random_mouse_movement(mouse_duration)
             
-            # Last mouse movement
-            if random.random() < 0.7:
-                self.mouse.random_mouse_movement(random.uniform(0.3, 0.8))
-            
-            # Brief pause before leaving
-            time.sleep(random.uniform(1.0, 2.0))
+            # Variable pause before leaving
+            leave_pause = self._get_reading_behavior_delay(reading_behavior, "reading") * 0.5
+            time.sleep(leave_pause)
             
         except Exception as e:
             self.logger.warning(f"Error in final review: {e}")
@@ -1940,6 +2228,7 @@ class ArticleBrowser:
                             last_distraction = current_time
                     
                     # Check for ads periodically
+                    ads_clicked_this_iteration = False
                     if current_time - last_ad_check > ad_check_interval:
                         self.logger.info("[SCAN] Checking for Google AdSense ads...")
                         try:
@@ -1947,6 +2236,8 @@ class ArticleBrowser:
                             if clicked_ads:
                                 self.logger.info(f"[SUCCESS] Clicked {len(clicked_ads)} Google AdSense ads")
                                 # Post-click behavior is handled automatically in _click_ad_safely
+                                ads_clicked_this_iteration = True
+                                self.logger.info("[INFO] Skipping reading behavior this iteration due to ad click")
                             else:
                                 self.logger.info("[INFO] No suitable Google AdSense ads found")
                         except Exception as ad_error:
@@ -1955,21 +2246,25 @@ class ArticleBrowser:
                         last_ad_check = current_time
                         ad_check_interval = random.uniform(60, 180)  # Reset interval
                     
-                    # Reading behavior based on mood
-                    try:
-                        if reading_mood == "focused":
-                            self._focused_reading(reading_rhythm)
-                        elif reading_mood == "distracted":
-                            self._distracted_reading(reading_rhythm)
-                        elif reading_mood == "careful":
-                            self._careful_reading(reading_rhythm)
-                        else:  # quick
-                            self._quick_reading(reading_rhythm)
-                    except Exception as reading_error:
-                        self.logger.warning(f"[WARNING] Reading behavior failed: {reading_error}")
-                        # Fallback to simple scroll
-                        self.driver.execute_script("window.scrollBy(0, 100);")
-                        time.sleep(random.uniform(1, 3))
+                    # Reading behavior based on mood (skip if ads were clicked this iteration)
+                    if not ads_clicked_this_iteration:
+                        try:
+                            if reading_mood == "focused":
+                                self._focused_reading(reading_rhythm)
+                            elif reading_mood == "distracted":
+                                self._distracted_reading(reading_rhythm)
+                            elif reading_mood == "careful":
+                                self._careful_reading(reading_rhythm)
+                            else:  # quick
+                                self._quick_reading(reading_rhythm)
+                        except Exception as reading_error:
+                            self.logger.warning(f"[WARNING] Reading behavior failed: {reading_error}")
+                            # Fallback to simple scroll
+                            self.driver.execute_script("window.scrollBy(0, 100);")
+                            time.sleep(random.uniform(1, 3))
+                    else:
+                        # Add a small pause after ad click before next iteration
+                        time.sleep(random.uniform(2.0, 4.0))
                     
                     # Change mood occasionally (like human mood changes)
                     if random.random() < 0.1:  # 10% chance to change mood
