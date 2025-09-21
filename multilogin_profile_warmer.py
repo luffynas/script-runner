@@ -48,6 +48,7 @@ Date: 2025
 Version: 1.0
 """
 
+# -*- coding: utf-8 -*-
 import random
 import time
 import logging
@@ -55,6 +56,16 @@ import sys
 import json
 import datetime
 from urllib.parse import urlparse, urljoin
+
+# Ensure proper encoding for all text operations
+import locale
+import os
+
+# Set UTF-8 encoding for stdout/stderr
+if hasattr(sys.stdout, 'reconfigure'):
+    sys.stdout.reconfigure(encoding='utf-8')
+if hasattr(sys.stderr, 'reconfigure'):
+    sys.stderr.reconfigure(encoding='utf-8')
 
 # Selenium imports - akan tersedia di Multilogin environment
 try:
@@ -76,21 +87,41 @@ except ImportError:
 
 
 def setup_logging():
-    """Setup logging system for Multilogin environment"""
-    console_handler = logging.StreamHandler(sys.stdout)
-    console_handler.setLevel(logging.INFO)
-    console_handler.setFormatter(logging.Formatter(
-        '%(asctime)s - %(name)s - %(lineno)s - %(levelname)s - %(message)s'))
-    
-    logger = logging.getLogger('multilogin_profile_warmer')
-    logger.setLevel(logging.INFO)
-    logger.addHandler(console_handler)
-    
-    # Clear any existing handlers to avoid duplicates
-    logger.handlers.clear()
-    logger.addHandler(console_handler)
-    
-    return logger
+    """Setup logging system for Multilogin environment with encoding support"""
+    try:
+        # Create console handler with UTF-8 encoding
+        console_handler = logging.StreamHandler(sys.stdout)
+        console_handler.setLevel(logging.INFO)
+        
+        # Use safe formatter that handles encoding issues
+        formatter = logging.Formatter(
+            '%(asctime)s - %(name)s - %(lineno)s - %(levelname)s - %(message)s',
+            datefmt='%Y-%m-%d %H:%M:%S'
+        )
+        console_handler.setFormatter(formatter)
+        
+        logger = logging.getLogger('multilogin_profile_warmer')
+        logger.setLevel(logging.INFO)
+        
+        # Clear any existing handlers to avoid duplicates
+        logger.handlers.clear()
+        logger.addHandler(console_handler)
+        
+        # Test logging to ensure encoding works
+        logger.info("Logging system initialized successfully")
+        
+        return logger
+        
+    except Exception as e:
+        # Fallback to basic logging if there are encoding issues
+        logging.basicConfig(
+            level=logging.INFO,
+            format='%(asctime)s - %(levelname)s - %(message)s',
+            datefmt='%Y-%m-%d %H:%M:%S'
+        )
+        logger = logging.getLogger('multilogin_profile_warmer')
+        logger.warning(f"Using fallback logging due to encoding issue: {e}")
+        return logger
 
 
 class WarmingConfiguration:
@@ -789,7 +820,7 @@ class WarmingScheduleManager:
                 self.money_apps_indonesia_queries
             )
             
-            self.logger.info(f"✅ Setup dorking queries:")
+            self.logger.info(f"[SUCCESS] Setup dorking queries:")
             self.logger.info(f"   - Insurance: {len(self.insurance_queries)} queries")
             self.logger.info(f"   - Loans (International): {len(self.loans_queries)} queries")
             self.logger.info(f"   - Loans Indonesia: {len(self.loans_indonesia_queries)} queries")
@@ -801,7 +832,7 @@ class WarmingScheduleManager:
             self.logger.info(f"   - Total: {len(self.dorking_queries)} queries")
             
         except Exception as e:
-            self.logger.error(f"❌ Error setting up dorking queries: {e}")
+            self.logger.error(f"[ERROR] Error setting up dorking queries: {e}")
             # Use default query as fallback
             self.dorking_queries = ["insurance quotes comparison"]
     
@@ -1245,7 +1276,7 @@ class CookieAcceptanceManager:
                 success = True
             
             if success:
-                self.logger.info("✅ Successfully accepted cookies")
+                self.logger.info("[SUCCESS] Successfully accepted cookies")
                 time.sleep(random.uniform(1, 2))  # Wait for banner to disappear
             else:
                 self.logger.debug("No cookie banner found or unable to accept")
@@ -1750,7 +1781,7 @@ class MultiloginProfileWarmer:
             query = activity['query']
             dwell_time = activity['dwell_time']
             
-            self.logger.info(f"🔍 Google dorking: '{query}'")
+            self.logger.info(f"[SEARCH] Google dorking: '{query}'")
             
             # Step 1: Go to Google with proper page load waiting
             self.driver.get("https://www.google.com")
@@ -1832,7 +1863,7 @@ class MultiloginProfileWarmer:
                     organic_results = search_results[1:4]  # Take results 2-4
                     if organic_results:
                         random_result = random.choice(organic_results)
-                        self.logger.info(f"📄 Clicking on search result: {random_result.text[:50]}...")
+                        self.logger.info(f"[CLICK] Clicking on search result: {random_result.text[:50]}...")
                         
                         # Human-like behavior: hover before clicking
                         try:
@@ -1867,10 +1898,10 @@ class MultiloginProfileWarmer:
                         
                         # Verify activity was recorded
                         if self.verify_activity_recorded():
-                            self.logger.info("✅ Activity successfully recorded in browser")
+                            self.logger.info("[SUCCESS] Activity successfully recorded in browser")
                             return True
                         else:
-                            self.logger.warning("⚠️ Activity may not have been recorded")
+                            self.logger.warning("[WARNING] Activity may not have been recorded")
                             return True  # Still return True as activity was performed
                     else:
                         self.logger.warning("No organic search results found")
@@ -2030,22 +2061,22 @@ class MultiloginProfileWarmer:
             # Check if we're on a different page than Google (indicating successful navigation)
             current_url = self.driver.current_url
             if "google.com" not in current_url:
-                self.logger.debug(f"✅ Successfully navigated to: {current_url}")
+                self.logger.debug(f"[SUCCESS] Successfully navigated to: {current_url}")
                 return True
             
             # Check if page has loaded properly
             page_title = self.driver.title
             if page_title and len(page_title) > 0:
-                self.logger.debug(f"✅ Page loaded with title: {page_title[:50]}...")
+                self.logger.debug(f"[SUCCESS] Page loaded with title: {page_title[:50]}...")
                 return True
             
             # Check if there's any content on the page
             body_text = self.driver.find_element(By.TAG_NAME, "body").text
             if body_text and len(body_text) > 100:  # Reasonable amount of content
-                self.logger.debug("✅ Page has substantial content")
+                self.logger.debug("[SUCCESS] Page has substantial content")
                 return True
             
-            self.logger.debug("⚠️ Could not verify activity recording")
+            self.logger.debug("[WARNING] Could not verify activity recording")
             return False
             
         except Exception as e:
@@ -2303,17 +2334,17 @@ def quick_warm_profile(driver, num_activities=3, config=None):
         success = warmer.run_single_session(max_activities=num_activities, config=config)
         
         if success:
-            logger.info("✅ Quick profile warming completed successfully!")
+            logger.info("[SUCCESS] Quick profile warming completed successfully!")
         else:
-            logger.warning("❌ Quick profile warming had issues")
+            logger.warning("[ERROR] Quick profile warming had issues")
             
         return success
         
     except Exception as e:
         logger = logging.getLogger('multilogin_profile_warmer')
-        logger.error(f"❌ Error in quick warming: {e}")
+        logger.error(f"[ERROR] Error in quick warming: {e}")
         import traceback
-        logger.error(f"❌ Traceback: {traceback.format_exc()}")
+        logger.error(f"[ERROR] Traceback: {traceback.format_exc()}")
         return False
 
 
@@ -2396,17 +2427,26 @@ def main():
             success = False
         
         if success:
-            logger.info("✅ Profile warming completed successfully!")
-            print("✅ Profile warming completed successfully!")
+            logger.info("[SUCCESS] Profile warming completed successfully!")
+            try:
+                print("[SUCCESS] Profile warming completed successfully!")
+            except UnicodeEncodeError:
+                print("Profile warming completed successfully!")
         else:
-            logger.warning("❌ Profile warming had issues")
-            print("❌ Profile warming had issues")
+            logger.warning("[ERROR] Profile warming had issues")
+            try:
+                print("[ERROR] Profile warming had issues")
+            except UnicodeEncodeError:
+                print("Profile warming had issues")
             
         return success
         
     except Exception as e:
-        logger.error(f"❌ Error in main warming function: {e}")
-        print(f"❌ Error in main warming function: {e}")
+        logger.error(f"[ERROR] Error in main warming function: {e}")
+        try:
+            print(f"[ERROR] Error in main warming function: {e}")
+        except UnicodeEncodeError:
+            print(f"Error in main warming function: {e}")
         return False
 
 
@@ -2557,10 +2597,10 @@ logging.info('Using Google dorking technique (no external files needed)')
 try:
     # Check if driver is available
     if 'driver' not in globals():
-        logging.error("❌ Driver not available in global scope")
+        logging.error("[ERROR] Driver not available in global scope")
         raise Exception("Driver not available in global scope")
     
-    logging.info("✅ Driver found, starting profile warming...")
+    logging.info("[SUCCESS] Driver found, starting profile warming...")
     
     # Use MULTILOGIN_CONFIG for query categories
     config = MULTILOGIN_CONFIG
@@ -2583,19 +2623,19 @@ try:
         success = False
     
     if success:
-        logging.info("✅ Profile warming completed successfully!")
+        logging.info("[SUCCESS] Profile warming completed successfully!")
     else:
-        logging.warning("❌ Profile warming had issues")
+        logging.warning("[ERROR] Profile warming had issues")
         
 except NameError as e:
-    logging.error(f"❌ NameError: {e}")
-    logging.error("❌ Make sure script is running in Multilogin environment")
+    logging.error(f"[ERROR] NameError: {e}")
+    logging.error("[ERROR] Make sure script is running in Multilogin environment")
     success = False
 except Exception as e:
-    logging.error(f"❌ Error in profile warming: {e}")
-    logging.error(f"❌ Error type: {type(e).__name__}")
+    logging.error(f"[ERROR] Error in profile warming: {e}")
+    logging.error(f"[ERROR] Error type: {type(e).__name__}")
     import traceback
-    logging.error(f"❌ Traceback: {traceback.format_exc()}")
+    logging.error(f"[ERROR] Traceback: {traceback.format_exc()}")
     success = False
 
 # =============================================================================
