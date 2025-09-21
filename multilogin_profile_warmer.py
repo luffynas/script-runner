@@ -2429,7 +2429,7 @@ MULTILOGIN_CONFIG = {
     "enable_auto_accept_cookies": True,
     
     # Query category - pilih satu kategori yang sesuai dengan profile browser
-    "preferred_category": "insurance",  # "insurance", "loans", "loans_indonesia", "ai", "crypto", "erp_crm", "crypto_indonesia", "money_apps_indonesia", "crypto_indonesia_queries"
+    "preferred_category": "ai",  # "insurance", "loans", "loans_indonesia", "ai", "crypto", "erp_crm", "crypto_indonesia", "money_apps_indonesia", "crypto_indonesia_queries"
     
     # Available categories for reference:
     # - "insurance": Insurance-related queries (24 queries)
