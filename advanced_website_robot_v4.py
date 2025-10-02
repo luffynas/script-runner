@@ -3,122 +3,24 @@ import random
 import time
 import logging
 import sys
-import locale
-import os
 from urllib.parse import urlparse
-
-# Ensure proper encoding for all text operations
-# Set UTF-8 encoding for stdout/stderr to prevent decode errors
-if hasattr(sys.stdout, 'reconfigure'):
-    sys.stdout.reconfigure(encoding='utf-8')
-if hasattr(sys.stderr, 'reconfigure'):
-    sys.stderr.reconfigure(encoding='utf-8')
-
-# Set locale to UTF-8 if available
-try:
-    locale.setlocale(locale.LC_ALL, 'en_US.UTF-8')
-except locale.Error:
-    try:
-        locale.setlocale(locale.LC_ALL, 'C.UTF-8')
-    except locale.Error:
-        # Fallback to default locale
-        pass
-
-
-def safe_encode(text, encoding='utf-8', errors='replace'):
-    """
-    Safely encode text to prevent decode errors
-    """
-    if isinstance(text, bytes):
-        return text
-    try:
-        return text.encode(encoding, errors=errors)
-    except (UnicodeEncodeError, UnicodeDecodeError):
-        return text.encode('utf-8', errors='replace')
-
-
-def safe_decode(text, encoding='utf-8', errors='replace'):
-    """
-    Safely decode text to prevent decode errors
-    """
-    if isinstance(text, str):
-        return text
-    try:
-        return text.decode(encoding, errors=errors)
-    except (UnicodeEncodeError, UnicodeDecodeError):
-        return text.decode('utf-8', errors='replace')
-
-
-def safe_str(text):
-    """
-    Safely convert any object to string with proper encoding
-    """
-    try:
-        if isinstance(text, bytes):
-            return safe_decode(text)
-        return str(text)
-    except (UnicodeEncodeError, UnicodeDecodeError):
-        return repr(text)
-
-
-# Selenium imports - akan tersedia di environment yang sesuai
-try:
-    from selenium.webdriver.common.by import By
-    from selenium.webdriver.common.action_chains import ActionChains
-    from selenium.webdriver.common.keys import Keys
-    from selenium.webdriver.support import expected_conditions as EC
-    from selenium.webdriver.support.ui import WebDriverWait
-    from selenium.common.exceptions import TimeoutException, NoSuchElementException, WebDriverException
-except ImportError:
-    # Fallback untuk development environment
-    pass
+from selenium.webdriver.common.by import By
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.keys import Keys
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.common.exceptions import TimeoutException, NoSuchElementException, WebDriverException
 
 
 def setup_logging():
     """
-    Setup logging dengan encoding UTF-8 yang aman
+    Setup logging mengikuti pattern cookie_robot.py
     """
-    try:
-        # Set UTF-8 encoding for stdout/stderr to prevent decode errors
-        if hasattr(sys.stdout, 'reconfigure'):
-            sys.stdout.reconfigure(encoding='utf-8')
-        if hasattr(sys.stderr, 'reconfigure'):
-            sys.stderr.reconfigure(encoding='utf-8')
-        
-        # Create console handler with UTF-8 encoding
-        console_handler = logging.StreamHandler(sys.stdout)
-        console_handler.setLevel(logging.INFO)
-        
-        # Use safe formatter that handles encoding issues
-        formatter = logging.Formatter(
-            '%(asctime)s - %(name)s - %(lineno)s - %(levelname)s - %(message)s',
-            datefmt='%Y-%m-%d %H:%M:%S'
-        )
-        console_handler.setFormatter(formatter)
-        
-        # Get logger and configure
-        logger = logging.getLogger('advanced_website_robot')
-        logger.setLevel(logging.INFO)
-        
-        # Clear any existing handlers to avoid duplicates
-        logger.handlers.clear()
-        logger.addHandler(console_handler)
-        
-        # Test logging to ensure encoding works
-        logger.info("Logging system initialized successfully with UTF-8 encoding")
-        
-        return logger
-        
-    except Exception as e:
-        # Fallback to basic logging if there are encoding issues
-        logging.basicConfig(
-            level=logging.INFO,
-            format='%(asctime)s - %(levelname)s - %(message)s',
-            datefmt='%Y-%m-%d %H:%M:%S'
-        )
-        logger = logging.getLogger('advanced_website_robot')
-        logger.warning(f"Using fallback logging due to encoding issue: {e}")
-        return logger
+    console_handler = logging.StreamHandler(sys.stdout)
+    console_handler.setLevel(logging.INFO)
+    console_handler.setFormatter(logging.Formatter(
+        '%(asctime)s - %(name)s - %(lineno)s - %(levelname)s - %(message)s'))
+    logging.getLogger(name='advanced_website_robot').addHandler(console_handler)
 
 
 class Configuration:
@@ -811,11 +713,11 @@ class DetectionPatterns:
                 '.button-next',
                 
                 # Arrow navigation
-                'a:contains("→")',
-                'a:contains("»")',
-                'a:contains("›")',
-                'a:contains("▶")',
-                'a:contains("►")',
+                # 'a:contains("→")',
+                # 'a:contains("»")',
+                # 'a:contains("›")',
+                # 'a:contains("▶")',
+                # 'a:contains("►")',
             ],
             'previous': [
                 # Standard navigation
@@ -843,11 +745,11 @@ class DetectionPatterns:
                 '.button-prev',
                 
                 # Arrow navigation
-                'a:contains("←")',
-                'a:contains("«")',
-                'a:contains("‹")',
-                'a:contains("◀")',
-                'a:contains("◄")'
+                # 'a:contains("←")',
+                # 'a:contains("«")',
+                # 'a:contains("‹")',
+                # 'a:contains("◀")',
+                # 'a:contains("◄")'
             ]
         }
         
@@ -972,7 +874,7 @@ class MouseMovementSimulator:
                 # Test if element is still attached to DOM
                 element.is_displayed()
             except Exception as e:
-                logging.warning(f"Element is stale, skipping mouse movement: {safe_str(e)}")
+                logging.warning(f"Element is stale, skipping mouse movement: {e}")
                 return False
             
             if smooth:
@@ -1010,18 +912,18 @@ class MouseMovementSimulator:
                             pass
                         time.sleep(random.uniform(0.01, 0.05))
                 except Exception as e:
-                    logging.warning(f"Smooth mouse movement failed: {safe_str(e)}")
+                    logging.warning(f"Smooth mouse movement failed: {e}")
             
             # Move to element using ActionChains with error handling
             try:
                 ActionChains(self.driver).move_to_element(element).perform()
                 return True
             except Exception as e:
-                logging.warning(f"ActionChains mouse movement failed: {safe_str(e)}")
+                logging.warning(f"ActionChains mouse movement failed: {e}")
                 return False
                 
         except Exception as e:
-            logging.warning(f"Mouse movement failed: {safe_str(e)}")
+            logging.warning(f"Mouse movement failed: {e}")
             return False
     
     def random_mouse_movement(self, duration=1.0):
@@ -1204,7 +1106,7 @@ class RiskMonitor:
                     break
         
         except Exception as e:
-            logging.warning(f"Error checking detection signals: {safe_str(e)}")
+            logging.warning(f"Error checking detection signals: {e}")
         
         return signals
     
@@ -7203,17 +7105,11 @@ logging.info('Advanced Website Robot started')
 logging.info(f'process_advanced_features: {process_advanced_features}')
 logging.info(f'random_behavior: {random_behavior}')
 
-# Note: This script is designed to be used with a WebDriver instance
-# The 'driver' variable should be provided by the calling environment
-# (e.g., Multilogin, Selenium Grid, or other automation framework)
+# Create and run robot (mengikuti pattern cookie_robot.py)
+robot = AdvancedWebsiteRobot(
+    driver=driver,
+    process_advanced_features=process_advanced_features,
+    random_behavior=random_behavior
+)
 
-# Example usage:
-# if 'driver' in globals():
-#     robot = AdvancedWebsiteRobot(
-#         driver=driver,
-#         process_advanced_features=process_advanced_features,
-#         random_behavior=random_behavior
-#     )
-#     robot.run()
-# else:
-#     logging.error("WebDriver instance not found. Please ensure 'driver' variable is available.")
+robot.run()
