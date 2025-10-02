@@ -713,11 +713,11 @@ class DetectionPatterns:
                 '.button-next',
                 
                 # Arrow navigation
-                # 'a:contains("→")',
-                # 'a:contains("»")',
-                # 'a:contains("›")',
-                # 'a:contains("▶")',
-                # 'a:contains("►")',
+                'a:contains(">")',      # instead of right arrow
+                'a:contains(">>")',    # instead of double right arrow  
+                'a:contains(">")',     # instead of single right arrow
+                'a:contains(">")',     # instead of play button
+                'a:contains(">")',     # instead of triangle right
             ],
             'previous': [
                 # Standard navigation
@@ -745,11 +745,11 @@ class DetectionPatterns:
                 '.button-prev',
                 
                 # Arrow navigation
-                # 'a:contains("←")',
-                # 'a:contains("«")',
-                # 'a:contains("‹")',
-                # 'a:contains("◀")',
-                # 'a:contains("◄")'
+                'a:contains("<")',     # instead of left arrow
+                'a:contains("<<")',    # instead of double left arrow
+                'a:contains("<")',     # instead of single left arrow
+                'a:contains("<")',     # instead of play button left
+                'a:contains("<")'      # instead of triangle left
             ]
         }
         
@@ -1984,7 +1984,7 @@ class AdClickingSystem:
             # Add some random variation to positions
             varied_positions = []
             for pos in positions:
-                variation = page_height * random.uniform(-0.05, 0.05)  # ±5% variation
+                variation = page_height * random.uniform(-0.05, 0.05)  # +/-5% variation
                 varied_pos = max(0, min(page_height, pos + variation))
                 varied_positions.append(varied_pos)
             
@@ -6479,7 +6479,7 @@ class ArticleBrowser:
             session_factor = self._get_session_factor()
             adjusted_ratio = base_ratio * session_factor
             
-            # Add random variation (±10%)
+            # Add random variation (+/-10%)
             random_factor = random.uniform(0.9, 1.1)
             final_ratio = min(0.9, max(0.1, adjusted_ratio * random_factor))
             
